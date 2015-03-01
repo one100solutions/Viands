@@ -11,7 +11,26 @@ Viands Retaurant api
     * password:  
     * phone:  
     * name:  
-  
->> * Response:  
+
+>> * Response:
    * err:  
-   * message:  
+   * message:
+
+> _/verify_  
+>>  * Request:
+    * phone:
+    * otp:  
+
+>>  * Response:  
+    * err:  
+    * message:  
+
+> _/login_  
+>>  * Request:  
+    * phone:  
+    * password:  
+
+>> * Response:
+   * err:  
+   * message:
+   * user:  
