@@ -1,17 +1,17 @@
 # Viands
 Viands Retaurant api
 
-WORK IN PROGRESS
+##WORK IN PROGRESS
 
-COMPLETED:
+###COMPLETED:
 
-/signup
-Request:
-  email:
-  password:
-  phone:
-  name:
-
-Response:
-  err:
-  message:
+>/signup
+>>Request:  
+  email:  
+  password:  
+  phone:  
+  name:  
+  
+>>Response:  
+  err:  
+  message:  
