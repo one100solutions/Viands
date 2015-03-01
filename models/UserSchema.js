@@ -8,6 +8,9 @@ var UserSchema = new mongoose.Schema({
   phone: Number,
   email: String,
   password: String,
+  otp: String,
+  credits: Number,
+  token: String,
   validation: { type: Boolean, default: false }
 });
 

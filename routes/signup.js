@@ -8,6 +8,7 @@ var User = mongoose.model('User');
 var mailer = require('../utility/mailer');
 var messenger = require('../utility/messenger');
 var host = require('../utility/host');
+var id2otp = require('../utility/id2otp');
 
 router.post('/', function (req,res) {
 
@@ -15,7 +16,7 @@ router.post('/', function (req,res) {
   var newUser;
 
   User.findOne({
-    email: req.body.email
+    phone: req.body.phone
   }, function (err, user) {
     if (err) {
 
@@ -30,13 +31,14 @@ router.post('/', function (req,res) {
 
         req.body.id = new mongoose.Types.ObjectId;
         req.body.validation = false;
-        newUser = new User(req.body);
 
-        var id = req.body.id.toString();
-
-        var otp = id.slice(0,5);
-
+        var otp = id2otp(req.body.id,true);
         console.log(otp);
+        req.body.otp = otp;
+
+        req.body.credits = 0;
+
+        newUser = new User(req.body);
 
         mailer(req.body.email, "Welcome to Viands", receiver);
 
@@ -74,7 +76,6 @@ router.post('/', function (req,res) {
             err: true,
             mesage: 'Account created. Verification message sent'
           });
-
 
         }
       }
