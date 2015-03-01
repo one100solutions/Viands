@@ -5,13 +5,13 @@ Viands Retaurant api
 
 ###COMPLETED:
 
->/signup
->>Request:  
-  email:  
-  password:  
-  phone:  
-  name:  
+> _/signup_
+>>  * Request:  
+    * email:  
+    * password:  
+    * phone:  
+    * name:  
   
->>Response:  
-  err:  
-  message:  
+>> * Response:  
+   * err:  
+   * message:  
