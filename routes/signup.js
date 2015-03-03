@@ -46,6 +46,13 @@ router.post('/', function (req,res) {
         mailer(req.body.email, "Welcome to Viands", receiver);
 
         messenger(req.body.phone,'Otp is ' + otp, receiver);
+
+       newUser.save();
+
+        res.json({
+          err: true,
+          mesage: 'Account created. Verification message sent'
+        });
       }
       else {
         res.json({
@@ -72,14 +79,7 @@ router.post('/', function (req,res) {
       } else {
         done++;
         if (done === 2) {
-
-          newUser.save();
-
-          res.json({
-            err: true,
-            mesage: 'Account created. Verification message sent'
-          });
-
+          console.log('email AND MESSAGE sent');
         }
       }
     }
