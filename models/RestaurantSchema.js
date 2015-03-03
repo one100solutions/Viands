@@ -17,7 +17,11 @@ var RestaurantSchema = new mongoose.Schema({
     pic: String,
     description: String,
     ratings: Number
-  }]
+  }],
+  admin: {
+    username: String,
+    password: String
+  }
 });
 
 mongoose.model('Restaurant', RestaurantSchema);
