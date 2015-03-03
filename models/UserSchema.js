@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
+var tokenize = require('../lib/tokenize.js');
+
 var UserSchema = new mongoose.Schema({
   id: Schema.Types.ObjectId,
   name: String,

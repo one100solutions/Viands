@@ -5,10 +5,11 @@ var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
 
-var mailer = require('../utility/mailer');
-var messenger = require('../utility/messenger');
-var host = require('../utility/host');
-var id2otp = require('../utility/id2otp');
+var mailer = require('../lib/mailer');
+var messenger = require('../lib/messenger');
+var host = require('../lib/host');
+var id2otp = require('../lib/id2otp');
+var tokenize = require('../lib/tokenize');
 
 router.post('/', function (req,res) {
 
@@ -37,6 +38,8 @@ router.post('/', function (req,res) {
         req.body.otp = otp;
 
         req.body.credits = 0;
+
+        req.body.password = tokenize(req.body.password)
 
         newUser = new User(req.body);
 
