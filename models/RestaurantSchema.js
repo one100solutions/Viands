@@ -12,15 +12,18 @@ var RestaurantSchema = new mongoose.Schema({
   phone: Number,
   menu: [{
     item_id: Schema.Types.ObjectId,
+    sno: Number,
     name: String,
     category: String,
     pic: String,
     description: String,
-    ratings: Number
+    ratings: Number,
+    cost: Number
   }],
   admin: {
     username: String,
-    password: String
+    password: String,
+    token: String
   }
 });
 

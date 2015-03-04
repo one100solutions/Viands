@@ -16,9 +16,14 @@ require('./models/UserSchema');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
 var signup = require('./routes/signup');
 var verify = require('./routes/verify');
 var login = require('./routes/login');
+
+var new_restaurant = require('./routes/new_restaurant');
+var login_restaurant = require('./routes/login_restaurant');
+var add_credits = require('./routes/add_credits');
 
 var app = express();
 
@@ -36,9 +41,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
 app.use('/signup', signup);
 app.use('/verify', verify);
 app.use('/login',login);
+
+app.use('/new_restaurant', new_restaurant);
+app.use('/login_restaurant', login_restaurant);
+app.use('/add_credits', add_credits);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
