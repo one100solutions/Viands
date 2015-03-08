@@ -10,11 +10,10 @@ Restaurant = mongoose.model 'Restaurant'
 
 router.post '/', (req,res) ->
 	if req.body.username and req.body.password
-		
+
 		Restaurant.findOne
-			admin:
-				username: req.body.username
-				password: tokenize req.body.password
+			'admin.username': req.body.username
+			'admin.password': tokenize req.body.password
 			(err,rest) ->
 				if err
 					res.json
@@ -38,11 +37,11 @@ router.post '/', (req,res) ->
 							  message: 'Logged In'
 							  Restaurant: rest
 
-				else 
+				else
 					res.json
 						err: true
 						message: 'Restaurant not found'
-	else 
+	else
 		res.json
 			err: true,
 			message: 'missing params'

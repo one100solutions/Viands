@@ -17,9 +17,12 @@ require('./models/UserSchema');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var restaurants = require('./routes/restaurants');
+
 var signup = require('./routes/signup');
 var verify = require('./routes/verify');
 var login = require('./routes/login');
+var order = require('./routes/order');
 
 var new_restaurant = require('./routes/new_restaurant');
 var login_restaurant = require('./routes/login_restaurant');
@@ -42,19 +45,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+app.use('/restaurants', restaurants);
+
 app.use('/signup', signup);
 app.use('/verify', verify);
-app.use('/login',login);
+app.use('/login', login);
+app.use('/order', order);
 
 app.use('/new_restaurant', new_restaurant);
 app.use('/login_restaurant', login_restaurant);
 app.use('/add_credits', add_credits);
 
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.use(function(req, res) {
+    // var err = new Error('Not Found');
+    // err.status = 404;
+    // next(err);
+    res.json({
+      err: true,
+      message: 'No such route'
+    });
 });
 
 // error handlers

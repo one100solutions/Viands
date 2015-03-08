@@ -16,7 +16,7 @@
   Rstaurant = mongoose.model('Restaurant');
 
   describe('It should convert excel file to json', function(done) {
-    return x('/home/akash/Programs/Viands/Menu.xlsx', function(err, message) {
+    return x('/home/akash/Projects/Viands/Menu.xlsx', function(err, message) {
       return expect(err).to.be(false);
     });
   });

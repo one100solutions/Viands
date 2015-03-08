@@ -14,10 +14,8 @@
   router.post('/', function(req, res) {
     if (req.body.username && req.body.password) {
       return Restaurant.findOne({
-        admin: {
-          username: req.body.username,
-          password: tokenize(req.body.password)
-        }
+        'admin.username': req.body.username,
+        'admin.password': tokenize(req.body.password)
       }, function(err, rest) {
         if (err) {
           return res.json({

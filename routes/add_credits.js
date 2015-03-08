@@ -12,12 +12,12 @@
   User = mongoose.model('User');
 
   router.post('/', function(req, res) {
-    if (req.body.username && req.body.token && req.body.tar_phone && req.body.amount && typeof req.body.amount === 'number') {
+    console.log(req.body);
+    if (req.body.username && req.body.token && req.body.tar_phone && req.body.amount) {
+      req.body.amount = Number(req.body.amount);
       return Restaurant.findOne({
-        admin: {
-          username: req.body.username,
-          token: req.body.token
-        }
+        'admin.username': req.body.username,
+        'admin.token': req.body.token
       }, function(err, rest) {
         if (err) {
           return res.json({

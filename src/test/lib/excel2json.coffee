@@ -13,5 +13,5 @@ require '../../models/RestaurantSchema'
 Rstaurant = mongoose.model 'Restaurant'
 
 describe 'It should convert excel file to json', (done) ->
-	x '/home/akash/Programs/Viands/Menu.xlsx', (err, message) ->
+	x '/home/akash/Projects/Viands/Menu.xlsx', (err, message) ->
 		expect(err).to.be(false)

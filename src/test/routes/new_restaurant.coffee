@@ -45,7 +45,7 @@ describe 'New Restaurant route', ->
 
 	afterEach (done)->
 		console.log 'Executed',login
-		if login 
+		if login
 			Restaurant.findOneAndRemove
 				name: 'Hotel A'
 				(err) ->
@@ -53,7 +53,7 @@ describe 'New Restaurant route', ->
 		done()
 
 	createRestaurant = (done, flag) ->
-			request.post 'http://localhost:3000/new_restaurant', 
+			request.post 'http://localhost:3000/new_restaurant',
 		  form:
 		  	username: 'new_user'
 		  	password: 'akash'
@@ -73,10 +73,8 @@ describe 'New Restaurant route', ->
 		  		body = JSON.parse body
 		  		expect(body.err).to.not.equal false
 		  		done()
-		  	
+
 
 		  	else
 		  		expect(body.err).to.not.equal(true)
 		  		done()
-
-

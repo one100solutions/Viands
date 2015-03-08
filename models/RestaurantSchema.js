@@ -18,7 +18,8 @@ var RestaurantSchema = new mongoose.Schema({
     pic: String,
     description: String,
     ratings: Number,
-    cost: Number
+    cost: Number,
+    available: Boolean
   }],
   admin: {
     username: String,

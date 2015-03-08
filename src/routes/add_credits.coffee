@@ -9,12 +9,14 @@ Restaurant = mongoose.model 'Restaurant'
 User = mongoose.model 'User'
 
 router.post '/', (req, res) ->
-	if req.body.username and req.body.token and req.body.tar_phone and req.body.amount and typeof req.body.amount is 'number'
+	console.log req.body
+	if req.body.username and req.body.token and req.body.tar_phone and req.body.amount
+
+		req.body.amount = Number(req.body.amount)
 
 		Restaurant.findOne
-			admin:
-				username: req.body.username
-				token: req.body.token
+			'admin.username': req.body.username
+			'admin.token': req.body.token
 			(err, rest) ->
 				if err
 					res.json
@@ -54,7 +56,7 @@ router.post '/', (req, res) ->
 					res.json
 						err: true
 						message: 'Unknown error'
-							
+
 
 	else
 		res.json
