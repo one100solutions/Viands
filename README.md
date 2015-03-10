@@ -52,7 +52,8 @@ Viands Retaurant api
    * message:  
    * order_id:
    * order_type:
-    
+  
+  **Note: data in request is**  
 >>  * data = json encoded of {  
       * token:  
       * rest_id  
