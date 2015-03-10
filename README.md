@@ -5,7 +5,7 @@ Viands Retaurant api
 
 ###COMPLETED:
 
-> _/signup_
+> ##POST _/signup_
 >>  * Request:  
     * email:  
     * password:  
@@ -16,7 +16,7 @@ Viands Retaurant api
    * err:  
    * message:
 
-> _/verify_  
+> ##POST _/verify_  
 >>  * Request:
     * phone:
     * otp:  
@@ -25,7 +25,7 @@ Viands Retaurant api
     * err:  
     * message:  
 
-> _/login_  
+> ##POST _/login_  
 >>  * Request:  
     * phone:  
     * password:  
@@ -33,4 +33,25 @@ Viands Retaurant api
 >> * Response:
    * err:  
    * message:
-   * user:  
+   * user:
+
+> ##GET _/restaurants_  
+>>  
+
+>> * Response:      
+   * err:   
+   * message:  
+   * restaurants:  
+
+> ##POST _/order_  
+>> * Request:  
+   * data: 
+
+>> * Response:  
+   * err:  
+   * message:  
+   * order_id:
+   * order_type:
+    
+
+
