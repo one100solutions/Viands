@@ -53,11 +53,11 @@ Viands Retaurant api
    * order_id:
    * order_type:
     
-**data = json encoded of {  
-  * token:  
-  * rest_id  
-  * order:  
-  *   type:  
-  *   time_deliver:  
-  * items:[{id: , quantity: }]  
-}**
+>>  data = json encoded of {  
+      * token:  
+      * rest_id  
+      * order:  
+      *   type:  
+      *   time_deliver:  
+      * items:[{id: , quantity: }]  
+    }
