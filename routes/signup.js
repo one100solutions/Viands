@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 var mailer = require('../lib/mailer');
-var messenger = require('../lib/messenger');
+var messenger = require('../lib/messenger_msg91');
 var host = require('../lib/host');
 var id2otp = require('../lib/id2otp');
 var tokenize = require('../lib/tokenize');
