@@ -27,6 +27,7 @@ var order = require('./routes/order');
 var new_restaurant = require('./routes/new_restaurant');
 var login_restaurant = require('./routes/login_restaurant');
 var add_credits = require('./routes/add_credits');
+var get_orders = require('./routes/get_order');
 
 var app = express();
 
@@ -55,7 +56,7 @@ app.use('/order', order);
 app.use('/new_restaurant', new_restaurant);
 app.use('/login_restaurant', login_restaurant);
 app.use('/add_credits', add_credits);
-
+app.use('/get_order', get_orders);
 
 // catch 404 and forward to error handler
 app.use(function(req, res) {

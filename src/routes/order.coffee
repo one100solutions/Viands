@@ -40,7 +40,7 @@ router.post '/', (req, res) ->
           restaurant_found = true
 
         else
-          console.log 'Restaurant not found'
+          console.log '404, Restaurant not found'
           restaurant_found = false
 
         done++
@@ -92,6 +92,7 @@ router.post '/', (req, res) ->
             type: req.body.order.type
             time_deliver: req.body.order.time_deliver
             items: req.body.order.items
+            restaurant_id: req.body.rest_id
 
           newOrder.save (error,order) ->
             

@@ -1,10 +1,13 @@
 var mongoose = require('mongoose');
 
+var Schema = mongoose.Schema;
+
 var OrderSchema = new mongoose.Schema ({
   time: String,
   type: String,
   time_deliver: String,
-  items: [
+	restaurant_id: Schema.Types.ObjectId,
+	items:[
     {
       item_id: String,
       quantity: Number,

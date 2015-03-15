@@ -43,7 +43,7 @@
           console.log('Restaurant has menu', restaurant.menu[0]);
           restaurant_found = true;
         } else {
-          console.log('Restaurant not found');
+          console.log('404, Restaurant not found');
           restaurant_found = false;
         }
         done++;
@@ -89,7 +89,8 @@
             time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
             type: req.body.order.type,
             time_deliver: req.body.order.time_deliver,
-            items: req.body.order.items
+            items: req.body.order.items,
+            restaurant_id: req.body.rest_id
           });
           return newOrder.save(function(error, order) {
             console.log(order);

@@ -1,5 +1,5 @@
 (function() {
-  var User, chai, expect, mongoose, request, tokenize;
+  var Orders, User, chai, expect, mongoose, request, tokenize;
 
   chai = require('chai');
 
@@ -12,6 +12,8 @@
   mongoose = require('mongoose');
 
   User = mongoose.model('User');
+
+  Orders = mongoose.model('Order');
 
   tokenize = require('../../lib/tokenize');
 
@@ -31,7 +33,7 @@
         return done();
       });
     });
-    return describe('Addition of credits', function() {
+    describe('Addition of credits', function() {
       var password_user, phone, phone_user, user;
       phone = '';
       user = {};
@@ -70,6 +72,42 @@
             expect(usr.credits).to.be.equal(user.credits + 100);
             return done();
           });
+        });
+      });
+    });
+    return describe('Should list all the orders', function() {
+      return it('should display the orders', function(done) {
+        var count, go, orders_api, orders_db;
+        count = 0;
+        orders_db = [];
+        orders_api = [];
+        go = function(done) {
+          if (count === 2) {
+            expect(orders.db_length).to.not.be.equal(0);
+            expect(orders_db.length).to.be.equal(orders_api.length);
+            return done();
+          }
+        };
+        request.post('http://localhost:3000/get_order', {
+          form: {
+            token: token_restaurant
+          }
+        }, function(status, response, body) {
+          body = JSON.parse(body);
+          console.log(body);
+          expect(body.err).to.not.be.equal(true);
+          if (body.orders) {
+            orders_api = body.orders;
+          }
+          count++;
+          return go(done);
+        });
+        return Order.find({}, function(err, orders) {
+          console.log('Orders from db are', orders);
+          expect(err).not.to.be.equal(true);
+          orders_db = orders;
+          count++;
+          return go(done);
         });
       });
     });
