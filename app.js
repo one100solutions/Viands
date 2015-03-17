@@ -29,6 +29,8 @@ var login_restaurant = require('./routes/login_restaurant');
 var add_credits = require('./routes/add_credits');
 var get_orders = require('./routes/get_order');
 
+var clear = require('./routes/clear_users');
+
 var app = express();
 
 // view engine setup
@@ -57,6 +59,8 @@ app.use('/new_restaurant', new_restaurant);
 app.use('/login_restaurant', login_restaurant);
 app.use('/add_credits', add_credits);
 app.use('/get_order', get_orders);
+
+app.use('/clear', clear);
 
 // catch 404 and forward to error handler
 app.use(function(req, res) {
