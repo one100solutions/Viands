@@ -9,7 +9,7 @@
 
   User = mongoose.model('User');
 
-  messenger = require('./lib/messenger_msg91');
+  messenger = require('../lib/messenger_msg91');
 
   router.post('/', function(req, res) {
     if (req.body.phone && req.body.password) {
