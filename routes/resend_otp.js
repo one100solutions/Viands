@@ -11,7 +11,7 @@
 
   messenger = require('./lib/messenger_msg91');
 
-  router.get('/', function(req, res) {
+  router.post('/', function(req, res) {
     if (req.body.phone && req.body.password) {
       return User.findOne({
         phone: req.body.phone,

@@ -7,7 +7,7 @@ User = mongoose.model 'User'
 
 messenger = require './lib/messenger_msg91'
 
-router.get '/', (req, res) ->
+router.post '/', (req, res) ->
 
 	if req.body.phone and req.body.password
 
