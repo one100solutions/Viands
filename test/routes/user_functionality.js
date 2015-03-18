@@ -79,4 +79,15 @@
     });
   });
 
+
+  /*
+    it 'should send a otp', (done) ->
+  
+      request.post url + 'resend_otp',
+        form:
+          phone: 8277564501
+          password: 'akash'
+      (status, response, body)->
+   */
+
 }).call(this);

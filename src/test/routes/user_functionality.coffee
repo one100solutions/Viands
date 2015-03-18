@@ -67,3 +67,11 @@ describe 'Users actions', ->
         expect(body.err).to.be.equal(false)
         expect(body.order_id).to.not.be.undefined
         done()
+###
+  it 'should send a otp', (done) ->
+
+    request.post url + 'resend_otp',
+      form:
+        phone: 8277564501
+        password: 'akash'
+    (status, response, body)->###
