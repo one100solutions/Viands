@@ -16,7 +16,6 @@ router.post '/', (req,res) ->
 		User.findOne
 			phone: req.body.phone,
 			password: req.body.password,
-			validation: true
 			
 		, (err,user) ->
 
@@ -32,6 +31,16 @@ router.post '/', (req,res) ->
 					message: 'User not found!!'
 
 			else if (user)
+
+				if user.validation is false
+					res.json {
+						err: true,
+						message: 'User not verified'
+					}
+
+					return
+
+
 				user.token = tokenize(user.phone + user.email + user.password)
 
 				user.save (err) ->

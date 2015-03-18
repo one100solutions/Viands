@@ -16,8 +16,7 @@
       req.body.password = tokenize(req.body.password);
       return User.findOne({
         phone: req.body.phone,
-        password: req.body.password,
-        validation: true
+        password: req.body.password
       }, function(err, user) {
         if (err) {
           console.log(err);
@@ -31,6 +30,13 @@
             message: 'User not found!!'
           });
         } else if (user) {
+          if (user.validation === false) {
+            res.json({
+              err: true,
+              message: 'User not verified'
+            });
+            return;
+          }
           user.token = tokenize(user.phone + user.email + user.password);
           return user.save(function(err) {
             if (err) {
