@@ -5,7 +5,7 @@ mongoose = require 'mongoose'
 
 User = mongoose.model 'User'
 
-messenger = require './lib/messenger_msg91'
+messenger = require '../lib/messenger_msg91'
 
 router.post '/', (req, res) ->
 
