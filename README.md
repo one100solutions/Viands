@@ -63,7 +63,7 @@ Viands Retaurant api
       *   items:[{id: , quantity: }]  
     }
 
->  ##POST _/resend_otp_  
+> ##POST _/resend_otp_  
 >> * Request:    
    * phone:  
    * password:  
@@ -79,5 +79,8 @@ Viands Retaurant api
 >> * Response:  
    * err:  
    * message:  
-   * orders:  
+   * orders: 
 
+##RESTAURANT API
+
+> ##
