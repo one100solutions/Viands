@@ -22,11 +22,12 @@
   Restaurant = mongoose.model('Restaurant');
 
   router.post('/', function(req, res) {
-    var done, items_available, items_ordered, restaurant, restaurant_found, user_found, validateAndOrder;
+    var cur_user, done, items_available, items_ordered, restaurant, restaurant_found, user_found, validateAndOrder;
     restaurant = {};
     restaurant_found = false;
     user_found = false;
     done = 0;
+    cur_user = {};
     req.body = JSON.parse(req.body.data);
     console.log(req.body);
     if (req.body.token) {
@@ -51,6 +52,7 @@
       }, console.log('Token order', req.body.token), User.findOne({
         token: req.body.token
       }, function(error, user) {
+        cur_user = user;
         if (error) {
           res.json({
             err: true,
@@ -88,6 +90,7 @@
           newOrder = new Order({
             time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
             type: req.body.order.type,
+            user_id: cur_user.id,
             time_deliver: req.body.order.time_deliver,
             items: req.body.order.items,
             restaurant_id: req.body.rest_id
@@ -100,6 +103,8 @@
                 message: err
               });
             } else {
+              cur_user.orders.push(order._id);
+              cur_user.save();
               return res.json({
                 err: false,
                 message: 'Order placed',

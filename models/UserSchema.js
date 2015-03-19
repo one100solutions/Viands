@@ -13,6 +13,7 @@ var UserSchema = new mongoose.Schema({
   otp: String,
   credits: Number,
   token: String,
+  orders: [{ id: Schema.Types.ObjectId }],
   validation: { type: Boolean, default: false }
 });
 

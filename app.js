@@ -24,6 +24,7 @@ var verify = require('./routes/verify');
 var login = require('./routes/login');
 var order = require('./routes/order');
 var resend_otp = require('./routes/resend_otp');
+var get_user_orders = require('./routes/get_order_history')
 
 var new_restaurant = require('./routes/new_restaurant');
 var login_restaurant = require('./routes/login_restaurant');
@@ -56,6 +57,7 @@ app.use('/verify', verify);
 app.use('/login', login);
 app.use('/order', order);
 app.use('/resend_otp', resend_otp);
+app.use('/user_orders', get_user_orders);
 
 app.use('/new_restaurant', new_restaurant);
 app.use('/login_restaurant', login_restaurant);

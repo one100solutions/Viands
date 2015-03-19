@@ -19,6 +19,7 @@ router.post '/', (req, res) ->
   restaurant_found = false
   user_found = false
   done = 0
+  cur_user = {}
 
   req.body = JSON.parse(req.body.data)
 
@@ -51,6 +52,7 @@ router.post '/', (req, res) ->
       User.findOne
         token: req.body.token
         (error, user) ->
+          cur_user = user
           if error
             res.json
               err: true
@@ -90,6 +92,7 @@ router.post '/', (req, res) ->
           newOrder = new Order
             time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
             type: req.body.order.type
+            user_id: cur_user.id
             time_deliver: req.body.order.time_deliver
             items: req.body.order.items
             restaurant_id: req.body.rest_id
@@ -104,6 +107,8 @@ router.post '/', (req, res) ->
                 message: err
 
             else
+              cur_user.orders.push(order._id)
+              cur_user.save()
               res.json
                 err: false
                 message: 'Order placed'

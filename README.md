@@ -62,3 +62,22 @@ Viands Retaurant api
       *   time_deliver:  
       *   items:[{id: , quantity: }]  
     }
+
+>  ##POST _/resend_otp_  
+>> * Request:    
+   * phone:  
+   * password:  
+
+>> * Response:    
+   * err:  
+   * message:  
+
+> ##POST _/user_orders_  
+>> * Request:  
+   * token:  
+
+>> * Response:  
+   * err:  
+   * message:  
+   * orders:  
+

@@ -1,5 +1,5 @@
 (function() {
-  var Order, Restaurant, express, mongoose, router;
+  var Order, User, express, mongoose, router;
 
   express = require('express');
 
@@ -7,46 +7,38 @@
 
   mongoose = require('mongoose');
 
+  User = mongoose.model('User');
+
   Order = mongoose.model('Order');
 
-  Restaurant = mongoose.model('Restaurant');
-
   router.post('/', function(req, res) {
+    var orderInfo;
+    orderInfo = [];
     if (req.body.token) {
-      return Restaurant.findOne({
-        'admin.token': req.body.token
-      }, function(err, restaurant) {
+      return User.findOne({
+        token: req.body.token
+      }, function(err, user) {
         if (err) {
           return res.json({
             err: true,
             message: err
           });
-        } else if (restaurant) {
+        } else {
           return Order.find({
-            restaurant_id: restaurant._id
+            user_id: user.id
           }, function(err, orders) {
             if (err) {
               return res.json({
                 err: true,
                 message: err
               });
-            } else if (orders) {
-              return res.json({
-                err: false,
-                message: 'Orders found',
-                orders: orders
-              });
             } else {
               return res.json({
-                err: true,
-                message: 'No Orders'
+                err: false,
+                message: 'Orders retrieved',
+                orders: orders
               });
             }
-          });
-        } else {
-          return res.json({
-            err: true,
-            message: 'Restaurant not found'
           });
         }
       });
