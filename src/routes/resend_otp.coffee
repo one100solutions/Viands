@@ -7,14 +7,19 @@ User = mongoose.model 'User'
 
 messenger = require '../lib/messenger_msg91'
 
+tokenize = require '../lib/tokenize'
+
 router.post '/', (req, res) ->
 
 	if req.body.phone and req.body.password
 
+
+
 		User.findOne {
 			phone: req.body.phone
-			password: req.body.password
+			password: tokenize(req.body.password)
 		}, (err, user) ->
+			console.log 'Hmm',err,user
 			if err
 				res.json {
 					err: true
