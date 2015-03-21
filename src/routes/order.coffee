@@ -19,11 +19,12 @@ router.post '/', (req, res) ->
   restaurant_found = false
   user_found = false
   done = 0
+  console.log 'Done starting', done
   cur_user = {}
 
   req.body = JSON.parse(req.body.data)
 
-  console.log req.body
+  console.log 'Hi',req.body
 
   if req.body.token
 
@@ -45,6 +46,7 @@ router.post '/', (req, res) ->
           restaurant_found = false
 
         done++
+        console.log 'Done after restaurant', done
         viands.emit 'found'
 
     console.log 'Token order',req.body.token
@@ -65,6 +67,7 @@ router.post '/', (req, res) ->
           console.log 'user not found'
 
         done++
+        console.log 'Done after user', done
         viands.emit 'found'
 
     items_available = []
@@ -112,6 +115,8 @@ router.post '/', (req, res) ->
             cur_user.orders.push(order._id)
             cur_user.save (err, user) ->
               console.log 'Error while saving user',err
+              console.log 'Done is ', done
+              done = 0
             res.json
               err: false
               message: 'Order placed'

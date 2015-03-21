@@ -27,9 +27,10 @@
     restaurant_found = false;
     user_found = false;
     done = 0;
+    console.log('Done starting', done);
     cur_user = {};
     req.body = JSON.parse(req.body.data);
-    console.log(req.body);
+    console.log('Hi', req.body);
     if (req.body.token) {
       Restaurant.findOne({
         _id: req.body.rest_id
@@ -48,6 +49,7 @@
           restaurant_found = false;
         }
         done++;
+        console.log('Done after restaurant', done);
         return viands.emit('found');
       });
       console.log('Token order', req.body.token);
@@ -66,6 +68,7 @@
           console.log('user not found');
         }
         done++;
+        console.log('Done after user', done);
         return viands.emit('found');
       });
       items_available = [];
@@ -111,7 +114,9 @@
             } else {
               cur_user.orders.push(order._id);
               cur_user.save(function(err, user) {
-                return console.log('Error while saving user', err);
+                console.log('Error while saving user', err);
+                console.log('Done is ', done);
+                return done = 0;
               });
               return res.json({
                 err: false,
