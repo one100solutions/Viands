@@ -48,7 +48,7 @@ router.post('/', function (req,res) {
 
         console.log('Your OTP is ', otp);
 
-        messenger(req.body.phone,'Otp is ' + otp, receiver);
+        messenger(req.body.phone,'Your OTP is ' + otp, receiver);
 
        newUser.save();
 
