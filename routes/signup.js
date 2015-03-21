@@ -46,7 +46,7 @@ router.post('/', function (req,res) {
 
         mailer(req.body.email, template(), receiver);
 
-        console.log('Otp is ', otp);
+        console.log('Your OTP is ', otp);
 
         messenger(req.body.phone,'Otp is ' + otp, receiver);
 
