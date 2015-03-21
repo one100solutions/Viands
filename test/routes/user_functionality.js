@@ -81,7 +81,7 @@
         return done();
       });
     });
-    return it('should register gcm', function(done) {
+    it('should register gcm', function(done) {
       return request.post(url + 'register_gcm', {
         form: {
           token: user_token,
@@ -96,6 +96,24 @@
           token: user_token
         }, function(err, user) {
           expect(user.gcm_id).to.be.equal('Akndkuewhufihwejkbf');
+          return done();
+        });
+      });
+    });
+    return it('should get user credits', function(done) {
+      return request.post(url + 'get_credits', {
+        form: {
+          token: user_token
+        }
+      }, function(status, response, body) {
+        console.log('Body in adding credits', body);
+        body = JSON.parse(body);
+        expect(body.err).to.be.equal(false);
+        return User.findOne({
+          token: user_token
+        }, function(err, user) {
+          expect(err).to.be.equal(null);
+          expect(user.credits).to.be.equal(body.credits);
           return done();
         });
       });

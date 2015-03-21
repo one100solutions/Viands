@@ -89,4 +89,22 @@ describe 'Users actions', ->
           expect(user.gcm_id).to.be.equal('Akndkuewhufihwejkbf')
           done()
 
+  it 'should get user credits', (done) ->
 
+    request.post url + 'get_credits',
+      form:
+        token: user_token
+      (status, response, body) ->
+        console.log 'Body in adding credits', body
+
+        body = JSON.parse body
+        expect(body.err).to.be.equal(false)
+
+        User.findOne {
+          token: user_token
+        }, (err,user) ->
+          expect(err).to.be.equal(null)
+
+          expect(user.credits).to.be.equal(body.credits)
+
+          done()

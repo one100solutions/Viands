@@ -6,9 +6,12 @@ module.exports = (message, regId) ->
 
 	msg.addData 'key1', 'message1'
 
-	regIds = ['APA91bFcBJIJCAHDfdFoQGgKPtbxE1yBrxuanRTAAI0Z3RnLvldOciRq5O1HNL3LolWwv-JWqwTPPOLBke3QGHCh8cST4jOUxUkVYGqpUSNCM9c03Smp6fCuvolCRFej75uP6_of33eK1rfYohh-fJLqyN-onZDgcEDEFS6SaQuMQ9oSBUEgqYU']
+	regIds = ['APA91bEYhgyaBcMfbRhMcelxGHIJVcEBGl32tWEQ2i43NcKcB-E4gpPZzTMLRqBKSh0KYH0ZVctSbAVzrKWhrde-ovEKUMYgGY_gAkfENpHfldlD-Aw-3OupK_YvybkxeQaVJ48nsEk92i3RXdPkIJtfQW-HV5ySlmqN21ALIr8fkU4HaRFoHZI']
 
-	sender = new node_gcm.Sender('AIzaSyDgz6cuPL0VYwFVXiBcdn1N8FLUwq7QblM')
+
+	#For viands  AIzaSyDhBIeT9V1BIsDgHlrVDg2ErC4r6H2wSMM
+	#For test AIzaSyDgz6cuPL0VYwFVXiBcdn1N8FLUwq7QblM
+	sender = new node_gcm.Sender('AIzaSyDhBIeT9V1BIsDgHlrVDg2ErC4r6H2wSMM')
 
 	sender.send msg, regIds, (err, result) ->
 

@@ -26,6 +26,7 @@ var login = require('./routes/login');
 var order = require('./routes/order');
 var resend_otp = require('./routes/resend_otp');
 var get_user_orders = require('./routes/get_order_history')
+var get_credits = require('./routes/get_credits');
 var register_gcm = require('./routes/register_gcm');
 
 var new_restaurant = require('./routes/new_restaurant');
@@ -61,6 +62,7 @@ app.use('/login', login);
 app.use('/order', order);
 app.use('/resend_otp', resend_otp);
 app.use('/user_orders', get_user_orders);
+app.use('/get_credits', get_credits);
 
 app.use('/register_gcm', register_gcm);
 
