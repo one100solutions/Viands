@@ -31,7 +31,7 @@
     req.body = JSON.parse(req.body.data);
     console.log(req.body);
     if (req.body.token) {
-      return Restaurant.findOne({
+      Restaurant.findOne({
         _id: req.body.rest_id
       }, function(error, rest) {
         if (error) {
@@ -49,7 +49,9 @@
         }
         done++;
         return viands.emit('found');
-      }, console.log('Token order', req.body.token), User.findOne({
+      });
+      console.log('Token order', req.body.token);
+      User.findOne({
         token: req.body.token
       }, function(error, user) {
         cur_user = user;
@@ -65,7 +67,10 @@
         }
         done++;
         return viands.emit('found');
-      }), items_available = [], items_ordered = [], validateAndOrder = function(restaurant, req) {
+      });
+      items_available = [];
+      items_ordered = [];
+      validateAndOrder = function(restaurant, req) {
         var i, item, j, len, len1, newOrder, ref, ref1;
         console.log(restaurant.menu[0]);
         ref = restaurant.menu;
@@ -119,27 +124,28 @@
             message: 'Items not available'
           });
         }
-      }, viands.on('found', function() {
-        console.log('Done os ', done);
-        if (done === 2) {
-          if (restaurant_found && user_found) {
-            console.log(req.body);
-            return validateAndOrder(restaurant, req);
-          } else {
-            console.log('Values are', restaurant_found, user_found);
-            return res.json({
-              err: true,
-              message: 'No such user/ restaurant'
-            });
-          }
-        }
-      }));
+      };
     } else {
-      return res.json({
+      res.json({
         err: true,
         message: 'User not logged in'
       });
     }
+    return viands.on('found', function() {
+      console.log('Done os ', done);
+      if (done === 2) {
+        if (restaurant_found && user_found) {
+          console.log(req.body);
+          return validateAndOrder(restaurant, req);
+        } else {
+          console.log('Values are', restaurant_found, user_found);
+          return res.json({
+            err: true,
+            message: 'No such user/ restaurant'
+          });
+        }
+      }
+    });
   });
 
   module.exports = router;

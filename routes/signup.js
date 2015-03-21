@@ -10,6 +10,7 @@ var messenger = require('../lib/messenger_msg91');
 var host = require('../lib/host');
 var id2otp = require('../lib/id2otp');
 var tokenize = require('../lib/tokenize');
+var template = require('../lib/template');
 
 router.post('/', function (req,res) {
 
@@ -43,7 +44,7 @@ router.post('/', function (req,res) {
 
         newUser = new User(req.body);
 
-        mailer(req.body.email, "Welcome to Viands", receiver);
+        mailer(req.body.email, template(), receiver);
 
         messenger(req.body.phone,'Otp is ' + otp, receiver);
 

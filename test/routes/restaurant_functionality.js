@@ -61,7 +61,6 @@
           }
         }, function(status, response, body) {
           body = JSON.parse(body);
-          console.log(body);
           expect(body.err).not.to.be.equal(true);
           return User.findOne({
             phone: phone_user,
@@ -83,7 +82,7 @@
         orders_api = [];
         go = function(done) {
           if (count === 2) {
-            expect(orders.db_length).to.not.be.equal(0);
+            expect(orders_db.length).to.not.be.equal(0);
             expect(orders_db.length).to.be.equal(orders_api.length);
             return done();
           }
@@ -94,7 +93,7 @@
           }
         }, function(status, response, body) {
           body = JSON.parse(body);
-          console.log(body);
+          console.log('Body after get_ordrer api', body);
           expect(body.err).to.not.be.equal(true);
           if (body.orders) {
             orders_api = body.orders;
@@ -102,7 +101,7 @@
           count++;
           return go(done);
         });
-        return Order.find({}, function(err, orders) {
+        return Orders.find({}, function(err, orders) {
           console.log('Orders from db are', orders);
           expect(err).not.to.be.equal(true);
           orders_db = orders;

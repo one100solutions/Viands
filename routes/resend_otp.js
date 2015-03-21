@@ -1,5 +1,5 @@
 (function() {
-  var User, express, messenger, mongoose, router;
+  var User, express, messenger, mongoose, router, tokenize;
 
   express = require('express');
 
@@ -11,12 +11,15 @@
 
   messenger = require('../lib/messenger_msg91');
 
+  tokenize = require('../lib/tokenize');
+
   router.post('/', function(req, res) {
     if (req.body.phone && req.body.password) {
       return User.findOne({
         phone: req.body.phone,
-        password: req.body.password
+        password: tokenize(req.body.password)
       }, function(err, user) {
+        console.log('Hmm', err, user);
         if (err) {
           return res.json({
             err: true,

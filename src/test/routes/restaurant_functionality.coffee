@@ -56,7 +56,6 @@ describe 'Restaurant functionality', ->
           amount: 100
         (status, response, body) ->
           body = JSON.parse body
-          console.log body
           expect(body.err).not.to.be.equal(true)
 
           User.findOne {
@@ -79,7 +78,7 @@ describe 'Restaurant functionality', ->
 
       go = (done) ->
         if count is 2
-          expect(orders.db_length).to.not.be.equal(0)
+          expect(orders_db.length).to.not.be.equal(0)
           expect(orders_db.length).to.be.equal(orders_api.length)
           done()
 
@@ -89,13 +88,13 @@ describe 'Restaurant functionality', ->
           token: token_restaurant
         }, (status, response, body) ->
           body = JSON.parse body
-          console.log body
+          console.log 'Body after get_ordrer api',body
           expect(body.err).to.not.be.equal(true)
           if body.orders then orders_api = body.orders
           count++
           go(done)
 
-      Order.find {}, (err, orders) ->
+      Orders.find {}, (err, orders) ->
         console.log 'Orders from db are',orders
         expect(err).not.to.be.equal(true)
         orders_db = orders

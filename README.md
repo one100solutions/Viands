@@ -57,10 +57,11 @@ Viands Retaurant api
 >>  * data = json encoded of {  
       * token:  
       * rest_id  
+      * total_cost
       * order:  
       *   type:  
       *   time_deliver:  
-      *   items:[{id: , quantity: }]  
+      *   items:[{id: , quantity:, cost: }]  
     }
 
 > ##POST _/resend_otp_  

@@ -47,95 +47,98 @@ router.post '/', (req, res) ->
         done++
         viands.emit 'found'
 
-      console.log 'Token order',req.body.token
+    console.log 'Token order',req.body.token
 
-      User.findOne
-        token: req.body.token
-        (error, user) ->
-          cur_user = user
-          if error
-            res.json
-              err: true
-              message: error
-
-          else if user
-            user_found = true
-
-          else 
-            console.log 'user not found'
-
-          done++
-          viands.emit 'found'
-
-      items_available = []
-      items_ordered = []
-
-      validateAndOrder = (restaurant, req) ->
-        console.log restaurant.menu[0]
-        for item in restaurant.menu
-          if item.available then items_available.push item._id.toString()
-
-        console.log 'request body',req.body.order.items
-
-        for item in req.body.order.items
-          item.complete = false
-          items_ordered.push item.id
-
-        console.log 'Orderd',typeof items_ordered[0]
-        console.log 'Available',typeof items_available[0]
-
-        console.log 'Difference is',_.difference(items_ordered, items_available)
-
-        if _.difference(items_ordered, items_available).length is 0 and items_ordered
-          console.log 'Ordering'
-
-          newOrder = new Order
-            time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
-            type: req.body.order.type
-            user_id: cur_user.id
-            time_deliver: req.body.order.time_deliver
-            items: req.body.order.items
-            restaurant_id: req.body.rest_id
-
-          newOrder.save (error,order) ->
-            
-            console.log order
-
-            if error
-              res.json
-                err: error
-                message: err
-
-            else
-              cur_user.orders.push(order._id)
-              cur_user.save()
-              res.json
-                err: false
-                message: 'Order placed'
-                order_id: order._id
-                order_type: order.type
-
-        else
+    User.findOne
+      token: req.body.token
+      (error, user) ->
+        cur_user = user
+        if error
           res.json
             err: true
-            message: 'Items not available'
+            message: error
 
-      viands.on 'found', ->
-        console.log 'Done os ',done
-        if done is 2
-          if restaurant_found and user_found
-            console.log req.body
-            validateAndOrder(restaurant, req)
+        else if user
+          user_found = true
+
+        else 
+          console.log 'user not found'
+
+        done++
+        viands.emit 'found'
+
+    items_available = []
+    items_ordered = []
+
+    validateAndOrder = (restaurant, req) ->
+      console.log restaurant.menu[0]
+      for item in restaurant.menu
+        if item.available then items_available.push item._id.toString()
+
+      console.log 'request body',req.body.order.items
+
+      for item in req.body.order.items
+        item.complete = false
+        items_ordered.push item.id
+
+      console.log 'Orderd',typeof items_ordered[0]
+      console.log 'Available',typeof items_available[0]
+
+      console.log 'Difference is',_.difference(items_ordered, items_available)
+
+      if _.difference(items_ordered, items_available).length is 0 and items_ordered
+        console.log 'Ordering'
+
+
+
+        newOrder = new Order
+          time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
+          type: req.body.order.type
+          user_id: cur_user.id
+          time_deliver: req.body.order.time_deliver
+          items: req.body.order.items
+          restaurant_id: req.body.rest_id
+
+        newOrder.save (error,order) ->
+          
+          console.log order
+
+          if error
+            res.json
+              err: error
+              message: err
 
           else
-            console.log 'Values are', restaurant_found, user_found
+            cur_user.orders.push(order._id)
+            cur_user.save()
             res.json
-              err: true,
-              message: 'No such user/ restaurant'
+              err: false
+              message: 'Order placed'
+              order_id: order._id
+              order_type: order.type
+
+      else
+        res.json
+          err: true
+          message: 'Items not available'
 
   else
     res.json
       err: true
       message: 'User not logged in'
+
+  viands.on 'found', ->
+    console.log 'Done os ',done
+    if done is 2
+      if restaurant_found and user_found
+        console.log req.body
+        validateAndOrder(restaurant, req)
+
+      else
+        console.log 'Values are', restaurant_found, user_found
+        res.json
+          err: true,
+          message: 'No such user/ restaurant'
+
 
 module.exports = router
