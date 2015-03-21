@@ -10,7 +10,7 @@ var OrderSchema = new mongoose.Schema ({
   user_id: Schema.Types.ObjectId,
 	items:[
     {
-      item_id: String,
+      id: String,
       quantity: Number,
       complete: Boolean
     }

@@ -89,7 +89,7 @@ router.post '/', (req, res) ->
       if _.difference(items_ordered, items_available).length is 0 and items_ordered
         console.log 'Ordering'
 
-
+        console.log 'request body2',req.body.order.items
 
         newOrder = new Order
           time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
@@ -110,7 +110,8 @@ router.post '/', (req, res) ->
 
           else
             cur_user.orders.push(order._id)
-            cur_user.save()
+            cur_user.save (err, user) ->
+              console.log 'Error while saving user',err
             res.json
               err: false
               message: 'Order placed'
@@ -131,7 +132,7 @@ router.post '/', (req, res) ->
     console.log 'Done os ',done
     if done is 2
       if restaurant_found and user_found
-        console.log req.body
+        #console.log 'Body of request in found',req.body
         validateAndOrder(restaurant, req)
 
       else

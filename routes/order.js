@@ -92,6 +92,7 @@
         console.log('Difference is', _.difference(items_ordered, items_available));
         if (_.difference(items_ordered, items_available).length === 0 && items_ordered) {
           console.log('Ordering');
+          console.log('request body2', req.body.order.items);
           newOrder = new Order({
             time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
             type: req.body.order.type,
@@ -109,7 +110,9 @@
               });
             } else {
               cur_user.orders.push(order._id);
-              cur_user.save();
+              cur_user.save(function(err, user) {
+                return console.log('Error while saving user', err);
+              });
               return res.json({
                 err: false,
                 message: 'Order placed',
@@ -135,7 +138,6 @@
       console.log('Done os ', done);
       if (done === 2) {
         if (restaurant_found && user_found) {
-          console.log(req.body);
           return validateAndOrder(restaurant, req);
         } else {
           console.log('Values are', restaurant_found, user_found);

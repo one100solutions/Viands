@@ -82,7 +82,6 @@
         orders_api = [];
         go = function(done) {
           if (count === 2) {
-            expect(orders_db.length).to.not.be.equal(0);
             expect(orders_db.length).to.be.equal(orders_api.length);
             return done();
           }

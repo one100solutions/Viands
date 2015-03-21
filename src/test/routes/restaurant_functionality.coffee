@@ -78,7 +78,6 @@ describe 'Restaurant functionality', ->
 
       go = (done) ->
         if count is 2
-          expect(orders_db.length).to.not.be.equal(0)
           expect(orders_db.length).to.be.equal(orders_api.length)
           done()
 

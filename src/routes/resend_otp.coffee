@@ -13,8 +13,6 @@ router.post '/', (req, res) ->
 
 	if req.body.phone and req.body.password
 
-
-
 		User.findOne {
 			phone: req.body.phone
 			password: tokenize(req.body.password)
