@@ -102,7 +102,8 @@
             user_id: cur_user.id,
             time_deliver: req.body.order.time_deliver,
             items: req.body.order.items,
-            restaurant_id: req.body.rest_id
+            restaurant_id: req.body.rest_id,
+            complete: false
           });
           return newOrder.save(function(error, order) {
             console.log(order);

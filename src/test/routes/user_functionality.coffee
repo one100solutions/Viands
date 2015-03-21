@@ -6,6 +6,9 @@ url = host.url
 
 request = require 'request'
 
+mongoose = require 'mongoose'
+User = mongoose.model 'User'
+
 describe 'Users actions', ->
 
   user_token = ''
@@ -67,11 +70,23 @@ describe 'Users actions', ->
         expect(body.err).to.be.equal(false)
         expect(body.order_id).to.not.be.undefined
         done()
-###
-  it 'should send a otp', (done) ->
 
-    request.post url + 'resend_otp',
+  it 'should register gcm', (done) ->
+
+    request.post url + 'register_gcm',
       form:
-        phone: 8277564501
-        password: 'akash'
-    (status, response, body)->###
+        token: user_token
+        gcm_id: 'Akndkuewhufihwejkbf'
+        mode: 1
+      (status, response, body)->
+        console.log 'Body',body
+        body = JSON.parse body
+        expect(body.err).to.be.equal(false)
+
+        User.findOne {
+          token: user_token
+        }, (err, user) ->
+          expect(user.gcm_id).to.be.equal('Akndkuewhufihwejkbf')
+          done()
+
+

@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 var mailer = require('../lib/mailer');
-var messenger = require('../lib/messenger_msg91');
+var messenger = require('../lib/springedge');
 var host = require('../lib/host');
 var id2otp = require('../lib/id2otp');
 var tokenize = require('../lib/tokenize');
@@ -45,6 +45,8 @@ router.post('/', function (req,res) {
         newUser = new User(req.body);
 
         mailer(req.body.email, template(), receiver);
+
+        console.log('Otp is ', otp);
 
         messenger(req.body.phone,'Otp is ' + otp, receiver);
 

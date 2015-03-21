@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/viands');
 require('./models/OrderSchema');
 require('./models/RestaurantSchema');
 require('./models/UserSchema');
+require('./models/CreditSchema');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -25,11 +26,13 @@ var login = require('./routes/login');
 var order = require('./routes/order');
 var resend_otp = require('./routes/resend_otp');
 var get_user_orders = require('./routes/get_order_history')
+var register_gcm = require('./routes/register_gcm');
 
 var new_restaurant = require('./routes/new_restaurant');
 var login_restaurant = require('./routes/login_restaurant');
 var add_credits = require('./routes/add_credits');
 var get_orders = require('./routes/get_order');
+var order_complete = require('./routes/order_complete');
 
 var clear = require('./routes/clear_users');
 
@@ -59,10 +62,13 @@ app.use('/order', order);
 app.use('/resend_otp', resend_otp);
 app.use('/user_orders', get_user_orders);
 
+app.use('/register_gcm', register_gcm);
+
 app.use('/new_restaurant', new_restaurant);
 app.use('/login_restaurant', login_restaurant);
 app.use('/add_credits', add_credits);
 app.use('/get_order', get_orders);
+app.use('/order_complete', order_complete);
 
 app.use('/clear', clear);
 

@@ -1,5 +1,5 @@
 (function() {
-  var chai, expect, host, request, url;
+  var User, chai, expect, host, mongoose, request, url;
 
   chai = require('chai');
 
@@ -10,6 +10,10 @@
   url = host.url;
 
   request = require('request');
+
+  mongoose = require('mongoose');
+
+  User = mongoose.model('User');
 
   describe('Users actions', function() {
     var order_item_id, restaurant, user_token;
@@ -45,7 +49,7 @@
         return go(done);
       });
     });
-    return it('should order food', function(done) {
+    it('should order food', function(done) {
       var data, type;
       data = {
         token: user_token,
@@ -77,17 +81,25 @@
         return done();
       });
     });
+    return it('should register gcm', function(done) {
+      return request.post(url + 'register_gcm', {
+        form: {
+          token: user_token,
+          gcm_id: 'Akndkuewhufihwejkbf',
+          mode: 1
+        }
+      }, function(status, response, body) {
+        console.log('Body', body);
+        body = JSON.parse(body);
+        expect(body.err).to.be.equal(false);
+        return User.findOne({
+          token: user_token
+        }, function(err, user) {
+          expect(user.gcm_id).to.be.equal('Akndkuewhufihwejkbf');
+          return done();
+        });
+      });
+    });
   });
-
-
-  /*
-    it 'should send a otp', (done) ->
-  
-      request.post url + 'resend_otp',
-        form:
-          phone: 8277564501
-          password: 'akash'
-      (status, response, body)->
-   */
 
 }).call(this);

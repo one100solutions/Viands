@@ -11,6 +11,7 @@ var UserSchema = new mongoose.Schema({
   email: String,
   password: String,
   otp: String,
+  gcm_id: String,
   credits: Number,
   token: String,
   orders: [{ id: Schema.Types.ObjectId }],

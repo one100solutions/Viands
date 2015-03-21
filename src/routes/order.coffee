@@ -101,6 +101,7 @@ router.post '/', (req, res) ->
           time_deliver: req.body.order.time_deliver
           items: req.body.order.items
           restaurant_id: req.body.rest_id
+          complete: false
 
         newOrder.save (error,order) ->
           

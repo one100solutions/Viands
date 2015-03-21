@@ -48,6 +48,7 @@
         }, function(status, response, body) {
           body = JSON.parse(body);
           user = body.user;
+          console.log('User credits ', user);
           return done();
         });
       });
@@ -68,14 +69,16 @@
           }, function(err, usr) {
             console.log('error', err);
             expect(err).not.to.be.equal(true);
-            expect(usr.credits).to.be.equal(user.credits + 100);
+            expect(usr.credits).to.be.equal(user.credits + 110);
             return done();
           });
         });
       });
     });
     return describe('Should list all the orders', function() {
-      return it('should display the orders', function(done) {
+      var order;
+      order = {};
+      it('should display the orders', function(done) {
         var count, go, orders_api, orders_db;
         count = 0;
         orders_db = [];
@@ -92,20 +95,46 @@
           }
         }, function(status, response, body) {
           body = JSON.parse(body);
-          console.log('Body after get_ordrer api', body);
           expect(body.err).to.not.be.equal(true);
           if (body.orders) {
             orders_api = body.orders;
+          }
+          if (orders_api.length > 0) {
+            order = orders_api[0];
           }
           count++;
           return go(done);
         });
         return Orders.find({}, function(err, orders) {
-          console.log('Orders from db are', orders);
           expect(err).not.to.be.equal(true);
           orders_db = orders;
           count++;
           return go(done);
+        });
+      });
+      return it('should mark an order as complete', function(done) {
+        console.log('Mak #', order);
+        return request.post('http://localhost:3000/order_complete', {
+          form: {
+            token: token_restaurant,
+            order_id: order._id
+          }
+        }, function(status, response, body) {
+          console.log('Marking complete bod', body);
+          body = JSON.parse(body);
+          expect(body.err).to.be.equal(false);
+          return Orders.findOne({
+            _id: order._id
+          }, function(err, ord) {
+            console.log('Order reply', ord);
+            expect(err).to.be.equal(null);
+            if (ord.complete) {
+              expect(ord.complete).to.be.equal(true);
+            }
+            ord.complete = false;
+            ord.save();
+            return done();
+          });
         });
       });
     });

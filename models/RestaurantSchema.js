@@ -10,6 +10,7 @@ var RestaurantSchema = new mongoose.Schema({
   num_review: Number,
   num_photos: Number,
   phone: Number,
+  gcm_id: String,
   menu: [{
     item_id: Schema.Types.ObjectId,
     sno: Number,
