@@ -24,7 +24,7 @@
   otp = require('../lib/id2otp');
 
   router.post('/', function(req, res) {
-    var cur_user, done, items_available, items_ordered, restaurant, restaurant_found, user_found, validateAndOrder;
+    var cur_user, done, emitter_substitute, items_available, items_ordered, restaurant, restaurant_found, user_found, validateAndOrder;
     restaurant = {};
     restaurant_found = false;
     user_found = false;
@@ -52,7 +52,7 @@
         }
         done++;
         console.log('Done after restaurant', done);
-        return viands.emit('found');
+        return emitter_substitute();
       });
       console.log('Token order', req.body.token);
       User.findOne({
@@ -71,7 +71,7 @@
         }
         done++;
         console.log('Done after user', done);
-        return viands.emit('found');
+        return emitter_substitute();
       });
       items_available = [];
       items_ordered = [];
@@ -148,7 +148,7 @@
         message: 'User not logged in'
       });
     }
-    return viands.on('found', function() {
+    return emitter_substitute = function() {
       console.log('Done os ', done);
       if (done === 2) {
         if (restaurant_found && user_found) {
@@ -161,7 +161,7 @@
           });
         }
       }
-    });
+    };
   });
 
   module.exports = router;

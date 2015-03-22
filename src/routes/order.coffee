@@ -49,7 +49,7 @@ router.post '/', (req, res) ->
 
         done++
         console.log 'Done after restaurant', done
-        viands.emit 'found'
+        emitter_substitute()
 
     console.log 'Token order',req.body.token
 
@@ -70,7 +70,7 @@ router.post '/', (req, res) ->
 
         done++
         console.log 'Done after user', done
-        viands.emit 'found'
+        emitter_substitute()
 
     items_available = []
     items_ordered = []
@@ -143,7 +143,7 @@ router.post '/', (req, res) ->
       err: true
       message: 'User not logged in'
 
-  viands.on 'found', ->
+  emitter_substitute = ->
     console.log 'Done os ',done
     if done is 2
       if restaurant_found and user_found

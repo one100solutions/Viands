@@ -26,7 +26,7 @@ describe 'Restaurant functionality', ->
         password: 'akash'
       (status, response, body) ->
         body = JSON.parse body
-        token_restaurant = body.Restaurant.admin.token
+        token_restaurant = body.Restaurant.token
         done()
 
   describe 'Addition of credits', ->
