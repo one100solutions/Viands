@@ -30,7 +30,9 @@ router.post '/', (req,res) ->
                 message: err
 
             else
+              rest.name = rest.location = null
               rest.admin.password = null
+              rest.menu = null
 
               res.json
                 err: false
