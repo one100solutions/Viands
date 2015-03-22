@@ -95,6 +95,7 @@
           }
         }, function(status, response, body) {
           body = JSON.parse(body);
+          console.log('Body after get_ordrer api', body);
           expect(body.err).to.not.be.equal(true);
           if (body.orders) {
             orders_api = body.orders;
@@ -117,14 +118,14 @@
         return request.post('http://localhost:3000/order_complete', {
           form: {
             token: token_restaurant,
-            order_id: order._id
+            order_id: order.id
           }
         }, function(status, response, body) {
           console.log('Marking complete bod', body);
           body = JSON.parse(body);
           expect(body.err).to.be.equal(false);
           return Orders.findOne({
-            _id: order._id
+            id: order.id
           }, function(err, ord) {
             console.log('Order reply', ord);
             expect(err).to.be.equal(null);
@@ -151,10 +152,8 @@
           return request.get('http://localhost:3000/notifications', function(status, response, body) {
             var notification_get;
             body = JSON.parse(body);
-            console.log('Notieuwifui2', body);
             expect(body.err).to.be.equal(false);
             notification_get = body.notifications[body.notifications.length - 1];
-            console.log('fuherui3', notification_get);
             expect(notification_get.title).to.be.equal('Test');
             return done();
           });

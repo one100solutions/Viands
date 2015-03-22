@@ -1,5 +1,5 @@
 (function() {
-  var Order, Restaurant, User, express, findOrderAndComplete, mongoose, notifyUser, router;
+  var Order, Restaurant, User, express, findOrderAndComplete, gcm, messenger, mongoose, notifyUser, router;
 
   express = require('express');
 
@@ -13,13 +13,35 @@
 
   Order = mongoose.model('Order');
 
-  notifyUser = function(user_id, order) {};
+  messenger = require('../lib/springedge');
+
+  gcm = require('../lib/gcm');
+
+  notifyUser = function(user_id, order) {
+    return User.findOne({
+      id: user_id
+    }, function(err, user) {
+      if (err) {
+        return res.json({
+          err: true,
+          message: 'Error'
+        });
+      } else if (user) {
+        gcm(2, 'Order confirmation!!', "Your order id " + order.id + " is ready", user.gcm_id);
+        return messenger(user.phone, "Your order id " + order.id + " is ready", function(err, body) {
+          if (err) {
+            return console.log(err);
+          }
+        });
+      }
+    });
+  };
 
   findOrderAndComplete = function(rest_id, res, order_id) {
     console.log('Restaurant id is ord', rest_id);
     return Order.findOne({
       restaurant_id: rest_id,
-      _id: order_id
+      id: order_id
     }, function(err, order) {
       if (err) {
         return res.json({
@@ -35,6 +57,7 @@
               message: 'Error!!'
             });
           } else {
+            notifyUser(order.user_id, order);
             return res.json({
               err: false,
               message: "Order updated"

@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var OrderSchema = new mongoose.Schema ({
+  id: String,
   time: String,
   type: String,
   time_deliver: String,

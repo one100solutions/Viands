@@ -13,6 +13,8 @@ Order = mongoose.model 'Order'
 User = mongoose.model 'User'
 Restaurant = mongoose.model 'Restaurant'
 
+otp = require '../lib/id2otp'
+
 router.post '/', (req, res) ->
 
   restaurant = {}
@@ -94,7 +96,10 @@ router.post '/', (req, res) ->
 
         console.log 'request body2',req.body.order.items
 
+        console.log 'Id is .wjkvdgy', otp(123, true, 8)
+
         newOrder = new Order
+          id: otp(123, true, 8)
           time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
           type: req.body.order.type
           user_id: cur_user.id
@@ -105,15 +110,19 @@ router.post '/', (req, res) ->
 
         newOrder.save (error,order) ->
           
-          console.log order
+          console.log 'Error in saving',error
 
           if error
             res.json
-              err: error
-              message: err
+              err: true
+              message: 'Error'
 
           else
-            cur_user.orders.push(order._id)
+            cur_user.orders.push({
+              id: order.id
+            })
+            console.log 'Order id bioh', order.id
+            console.log 'cURRENT USER IS ', cur_user
             cur_user.save (err, user) ->
               console.log 'Error while saving user',err
               console.log 'Done is ', done
@@ -121,7 +130,7 @@ router.post '/', (req, res) ->
             res.json
               err: false
               message: 'Order placed'
-              order_id: order._id
+              order_id: order.id
               order_type: order.type
 
       else

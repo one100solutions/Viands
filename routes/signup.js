@@ -34,7 +34,7 @@ router.post('/', function (req,res) {
         req.body.id = new mongoose.Types.ObjectId;
         req.body.validation = false;
 
-        var otp = id2otp(req.body.id,true);
+        var otp = id2otp(req.body.id, true, 6);
         console.log(otp);
         req.body.otp = otp;
 

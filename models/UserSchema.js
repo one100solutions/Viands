@@ -14,7 +14,7 @@ var UserSchema = new mongoose.Schema({
   gcm_id: String,
   credits: Number,
   token: String,
-  orders: [{ id: Schema.Types.ObjectId }],
+  orders: [{ id: String}],
   validation: { type: Boolean, default: false }
 });
 
