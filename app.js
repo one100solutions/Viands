@@ -14,6 +14,7 @@ require('./models/OrderSchema');
 require('./models/RestaurantSchema');
 require('./models/UserSchema');
 require('./models/CreditSchema');
+require('./models/NotificationSchema');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -28,12 +29,14 @@ var resend_otp = require('./routes/resend_otp');
 var get_user_orders = require('./routes/get_order_history')
 var get_credits = require('./routes/get_credits');
 var register_gcm = require('./routes/register_gcm');
+var notifications= require('./routes/notifications');
 
 var new_restaurant = require('./routes/new_restaurant');
 var login_restaurant = require('./routes/login_restaurant');
 var add_credits = require('./routes/add_credits');
 var get_orders = require('./routes/get_order');
 var order_complete = require('./routes/order_complete');
+var add_notification = require('./routes/add_notification');
 
 var clear = require('./routes/clear_users');
 
@@ -63,6 +66,7 @@ app.use('/order', order);
 app.use('/resend_otp', resend_otp);
 app.use('/user_orders', get_user_orders);
 app.use('/get_credits', get_credits);
+app.use('/notifications', notifications);
 
 app.use('/register_gcm', register_gcm);
 
@@ -71,6 +75,7 @@ app.use('/login_restaurant', login_restaurant);
 app.use('/add_credits', add_credits);
 app.use('/get_order', get_orders);
 app.use('/order_complete', order_complete);
+app.use('/add_notification', add_notification);
 
 app.use('/clear', clear);
 

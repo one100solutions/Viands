@@ -112,7 +112,7 @@
           return go(done);
         });
       });
-      return it('should mark an order as complete', function(done) {
+      it('should mark an order as complete', function(done) {
         console.log('Mak #', order);
         return request.post('http://localhost:3000/order_complete', {
           form: {
@@ -133,6 +133,29 @@
             }
             ord.complete = false;
             ord.save();
+            return done();
+          });
+        });
+      });
+      return it('should add a notification and notify everyone', function(done) {
+        return request.post('http://localhost:3000/add_notification', {
+          form: {
+            token: token_restaurant,
+            title: 'Test',
+            message: 'Street play is too much' + Date.now()
+          }
+        }, function(status, response, body) {
+          body = JSON.parse(body);
+          console.log('Notifiction1', body);
+          expect(body.err).to.be.equal(false);
+          return request.get('http://localhost:3000/notifications', function(status, response, body) {
+            var notification_get;
+            body = JSON.parse(body);
+            console.log('Notieuwifui2', body);
+            expect(body.err).to.be.equal(false);
+            notification_get = body.notifications[body.notifications.length - 1];
+            console.log('fuherui3', notification_get);
+            expect(notification_get.title).to.be.equal('Test');
             return done();
           });
         });

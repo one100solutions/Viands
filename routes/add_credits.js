@@ -9,7 +9,7 @@
 
   moment = require('moment');
 
-  gcm = require('./lib/gcm');
+  gcm = require('../lib/gcm');
 
   Restaurant = mongoose.model('Restaurant');
 

@@ -137,6 +137,25 @@ describe 'Restaurant functionality', ->
 
             done()
 
+    it 'should add a notification and notify everyone', (done)->
 
+      request.post 'http://localhost:3000/add_notification',
+        form: {
+          token: token_restaurant
+          title: 'Test'
+          message: 'Street play is too much' + Date.now()
+        }, (status, response, body) ->
+          body = JSON.parse(body)
+          console.log 'Notifiction1',body
 
+          expect(body.err).to.be.equal(false)
 
+          request.get 'http://localhost:3000/notifications', (status, response, body) ->
+            body = JSON.parse body
+            console.log 'Notieuwifui2',body
+            expect(body.err).to.be.equal(false)
+
+            notification_get = body.notifications[body.notifications.length - 1]
+            console.log 'fuherui3',notification_get
+            expect(notification_get.title).to.be.equal('Test')
+            done()
