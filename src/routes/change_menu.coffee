@@ -35,6 +35,18 @@ router.post '/', (req, res) ->
 						}
 
 					else 
+
+						User.find {}, (err, user) ->
+							if err 
+								console.log 'Error', err
+
+							else
+								regIds = [] 
+								regIds.push(usr.gcm_id) for usr in user
+
+
+								gcm(3,'Menu Changed', 'Hey sujith some menu have changed.',regIds)
+								
 						res.json {
 							err: false
 							message: 'Menu updated'
@@ -48,16 +60,7 @@ router.post '/', (req, res) ->
 					message: 'No such restaurant'
 				}
 
-				User.find {}, (err, user) ->
-					if err 
-						console.log 'Error', err
-
-					else
-						regIds = [] 
-						regIds.push(usr.gcm_id) for usr in user
-
-
-						gcm(3,'Menu Changed', 'Hey sujith some menu have changed.',regIds)
+				
 
 
 	else 
