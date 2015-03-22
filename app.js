@@ -37,6 +37,7 @@ var add_credits = require('./routes/add_credits');
 var get_orders = require('./routes/get_order');
 var order_complete = require('./routes/order_complete');
 var add_notification = require('./routes/add_notification');
+var change_menu = require('./routes/change_menu');
 
 var clear = require('./routes/clear_users');
 
@@ -76,6 +77,7 @@ app.use('/add_credits', add_credits);
 app.use('/get_order', get_orders);
 app.use('/order_complete', order_complete);
 app.use('/add_notification', add_notification);
+app.use('/change_menu', change_menu);
 
 app.use('/clear', clear);
 
