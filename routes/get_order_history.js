@@ -23,7 +23,7 @@
             err: true,
             message: err
           });
-        } else {
+        } else if (user) {
           return Order.find({
             user_id: user.id
           }, function(err, orders) {
@@ -39,6 +39,11 @@
                 orders: orders
               });
             }
+          });
+        } else if (!user) {
+          return res.json({
+            err: true,
+            message: 'User not found'
           });
         }
       });

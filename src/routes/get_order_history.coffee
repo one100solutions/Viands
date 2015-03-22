@@ -25,7 +25,7 @@ router.post '/', (req, res) ->
 					message: err
 				}
 
-			else 
+			else if user
 				
 				Order.find {
 					user_id: user.id
@@ -42,6 +42,13 @@ router.post '/', (req, res) ->
 							message: 'Orders retrieved'
 							orders: orders
 						}
+
+			else if !user
+
+				res.json {
+					err: true
+					message: 'User not found'
+				}
 
 
 	else 
