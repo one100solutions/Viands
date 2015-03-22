@@ -82,10 +82,6 @@ router.post '/', (req, res) ->
 							message: 'Deivce Registered'
 						}
 
-						gcm(4,'Welcome to Viands', 'Have a pleasant experience', restaurant.gcm_id)
-
-						gcm(4,'Offers!!','Recharge and 10% extra. Hurry!!', restaurant.gcm_id)
-
 			else 
 				res.json {
 					err: true
