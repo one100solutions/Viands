@@ -34,6 +34,9 @@
               rest.name = rest.location = null;
               rest.admin.password = null;
               rest.menu = null;
+              rest = {};
+              rest.username = rest.admin.username;
+              rest.token = rest.admin.token;
               return res.json({
                 err: false,
                 message: 'Logged In',
