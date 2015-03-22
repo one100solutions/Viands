@@ -11,12 +11,14 @@ router.post '/', (req, res) ->
 
 	if req.body.token and req.body.menu
 
+		req.body.menu = JSON.parse(req.body.menu)
+
 		Restaurant.findOne {
 			'admin.token': req.body.token
 		}, (err, rest) ->
 
 			if err 
-				console.log 'Error occured in finding restaurant'
+				console.log 'Error occured in finding restaurant',err
 				res.json {
 					err: true
 					message: 'Error occured'
