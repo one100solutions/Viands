@@ -22,6 +22,7 @@ router.post '/', (req, res) ->
 
         Order.find {
           restaurant_id: restaurant._id
+          complete: false
         }, (err, orders) ->
           if err
             res.json {

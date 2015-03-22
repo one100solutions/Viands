@@ -23,7 +23,8 @@
           });
         } else if (restaurant) {
           return Order.find({
-            restaurant_id: restaurant._id
+            restaurant_id: restaurant._id,
+            complete: false
           }, function(err, orders) {
             if (err) {
               return res.json({
