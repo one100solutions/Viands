@@ -7,6 +7,8 @@ EventEmitter = require('events').EventEmitter
 moment = require 'moment'
 _ = require 'underscore'
 
+gcm = require '../lib/gcm'
+
 viands = new EventEmitter()
 
 Order = mongoose.model 'Order'
@@ -23,6 +25,7 @@ router.post '/', (req, res) ->
   done = 0
   console.log 'Done starting', done
   cur_user = {}
+  gcm_id = ''
 
   req.body = JSON.parse(req.body.data)
 
@@ -39,6 +42,7 @@ router.post '/', (req, res) ->
             message: error
 
         else if restaurant
+          gcm_id = restaurant.gcm_id
           restaurant = rest
           console.log 'Restaurant has menu',restaurant.menu[0]
           restaurant_found = true
@@ -127,6 +131,9 @@ router.post '/', (req, res) ->
               console.log 'Error while saving user',err
               console.log 'Done is ', done
               done = 0
+
+            gcm(3,'Incoming Order','Make way INCOMING',gcm_id)  
+
             res.json
               err: false
               message: 'Order placed'

@@ -1,5 +1,5 @@
 (function() {
-  var EventEmitter, Order, Restaurant, User, _, express, moment, mongoose, otp, router, viands;
+  var EventEmitter, Order, Restaurant, User, _, express, gcm, moment, mongoose, otp, router, viands;
 
   express = require('express');
 
@@ -13,6 +13,8 @@
 
   _ = require('underscore');
 
+  gcm = require('../lib/gcm');
+
   viands = new EventEmitter();
 
   Order = mongoose.model('Order');
@@ -24,13 +26,14 @@
   otp = require('../lib/id2otp');
 
   router.post('/', function(req, res) {
-    var cur_user, done, emitter_substitute, items_available, items_ordered, restaurant, restaurant_found, user_found, validateAndOrder;
+    var cur_user, done, emitter_substitute, gcm_id, items_available, items_ordered, restaurant, restaurant_found, user_found, validateAndOrder;
     restaurant = {};
     restaurant_found = false;
     user_found = false;
     done = 0;
     console.log('Done starting', done);
     cur_user = {};
+    gcm_id = '';
     req.body = JSON.parse(req.body.data);
     console.log('Hi', req.body);
     if (req.body.token) {
@@ -43,6 +46,7 @@
             message: error
           });
         } else if (restaurant) {
+          gcm_id = restaurant.gcm_id;
           restaurant = rest;
           console.log('Restaurant has menu', restaurant.menu[0]);
           restaurant_found = true;
@@ -127,6 +131,7 @@
                 console.log('Done is ', done);
                 return done = 0;
               });
+              gcm(3, 'Incoming Order', 'Make way INCOMING', gcm_id);
               return res.json({
                 err: false,
                 message: 'Order placed',
