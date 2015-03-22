@@ -45,7 +45,7 @@
                     usr = user[i];
                     regIds.push(usr.gcm_id);
                   }
-                  return gcm(3, 'Menu Changed', 'Hey sujith some menu have changed.', regIds);
+                  return gcm(3, 'Menu Changed', 'Hey food court menu has Changed.', regIds);
                 }
               });
               return res.json({
