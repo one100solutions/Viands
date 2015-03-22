@@ -27,7 +27,7 @@ notifyUser = (user_id, order) ->
 
 			gcm(2, 'Order confirmation!!', "Your order id #{order.id} is ready", user.gcm_id)
 
-			messenger user.phone, "Your order id #{order.id} is ready", (err, body) ->
+			messenger user.phone, "Hi !Your order no #{order.id} is ready", (err, body) ->
 				if err then console.log err
 
 findOrderAndComplete = (rest_id, res, order_id) ->

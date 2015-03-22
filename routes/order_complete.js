@@ -28,7 +28,7 @@
         });
       } else if (user) {
         gcm(2, 'Order confirmation!!', "Your order id " + order.id + " is ready", user.gcm_id);
-        return messenger(user.phone, "Your order id " + order.id + " is ready", function(err, body) {
+        return messenger(user.phone, "Hi !Your order no " + order.id + " is ready", function(err, body) {
           if (err) {
             return console.log(err);
           }
