@@ -25,7 +25,7 @@ router.post '/', (req, res) ->
   done = 0
   console.log 'Done starting', done
   cur_user = {}
-  gcm_id = ''
+  gcm_id = []
 
   req.body = JSON.parse(req.body.data)
 
@@ -42,7 +42,7 @@ router.post '/', (req, res) ->
             message: error
 
         else if restaurant
-          gcm_id = restaurant.gcm_id
+          gcm_id.push restaurant.gcm_id
           restaurant = rest
           console.log 'Restaurant has menu',restaurant.menu[0]
           restaurant_found = true
