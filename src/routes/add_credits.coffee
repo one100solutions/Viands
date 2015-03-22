@@ -6,6 +6,8 @@ mongoose = require 'mongoose'
 
 moment = require 'moment'
 
+gcm = require './lib/gcm'
+
 Restaurant = mongoose.model 'Restaurant'
 Credit = mongoose.model 'Credit'
 
@@ -56,6 +58,8 @@ findAndCredit = (length, req, res) ->
 
 
 				#inform the user of updated credits
+				gcm(1, 'Recharge ', "Hurray your account is now recharged with #{req.body.amount} ", user.gcm_id);
+
 
 			else
 				res.json

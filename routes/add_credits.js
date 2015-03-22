@@ -1,5 +1,5 @@
 (function() {
-  var Credit, Restaurant, User, express, findAndCredit, moment, mongoose, router;
+  var Credit, Restaurant, User, express, findAndCredit, gcm, moment, mongoose, router;
 
   express = require('express');
 
@@ -8,6 +8,8 @@
   mongoose = require('mongoose');
 
   moment = require('moment');
+
+  gcm = require('./lib/gcm');
 
   Restaurant = mongoose.model('Restaurant');
 
@@ -29,7 +31,7 @@
         });
       } else if (user) {
         user.credits += req.body.amount;
-        return user.save(function(err) {
+        user.save(function(err) {
           var credit;
           if (err) {
             return res.json({
@@ -57,6 +59,7 @@
             });
           }
         });
+        return gcm(1, 'Recharge ', "Hurray your account is now recharged with " + req.body.amount + " ", user.gcm_id);
       } else {
         return res.json({
           err: true,
