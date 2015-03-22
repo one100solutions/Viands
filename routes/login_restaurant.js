@@ -25,6 +25,7 @@
         } else if (rest) {
           rest.admin.token = tokenize(rest.admin.username + rest.name + rest.phone);
           return rest.save(function(err) {
+            var restaurant;
             if (err) {
               return res.json({
                 err: true,
@@ -34,14 +35,14 @@
               rest.name = rest.location = null;
               rest.admin.password = null;
               rest.menu = null;
-              rest = {
+              restaurant = {
                 username: rest.admin.username,
                 token: rest.admin.token
               };
               return res.json({
                 err: false,
                 message: 'Logged In',
-                Restaurant: rest
+                Restaurant: restaurant
               });
             }
           });

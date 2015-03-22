@@ -33,7 +33,7 @@ router.post '/', (req,res) ->
               rest.name = rest.location = null
               rest.admin.password = null
               rest.menu = null
-              rest = {
+              restaurant = {
                 username: rest.admin.username
                 token: rest.admin.token
               }
@@ -42,7 +42,7 @@ router.post '/', (req,res) ->
               res.json
                 err: false
                 message: 'Logged In'
-                Restaurant: rest
+                Restaurant: restaurant
 
         else
           res.json
