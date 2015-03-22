@@ -118,7 +118,8 @@
             time_deliver: req.body.order.time_deliver,
             items: req.body.order.items,
             restaurant_id: req.body.rest_id,
-            complete: false
+            complete: false,
+            delivered: false
           });
           return newOrder.save(function(error, order) {
             console.log('Error in saving', error);
