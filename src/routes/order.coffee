@@ -80,6 +80,16 @@ router.post '/', (req, res) ->
     items_ordered = []
 
     validateAndOrder = (restaurant, req) ->
+
+      if cur_user.credits < 1 or (cur_user.credits - req.body.total_cost) < 0
+        res.json {
+          err: true
+          message: 'Not enough credits'
+        }
+
+        return
+
+
       console.log restaurant.menu[0]
       for item in restaurant.menu
         if item.available then items_available.push item._id.toString()
@@ -127,10 +137,15 @@ router.post '/', (req, res) ->
             })
             console.log 'Order id bioh', order.id
             console.log 'cURRENT USER IS ', cur_user
+
+            cur_user.credits -= req.body.total_cost
+
             cur_user.save (err, user) ->
               console.log 'Error while saving user',err
               console.log 'Done is ', done
               done = 0
+
+              gcm(1,'Credits Deducted', "Rs #{req.body.total_cost} has been Deducted", gcm_id)
 
             gcm(3,'Incoming Order','Make way INCOMING',gcm_id)  
 

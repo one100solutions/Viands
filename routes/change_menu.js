@@ -15,11 +15,12 @@
 
   router.post('/', function(req, res) {
     if (req.body.token && req.body.menu) {
+      req.body.menu = JSON.parse(req.body.menu);
       return Restaurant.findOne({
         'admin.token': req.body.token
       }, function(err, rest) {
         if (err) {
-          console.log('Error occured in finding restaurant');
+          console.log('Error occured in finding restaurant', err);
           return res.json({
             err: true,
             message: 'Error occured'
@@ -34,6 +35,19 @@
                 message: 'Error'
               });
             } else {
+              User.find({}, function(err, user) {
+                var i, len, regIds, usr;
+                if (err) {
+                  return console.log('Error', err);
+                } else {
+                  regIds = [];
+                  for (i = 0, len = user.length; i < len; i++) {
+                    usr = user[i];
+                    regIds.push(usr.gcm_id);
+                  }
+                  return gcm(3, 'Menu Changed', 'Hey sujith some menu have changed.', regIds);
+                }
+              });
               return res.json({
                 err: false,
                 message: 'Menu updated'
@@ -41,22 +55,9 @@
             }
           });
         } else {
-          res.json({
+          return res.json({
             err: false,
             message: 'No such restaurant'
-          });
-          return User.find({}, function(err, user) {
-            var i, len, regIds, usr;
-            if (err) {
-              return console.log('Error', err);
-            } else {
-              regIds = [];
-              for (i = 0, len = user.length; i < len; i++) {
-                usr = user[i];
-                regIds.push(usr.gcm_id);
-              }
-              return gcm(3, 'Menu Changed', 'Hey sujith some menu have changed.', regIds);
-            }
           });
         }
       });

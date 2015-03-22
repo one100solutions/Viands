@@ -81,6 +81,13 @@
       items_ordered = [];
       validateAndOrder = function(restaurant, req) {
         var i, item, j, len, len1, newOrder, ref, ref1;
+        if (cur_user.credits < 1 || (cur_user.credits - req.body.total_cost) < 0) {
+          res.json({
+            err: true,
+            message: 'Not enough credits'
+          });
+          return;
+        }
         console.log(restaurant.menu[0]);
         ref = restaurant.menu;
         for (i = 0, len = ref.length; i < len; i++) {
@@ -126,10 +133,12 @@
               });
               console.log('Order id bioh', order.id);
               console.log('cURRENT USER IS ', cur_user);
+              cur_user.credits -= req.body.total_cost;
               cur_user.save(function(err, user) {
                 console.log('Error while saving user', err);
                 console.log('Done is ', done);
-                return done = 0;
+                done = 0;
+                return gcm(1, 'Credits Deducted', "Rs " + req.body.total_cost + " has been Deducted", gcm_id);
               });
               gcm(3, 'Incoming Order', 'Make way INCOMING', gcm_id);
               return res.json({
