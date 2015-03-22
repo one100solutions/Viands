@@ -33,10 +33,11 @@ router.post '/', (req,res) ->
               rest.name = rest.location = null
               rest.admin.password = null
               rest.menu = null
-              rest = {}
+              rest = {
+                username: rest.admin.username
+                token: rest.admin.token
+              }
 
-              rest.username = rest.admin.username
-              rest.token = rest.admin.token
 
               res.json
                 err: false
