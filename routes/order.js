@@ -112,7 +112,7 @@
           console.log('Id is .wjkvdgy', otp(123, true, 8));
           newOrder = new Order({
             id: otp(123, true, 8),
-            time: new moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
+            time: new moment().add(5, 'hours').add(30, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a"),
             type: req.body.order.type,
             user_id: cur_user.id,
             time_deliver: req.body.order.time_deliver,
