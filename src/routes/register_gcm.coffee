@@ -7,6 +7,8 @@ mongoose = require 'mongoose'
 User = mongoose.model 'User'
 Restaurant = mongoose.model 'Restaurant'
 
+gcm = require '../lib/gcm'
+
 #Request: token,gcm_id, 
 ##	mode=0 for restaurant and 1 for user
 
@@ -74,10 +76,15 @@ router.post '/', (req, res) ->
 						}
 
 					else 
+
 						res.json {
 							err: false
 							message: 'Deivce Registered'
 						}
+
+						gcm(4,'Welcome to Viands', 'Have a pleasant experience', restaurant.gcm_id)
+
+						gcm(4,'Offers!!','Recharge and 10% extra. Hurry!!', restaurant.gcm_id)
 
 			else 
 				res.json {

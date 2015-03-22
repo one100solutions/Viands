@@ -1,5 +1,5 @@
 (function() {
-  var Restaurant, User, express, mongoose, router;
+  var Restaurant, User, express, gcm, mongoose, router;
 
   express = require('express');
 
@@ -10,6 +10,8 @@
   User = mongoose.model('User');
 
   Restaurant = mongoose.model('Restaurant');
+
+  gcm = require('../lib/gcm');
 
   router.post('/', function(req, res) {
     console.log("Request body", req.body);
@@ -62,10 +64,12 @@
                 message: 'Error occured!'
               });
             } else {
-              return res.json({
+              res.json({
                 err: false,
                 message: 'Deivce Registered'
               });
+              gcm(4, 'Welcome to Viands', 'Have a pleasant experience', restaurant.gcm_id);
+              return gcm(4, 'Offers!!', 'Recharge and 10% extra. Hurry!!', restaurant.gcm_id);
             }
           });
         } else {
