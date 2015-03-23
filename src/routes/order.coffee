@@ -120,6 +120,8 @@ router.post '/', (req, res) ->
           time_deliver: req.body.order.time_deliver
           items: req.body.order.items
           restaurant_id: req.body.rest_id
+          name: cur_user.name
+          phone: cur_user.phone
           complete: false
           delivered: false
 
@@ -145,6 +147,7 @@ router.post '/', (req, res) ->
               console.log 'Error while saving user',err
               console.log 'Done is ', done
               done = 0
+
 
               gcm(1,'Credits Deducted', "Rs #{req.body.total_cost} has been Deducted", cur_user.gcm_id)
 

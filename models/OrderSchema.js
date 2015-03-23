@@ -10,6 +10,8 @@ var OrderSchema = new mongoose.Schema ({
   delivered: Boolean,
 	restaurant_id: Schema.Types.ObjectId,
   user_id: Schema.Types.ObjectId,
+  name: String,
+  phone: Number,
 	items:[
     {
       id: String,
