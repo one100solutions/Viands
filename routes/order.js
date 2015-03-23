@@ -118,6 +118,8 @@
             time_deliver: req.body.order.time_deliver,
             items: req.body.order.items,
             restaurant_id: req.body.rest_id,
+            name: cur_user.name,
+            phone: cur_user.phone,
             complete: false,
             delivered: false
           });

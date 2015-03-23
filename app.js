@@ -84,6 +84,10 @@ app.use('/order_delivered', order_delivered);
 
 app.use('/clear', clear);
 
+app.use('/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt', function (req, res) {
+    res.sendFile(__dirname + '/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt');
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res) {
     // var err = new Error('Not Found');
