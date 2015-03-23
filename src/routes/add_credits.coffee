@@ -57,8 +57,8 @@ findAndCredit = (length, req, res) ->
 									message: 'Recharge complete'
 
 
-				#inform the user of updated credits
-				gcm(1, 'Recharge ', "Hurray your account is now recharged with #{req.body.amount} ", user.gcm_id);
+						#inform the user of updated credits
+						gcm(1, 'Recharge ', "Hurray your account is now recharged with #{req.body.amount} ", user.gcm_id);
 
 
 			else
