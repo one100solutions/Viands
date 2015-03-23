@@ -45,7 +45,7 @@
             err: true,
             message: error
           });
-        } else if (restaurant) {
+        } else if (rest) {
           gcm_id = rest.gcm_id;
           restaurant = rest;
           console.log('Restaurant has menu', restaurant.menu[0]);

@@ -31,7 +31,7 @@
         });
       } else if (user) {
         user.credits += req.body.amount;
-        user.save(function(err) {
+        return user.save(function(err) {
           var credit;
           if (err) {
             return res.json({
@@ -44,7 +44,7 @@
               phone: req.body.tar_phone,
               time: new moment().add(5, 'hours').add(30, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a")
             });
-            return credit.save(function(err) {
+            credit.save(function(err) {
               if (err) {
                 return res.json({
                   err: true,
@@ -57,9 +57,9 @@
                 });
               }
             });
+            return gcm(1, 'Recharge ', "Hurray your account is now recharged with " + req.body.amount + " ", user.gcm_id);
           }
         });
-        return gcm(1, 'Recharge ', "Hurray your account is now recharged with " + req.body.amount + " ", user.gcm_id);
       } else {
         return res.json({
           err: true,

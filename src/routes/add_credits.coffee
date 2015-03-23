@@ -56,7 +56,7 @@ findAndCredit = (length, req, res) ->
 									err: false
 									message: 'Recharge complete'
 
-
+						console.log 'Gcm id ', user.gcm_id
 						#inform the user of updated credits
 						gcm(1, 'Recharge ', "Hurray your account is now recharged with #{req.body.amount} ", user.gcm_id);
 
