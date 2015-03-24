@@ -1,4 +1,7 @@
-require('newrelic');
+require('nodetime').profile({
+    accountKey: '23733758db654b03b03fa724c74ed2488313fb34', 
+    appName: 'Node.js Application'
+  });
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
