@@ -42,6 +42,15 @@ router.post '/', (req, res) ->
             message: error
 
         else if rest
+
+          if rest.close is true
+            res.json {
+              err: true
+              message: 'Restaurant closed'
+            }
+
+            return
+
           gcm_id =  rest.gcm_id
           restaurant = rest
           console.log 'Restaurant has menu',restaurant.menu[0]
