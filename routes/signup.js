@@ -12,6 +12,7 @@ var id2otp = require('../lib/id2otp');
 var tokenize = require('../lib/tokenize');
 var template = require('../lib/template');
 
+
 router.post('/', function (req,res) {
 
   var done = 0;
@@ -50,7 +51,7 @@ router.post('/', function (req,res) {
 
         messenger(req.body.phone,'Your OTP is ' + otp, receiver);
 
-       newUser.save();
+        newUser.save();
 
         res.json({
           err: false,
