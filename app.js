@@ -21,7 +21,7 @@ require('./models/CreditSchema');
 require('./models/NotificationSchema');
 
 var routes = require('./routes/index');
-va users = require('./routes/users');
+var users = require('./routes/users');
 
 var restaurants = require('./routes/restaurants');
 
