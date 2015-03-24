@@ -36,16 +36,17 @@
               });
             } else {
               User.find({}, function(err, user) {
-                var i, len, regIds, usr;
+                var i, len, regIds, results, usr;
                 if (err) {
                   return console.log('Error', err);
                 } else {
                   regIds = [];
+                  results = [];
                   for (i = 0, len = user.length; i < len; i++) {
                     usr = user[i];
-                    regIds.push(usr.gcm_id);
+                    results.push(regIds.push(usr.gcm_id));
                   }
-                  return gcm(3, 'Menu Changed', 'Hey food court menu has Changed.', regIds);
+                  return results;
                 }
               });
               return res.json({

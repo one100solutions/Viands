@@ -23,7 +23,7 @@ notifyUser = (user_id, order) ->
 				message: 'Error'
 			}
 
-		else if user
+		#else if user
 
 			#gcm(2, 'Order confirmation!!', "Your order id #{order.id} is ready", user.gcm_id)
 

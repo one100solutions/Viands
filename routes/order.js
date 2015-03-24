@@ -46,6 +46,13 @@
             message: error
           });
         } else if (rest) {
+          if (rest.close === true) {
+            res.json({
+              err: true,
+              message: 'Restaurant closed'
+            });
+            return;
+          }
           gcm_id = rest.gcm_id;
           restaurant = rest;
           console.log('Restaurant has menu', restaurant.menu[0]);
@@ -140,10 +147,8 @@
               cur_user.save(function(err, user) {
                 console.log('Error while saving user', err);
                 console.log('Done is ', done);
-                done = 0;
-                return gcm(1, 'Credits Deducted', "Rs " + req.body.total_cost + " has been Deducted", cur_user.gcm_id);
+                return done = 0;
               });
-              gcm(3, 'Incoming Order', 'Make way INCOMING', gcm_id);
               return res.json({
                 err: false,
                 message: 'Order placed',

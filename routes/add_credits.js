@@ -57,10 +57,7 @@
                 });
               }
             });
-            console.log('Gcm id ', user.gcm_id);
-            if (user.gcm_id) {
-              return gcm(1, 'Recharge ', "Hurray your account is now recharged with " + req.body.amount + " ", user.gcm_id);
-            }
+            return console.log('Gcm id ', user.gcm_id);
           }
         });
       } else {
