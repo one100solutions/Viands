@@ -131,6 +131,7 @@ router.post '/', (req, res) ->
           restaurant_id: req.body.rest_id
           name: cur_user.name
           phone: cur_user.phone
+          total_amount: req.body.total_cost
           complete: false
           delivered: false
 
@@ -167,6 +168,8 @@ router.post '/', (req, res) ->
               message: 'Order placed'
               order_id: order.id
               order_type: order.type
+              name: cur_user.name
+              phone: cur_user.phone
 
       else
         res.json

@@ -11,6 +11,7 @@ var OrderSchema = new mongoose.Schema ({
 	restaurant_id: Schema.Types.ObjectId,
   user_id: Schema.Types.ObjectId,
   name: String,
+  total_amount: Number,
   phone: Number,
 	items:[
     {
