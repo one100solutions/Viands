@@ -99,6 +99,8 @@ router.post '/', (req, res) ->
         return
 
 
+
+
       console.log restaurant.menu[0]
       for item in restaurant.menu
         if item.available then items_available.push item._id.toString()
