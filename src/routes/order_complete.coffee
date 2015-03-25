@@ -23,12 +23,12 @@ notifyUser = (user_id, order) ->
 				message: 'Error'
 			}
 
-		#else if user
+		else if user
 
-			#gcm(2, 'Order confirmation!!', "Your order id #{order.id} is ready", user.gcm_id)
+			gcm(2, 'Order confirmation!!', "Your order id #{order.id} is ready", user.gcm_id)
 
-			#messenger user.phone, "Hi !Your order no #{order.id} is ready", (err, body) ->
-				#if err then console.log err
+			messenger user.phone, "Hi !Your order no #{order.id} is ready", (err, body) ->
+				if err then console.log err
 
 findOrderAndComplete = (rest_id, res, order_id) ->
 

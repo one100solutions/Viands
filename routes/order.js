@@ -127,6 +127,7 @@
             restaurant_id: req.body.rest_id,
             name: cur_user.name,
             phone: cur_user.phone,
+            total_amount: req.body.total_cost,
             complete: false,
             delivered: false
           });
@@ -147,13 +148,17 @@
               cur_user.save(function(err, user) {
                 console.log('Error while saving user', err);
                 console.log('Done is ', done);
-                return done = 0;
+                done = 0;
+                return gcm(1, 'Credits Deducted', "Rs " + req.body.total_cost + " has been Deducted", cur_user.gcm_id);
               });
+              gcm(3, 'Incoming Order', 'Make way INCOMING', gcm_id);
               return res.json({
                 err: false,
                 message: 'Order placed',
                 order_id: order.id,
-                order_type: order.type
+                order_type: order.type,
+                name: cur_user.name,
+                phone: cur_user.phone
               });
             }
           });

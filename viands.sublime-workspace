@@ -63,7 +63,7 @@
 			"file": "src/lib/rvce_menu_creation.coffee",
 			"settings":
 			{
-				"buffer_size": 488,
+				"buffer_size": 600,
 				"line_ending": "Unix"
 			}
 		},
@@ -71,7 +71,95 @@
 			"file": "src/routes/add_credits.coffee",
 			"settings":
 			{
-				"buffer_size": 1216,
+				"buffer_size": 2182,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/signup.js",
+			"settings":
+			{
+				"buffer_size": 1942,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/add_notification.coffee",
+			"settings":
+			{
+				"buffer_size": 1238,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/change_menu.coffee",
+			"settings":
+			{
+				"buffer_size": 1228,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/clear_users.coffee",
+			"settings":
+			{
+				"buffer_size": 458,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/get_credits.coffee",
+			"settings":
+			{
+				"buffer_size": 579,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/get_order.coffee",
+			"settings":
+			{
+				"buffer_size": 1116,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/get_order_history.coffee",
+			"settings":
+			{
+				"buffer_size": 800,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/login.coffee",
+			"settings":
+			{
+				"buffer_size": 1054,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/login_restaurant.coffee",
+			"settings":
+			{
+				"buffer_size": 1281,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/notifications.coffee",
+			"settings":
+			{
+				"buffer_size": 401,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/new_restaurant.coffee",
+			"settings":
+			{
+				"buffer_size": 1088,
 				"line_ending": "Unix"
 			}
 		},
@@ -79,7 +167,47 @@
 			"file": "src/routes/order.coffee",
 			"settings":
 			{
-				"buffer_size": 2319,
+				"buffer_size": 4839,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/order_complete.coffee",
+			"settings":
+			{
+				"buffer_size": 1768,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/order_delivered.coffee",
+			"settings":
+			{
+				"buffer_size": 1660,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/register_gcm.coffee",
+			"settings":
+			{
+				"buffer_size": 1560,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/resend_otp.coffee",
+			"settings":
+			{
+				"buffer_size": 851,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/routes/restaurants.coffee",
+			"settings":
+			{
+				"buffer_size": 585,
 				"line_ending": "Unix"
 			}
 		},
@@ -87,7 +215,7 @@
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 2405,
+				"buffer_size": 3800,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +223,7 @@
 			"file": "src/test/routes/restaurant_functionality.coffee",
 			"settings":
 			{
-				"buffer_size": 1437,
+				"buffer_size": 4218,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,7 +239,7 @@
 			"file": "models/RestaurantSchema.js",
 			"settings":
 			{
-				"buffer_size": 588,
+				"buffer_size": 624,
 				"line_ending": "Unix"
 			}
 		},
@@ -119,7 +247,7 @@
 			"file": "models/UserSchema.js",
 			"settings":
 			{
-				"buffer_size": 393,
+				"buffer_size": 438,
 				"line_ending": "Unix"
 			}
 		}
@@ -160,14 +288,9 @@
 	},
 	"expanded_folders":
 	[
-		"/home/akash/Programs/Viands",
-		"/home/akash/Programs/Viands/models",
-		"/home/akash/Programs/Viands/routes",
-		"/home/akash/Programs/Viands/src",
-		"/home/akash/Programs/Viands/src/lib",
-		"/home/akash/Programs/Viands/src/routes",
-		"/home/akash/Programs/Viands/src/test",
-		"/home/akash/Programs/Viands/src/test/routes"
+		"/home/akash/Projects/Viands",
+		"/home/akash/Projects/Viands/routes",
+		"/home/akash/Projects/Viands/src"
 	],
 	"file_history":
 	[
@@ -254,7 +377,330 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 488,
+						"buffer_size": 600,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 60.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/routes/add_credits.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2182,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1173,
+								1173
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "routes/signup.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1942,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 1566.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/routes/add_notification.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1238,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/routes/change_menu.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								902,
+								902
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1134.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/routes/clear_users.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/routes/get_credits.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 579,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/routes/get_order.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1116,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 810.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/routes/get_order_history.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 800,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/routes/login.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1054,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/routes/login_restaurant.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1281,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/routes/notifications.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 401,
 						"regions":
 						{
 						},
@@ -271,19 +717,19 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 60.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/routes/add_credits.coffee",
+					"buffer": 12,
+					"file": "src/routes/new_restaurant.coffee",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1216,
+						"buffer_size": 1088,
 						"regions":
 						{
 						},
@@ -296,30 +742,31 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 648.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 13,
 					"file": "src/routes/order.coffee",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2319,
+						"buffer_size": 4839,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1677,
-								1677
+								3997,
+								3997
 							]
 						],
 						"settings":
@@ -329,19 +776,165 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1380.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 14,
+					"file": "src/routes/order_complete.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1768,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								594,
+								594
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "src/routes/order_delivered.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "src/routes/register_gcm.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 1458.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "src/routes/resend_otp.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 756.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "src/routes/restaurants.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 585,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
 					"file": "app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2405,
+						"buffer_size": 3800,
 						"regions":
 						{
 						},
@@ -362,16 +955,16 @@
 						"translation.y": 1500.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 20,
 					"file": "src/test/routes/restaurant_functionality.coffee",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1437,
+						"buffer_size": 4218,
 						"regions":
 						{
 						},
@@ -384,17 +977,19 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 21,
 					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
@@ -418,16 +1013,16 @@
 						"translation.y": 420.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 22,
 					"file": "models/RestaurantSchema.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 588,
+						"buffer_size": 624,
 						"regions":
 						{
 						},
@@ -448,16 +1043,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 23,
 					"file": "models/UserSchema.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 393,
+						"buffer_size": 438,
 						"regions":
 						{
 						},
@@ -470,13 +1065,15 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 22,
 					"type": "text"
 				}
 			]
