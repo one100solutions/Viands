@@ -23,9 +23,9 @@ credited = []
 #Loyel Akash Sanchay Rahul Sid Sujith
 omitPhone = [8970707712, 8277564501, 9986787295, 7411487928, 9482532445, 7259281007]
 
-ordersString = 'Order History-\n Phone \t Amount \n'
+ordersString = '\n Order History-\n Phone \t Amount \n'
 
-creditsString = 'Credit History-\n Phone \t Amount \n'
+creditsString = '\n Credit History-\n Phone \t Amount \n'
 
 order = (callback)->
 	Orders.find {}, (err, orders) ->
@@ -37,9 +37,10 @@ order = (callback)->
 				credited.push {
 					phone: order.phone
 					total: order.total_amount
+          time: order.time
 				}
 
-				ordersString += "#{order.phone} \t #{order.amount} \n"
+				ordersString += "#{order.phone} \t #{order.amount} \t #{order.time}\n"
 
 		callback null,ordered
 
@@ -54,9 +55,10 @@ credit = (callback)->
 				ordered.push {
 					phone: credit.phone
 					amount: credit.amount
+          time: credit.time
 				}
 
-				creditsString += "#{order.phone} \t #{order.amount} \n"
+				creditsString += "#{credit.phone} \t #{credit.amount} \t #{credit.time} \n"
 
 		callback null,credited
 

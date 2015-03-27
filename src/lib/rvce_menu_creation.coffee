@@ -21,7 +21,7 @@ rest = new Restaurant
 
 x '/home/ubuntu/Viands/Menu.xlsx', (data) ->
   for item in data.message
-    if item
+    if item.sno
       item.available = true
       console.log item
       rest.menu.push item
