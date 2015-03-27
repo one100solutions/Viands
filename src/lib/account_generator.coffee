@@ -37,7 +37,7 @@ order = (callback)->
 				credited.push {
 					phone: order.phone
 					total: order.total_amount
-          time: order.time
+					time: order.time
 				}
 
 				ordersString += "#{order.phone} &nbsp;&nbsp;&nbsp;&nbsp; #{order.total_amount} &nbsp;&nbsp;&nbsp;&nbsp; #{order.time}<br />"
@@ -55,7 +55,7 @@ credit = (callback)->
 				ordered.push {
 					phone: credit.phone
 					amount: credit.amount
-          time: credit.time
+					time: credit.time
 				}
 
 				creditsString += "#{credit.phone} &nbsp;&nbsp;&nbsp;&nbsp; #{credit.amount} &nbsp;&nbsp;&nbsp;&nbsp; #{credit.time} <br />"
