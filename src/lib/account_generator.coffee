@@ -67,7 +67,7 @@ async.parallel [order, credit], (err, results) ->
 
 	final = message(ordersString,creditsString)
 
-	mailer 'ashakdwipeea@gmail.com', final, (err, response) ->
+	mailer 'sidsb94@gmail.com', final, (err, response) ->
 		console.log 'response', response
 
 		process.exit(0)
