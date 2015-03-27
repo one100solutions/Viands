@@ -149,7 +149,7 @@
           }
         }, function(status, response, body) {
           body = JSON.parse(body);
-          console.log('Notifiction1', body);
+          console.log('Notification1', body);
           expect(body.err).to.be.equal(false);
           return request.get('http://localhost:3000/notifications', function(status, response, body) {
             var notification_get;

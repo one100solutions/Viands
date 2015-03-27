@@ -148,7 +148,7 @@ describe 'Restaurant functionality', ->
           message: 'Street play is too much' + Date.now()
         }, (status, response, body) ->
           body = JSON.parse(body)
-          console.log 'Notifiction1',body
+          console.log 'Notification1',body
 
           expect(body.err).to.be.equal(false)
 

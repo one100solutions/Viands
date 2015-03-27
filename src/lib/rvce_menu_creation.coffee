@@ -19,11 +19,12 @@ rest = new Restaurant
   }
   menu: []
 
-x '/home/akash/Projects/Viands/Menu.xlsx', (data) ->
+x '/home/ubuntu/Viands/Menu.xlsx', (data) ->
   for item in data.message
-    item.available = true
-    console.log item
-    rest.menu.push item
+    if item
+      item.available = true
+      console.log item
+      rest.menu.push item
 
   console.log rest
 
