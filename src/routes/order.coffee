@@ -160,10 +160,11 @@ router.post '/', (req, res) ->
               console.log 'Done is ', done
               done = 0
 
+              if cur_user.gcm_id
+                gcm(1,'Credits Deducted', "Rs #{req.body.total_cost} has been Deducted", cur_user.gcm_id)
 
-              gcm(1,'Credits Deducted', "Rs #{req.body.total_cost} has been Deducted", cur_user.gcm_id)
-
-            gcm(3,'Incoming Order','Make way INCOMING',gcm_id)  
+            if gcm_id
+              gcm(3,'Incoming Order','Make way INCOMING',gcm_id)
 
             res.json
               err: false

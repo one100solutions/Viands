@@ -92,7 +92,7 @@ describe 'Restaurant functionality', ->
           token: token_restaurant
         }, (status, response, body) ->
           body = JSON.parse body
-          console.log 'Body after get_ordrer api',body
+          console.log 'Body after get_order api',body
           expect(body.err).to.not.be.equal(true)
           if body.orders then orders_api = body.orders
 
@@ -101,7 +101,9 @@ describe 'Restaurant functionality', ->
           count++
           go(done)
 
-      Orders.find {}, (err, orders) ->
+      Orders.find {
+        complete: false
+      }, (err, orders) ->
         #console.log 'Orders from db are',orders
         expect(err).not.to.be.equal(true)
         orders_db = orders

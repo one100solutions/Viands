@@ -95,7 +95,7 @@
           }
         }, function(status, response, body) {
           body = JSON.parse(body);
-          console.log('Body after get_ordrer api', body);
+          console.log('Body after get_order api', body);
           expect(body.err).to.not.be.equal(true);
           if (body.orders) {
             orders_api = body.orders;
@@ -106,7 +106,9 @@
           count++;
           return go(done);
         });
-        return Orders.find({}, function(err, orders) {
+        return Orders.find({
+          complete: false
+        }, function(err, orders) {
           expect(err).not.to.be.equal(true);
           orders_db = orders;
           count++;

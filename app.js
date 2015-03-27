@@ -8,7 +8,12 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/viands');
+try {
+    mongoose.connect('mongodb://localhost/viands');
+} catch (err) {
+    throw new Error("Could not connect to database");
+}
+
 
 require('./models/OrderSchema');
 require('./models/RestaurantSchema');

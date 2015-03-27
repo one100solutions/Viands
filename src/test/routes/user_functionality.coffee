@@ -48,6 +48,7 @@ describe 'Users actions', ->
     data = {
       token: user_token
       rest_id: restaurant
+      total_cost: 200
       order:
         type: 'now'
         time_deliver: null

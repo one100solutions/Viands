@@ -149,9 +149,13 @@
                 console.log('Error while saving user', err);
                 console.log('Done is ', done);
                 done = 0;
-                return gcm(1, 'Credits Deducted', "Rs " + req.body.total_cost + " has been Deducted", cur_user.gcm_id);
+                if (cur_user.gcm_id) {
+                  return gcm(1, 'Credits Deducted', "Rs " + req.body.total_cost + " has been Deducted", cur_user.gcm_id);
+                }
               });
-              gcm(3, 'Incoming Order', 'Make way INCOMING', gcm_id);
+              if (gcm_id) {
+                gcm(3, 'Incoming Order', 'Make way INCOMING', gcm_id);
+              }
               return res.json({
                 err: false,
                 message: 'Order placed',
