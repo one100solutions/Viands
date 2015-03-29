@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="col s6 offset-s3">
+        <md-card>
+
+        <div class="row">
+            <form class="col s12">
+
+                <div class="row">
+                    <div class="col s12" >
+                        <div class="row" ng-show="progress">
+                            <md-progress-circular  class="md-warn" md-mode="indeterminate"></md-progress-circular>
+                        </div>
+                        <div ng-hide="progress" class="row">
+                        <md-content class="md-padding">
+                            <md-input-container md-no-float>
+                                <input ng-model="user.name" type="text" placeholder="Username">
+                            </md-input-container>
+                            <md-input-container md-no-float>
+                                <input ng-model="user.password" type="password" placeholder="Password" ng-required="true">
+                            </md-input-container>
+                            <md-button ng-click="login()" class="md-raised">
+                                Raised Button
+                            </md-button>
+                        </md-content>
+                            </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+            </md-card>
+    </div>
+</div>
