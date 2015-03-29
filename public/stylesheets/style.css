@@ -23,6 +23,13 @@ a {
     top: 194px;
     left: 114px;
 }
+
+.progressBar {
+    z-index: 4000;
+    position: absolute;
+    top: 250px;
+    left: 600px;
+}
 @-webkit-keyframes greenglow {
     from {
         left:-120px;
