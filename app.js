@@ -26,7 +26,7 @@ var users = require('./routes/users');
 
 var restaurants = require('./routes/restaurants');
 
-var signup = require('./routes/signup');
+var signUp = require('./routes/signup');
 var verify = require('./routes/verify');
 var login = require('./routes/login');
 var order = require('./routes/order');
@@ -66,7 +66,7 @@ app.use('/users', users);
 
 app.use('/restaurants', restaurants);
 
-app.use('/signup', signup);
+app.use('/signUp', signUp);
 app.use('/verify', verify);
 app.use('/login', login);
 app.use('/order', order);

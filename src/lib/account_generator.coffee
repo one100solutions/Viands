@@ -73,6 +73,3 @@ async.parallel [order, credit], (err, results) ->
 		console.log 'response', response
 
 		process.exit(0)
-
-
-

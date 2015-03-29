@@ -1,0 +1,86 @@
+<div layout="column" style="height:500px;">
+    <section layout="row" flex>
+        <md-sidenav  class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+            <md-toolbar class="md-theme-indigo">
+                <h1 class="md-toolbar-tools">Cateogries</h1>
+            </md-toolbar>
+            <md-content ng-controller="MenuCatController">
+                <md-list>
+                    <md-item ng-repeat="item in category">
+                        <md-item-content>
+                           <!-- <div class="md-tile-left">
+                                <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+                            </div>-->
+                            <div class="md-tile-content">
+                                <h3>
+                                    <md-button class="md-primary" ng-href="#/dashboard/list/{{item.value}}">
+                                        {{item.name}}
+                                    </md-button>
+                                </h3>
+                            </div>
+                        </md-item-content>
+                    </md-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-content flex class="md-padding">
+            <!--<div layout="column" layout-fill layout-align="top center">
+                <p>
+                    The left sidenav will 'lock open' on a medium (>=960px wide) device.
+                </p>
+                <div>
+                    <md-button ng-click="toggleLeft()"
+                               class="md-primary" hide-gt-md>
+                        Toggle left
+                    </md-button>
+                </div>
+                <div>
+                    <md-button ng-click="toggleRight()"
+                               class="md-primary">
+                        Toggle right
+                    </md-button>
+                </div>
+            </div>
+            <div flex></div>-->
+
+            <div ui-view></div>
+
+
+        </md-content>
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">Edit Menu</h1>
+            </md-toolbar>
+            <md-content ng-controller="MenuEditController" class="md-padding">
+                <div class="row progressSide" ng-show="progress">
+                    <md-progress-circular  class="md-warn" md-mode="indeterminate"></md-progress-circular>
+                </div>
+                <md-content class="md-padding">
+                    <md-input-container md-no-float>
+                        <label for="Sno" >Sno</label>
+                        <input id="Sno" ng-model="food.sno" type="text" placeholder="Category">
+                    </md-input-container>
+                    <md-input-container md-no-float>
+                        <label for="name" >Name:</label>
+                        <input id="name" ng-model="food.name" type="text" placeholder="Name">
+                    </md-input-container>
+                    <md-input-container md-no-float>
+                        <label for="Category" >Category</label>
+                        <input id="Category" ng-model="food.category" type="text" placeholder="Category">
+                    </md-input-container>
+                    <md-input-container md-no-float>
+                        <label for="Cost" >Cost</label>
+                        <input id="Cost" ng-model="food.cost" type="text" placeholder="Cost">
+                    </md-input-container>
+                    <md-checkbox ng-model="food.available" aria-label="Avail">
+                        Availabe: {{ food.available}}
+                    </md-checkbox>
+                <md-button ng-click="save()" class="md-primary">
+                    Save
+                </md-button>
+            </md-content>
+
+        </md-sidenav>
+    </section>
+
+</div>

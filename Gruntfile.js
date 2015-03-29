@@ -56,7 +56,7 @@ module.exports = function  (grunt) {
 	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('grunt-mocha-test');
 
-	//task setup
+    //task setup
 	grunt.registerTask('default', ['concurrent:target']);
 
 	grunt.registerTask('test',['mochaTest', 'watch:test']);

@@ -1,0 +1,19 @@
+<div>
+    <md-content>
+        <md-list>
+            <md-item ng-repeat="item in items track by $index">
+                <md-item-content ng-click="toggleRight(item._id)">
+                    <div class="md-tile-left">
+                        <img ng-src="http://d3g1clmq5hrgtm.cloudfront.net/category {{item.category}}/c{{item.category}}.{{item.sno}}.jpg" class="face" alt="{{item.name}}">
+                    </div>
+                    <div class="md-tile-content">
+                        <h3>{{item.name}}</h3>
+                        <h4>Rs.{{item.cost}}</h4>
+                        <p>
+                            Category:  {{item.category}}
+                        </p>
+                    </div>
+                </md-item-content>
+            </md-item>
+        </md-list>
+</div>

@@ -6,3 +6,107 @@ body {
 a {
   color: #00B7FF;
 }
+
+.load {
+	z-index: 1000;
+	height: 300px;
+	width: 300px;
+}
+.face {
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    width: 48px;
+    margin: 16px; }
+.progressSide {
+    z-index: 4000;
+    position: absolute;
+    top: 194px;
+    left: 114px;
+}
+@-webkit-keyframes greenglow {
+    from {
+        left:-120px;
+    }
+    to {
+        left:100%;
+    }
+}
+@-moz-keyframes greenglow {
+    from {
+        left:-120px;
+    }
+    to {
+        left:100%;
+    }
+}
+@-o-keyframes greenglow {
+    from {
+        left:-120px;
+    }
+    to {
+        left:100%;
+    }
+}
+@keyframes greenglow {
+    from {
+        left:-120px;
+    }
+    to {
+        left:100%;
+    }
+}
+.loader8 {
+    width:250px;
+    height:16px;
+    border:1px solid #bbb;
+    border-radius:0px;
+    position:relative;
+    overflow:hidden;
+    background: #E6E6E6;
+    margin:5px;
+}
+
+.loader8:after {
+    content: " ";
+    display:block;
+    width:120px;
+    top:-50%;
+    height:250%;
+    position:absolute;
+    animation: greenglow 3s linear infinite;
+    -webkit-animation: greenglow 3s linear infinite;
+    z-index:2;
+    background: #1CAE30;
+}
+.animate-enter, 
+.animate-leave
+{ 
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space:nowrap;
+} 
+ 
+.animate-leave.animate-leave-active,
+.animate-enter {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+}
+ 
+.animate-enter.animate-enter-active, 
+.animate-leave {
+    opacity: 1;
+    width: 150px;
+    height: 30px;
+}
+
+.sel {
+    border-color: red;
+}
