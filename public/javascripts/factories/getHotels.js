@@ -25,7 +25,7 @@ angular.module('viands')
 
         var login = function (data) {
             getRestaurants();
-          return  $http.post('http://localhost:3000/login_restaurant', data)
+          return  $http.post('/login_restaurant', data)
                     .success(function (payload) {
                         console.log('payload in service', payload);
                             if (payload.err === false)
@@ -36,7 +36,7 @@ angular.module('viands')
         }
 
         var getRestaurants = function () {
-            $http.get('http://localhost:3000/restaurants')
+            $http.get('/restaurants')
                 .success(function (payload) {
                     console.log('Data is ', payload);
                     restaurantDetails = payload;
@@ -46,7 +46,7 @@ angular.module('viands')
         var saveMenu = function (menu) {
             restaurantDetails.restaurants[0].menu = menu;
             menu = JSON.stringify(menu);
-            return $http.post('http://localhost:3000/change_menu',{
+            return $http.post('/change_menu',{
                 menu: menu,
                 token: getRestaurantToken()
             });
