@@ -100,11 +100,11 @@ mail = (Account) ->
   totalCreditToday = Account.credited
   totalOrder = Account.totalOrdered
   totalCredit = Account.totalCredited###
-
+  console.log('Acc',Account.records)
   json2csv {
     data: Account.records
-  }
-  fields: ['Phone', 'Ordered Today', 'Recharged Today']
+    fields: ['Phone', 'Ordered Today', 'Recharged Today']
+  },
   (err, csv) ->
     if err
       throw new Error('Loda le')
