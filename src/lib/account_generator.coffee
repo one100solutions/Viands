@@ -40,7 +40,7 @@ order = (callback)->
 
         curDate = moment()
 
-        dbDate = moment(order.time)
+        dbDate = moment(order.time, "dddd, MMMM Do YYYY, h:mm:ss a")
 
         if curDate.diff(dbDate,'days') is 0
 
@@ -64,7 +64,7 @@ credit = (callback)->
 
       curDate = moment()
 
-      dbDate = moment(credit.time)
+      dbDate = moment(credit.time, "dddd, MMMM Do YYYY, h:mm:ss a")
 
       if curDate.diff(dbDate,'days') is 0
 
