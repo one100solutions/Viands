@@ -42,7 +42,7 @@ order = (callback)->
 
         dbDate = moment(order.time)
 
-        if moment(curDate.diff(dbDate,'days'))
+        if curDate.diff(dbDate,'days')
 
           ordered.push {
             phone: order.phone
@@ -66,7 +66,7 @@ credit = (callback)->
 
       dbDate = moment(credit.time)
 
-      if moment(curDate.diff(dbDate,'days'))
+      if curDate.diff(dbDate,'days')
 
         if omitPhone.indexOf(credit.phone) < 0
           credited.push {
