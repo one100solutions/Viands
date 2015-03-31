@@ -100,35 +100,18 @@ mail = (Account) ->
   totalCreditToday = Account.credited
   totalOrder = Account.totalOrdered
   totalCredit = Account.totalCredited###
-  console.log('Acc',Account.records)
-  json2csv {
-    data: Account.records
-    fields: ['Phone', 'Ordered Today', 'Recharged Today']
-  },
-  (err, csv) ->
-    if err
-      throw new Error('Loda le')
+  console.log(Account.records);
+  mailString = mailString2 = ""
+  for order in Account.records
+    mailString += "#{order.phone} &nbsp;&nbsp;&nbsp;&nbsp; #{order.totalOrdered} &nbsp;&nbsp;&nbsp;&nbsp; #{order.totalCredited} <br />"
 
-    fs.writeFile 'account.csv', csv, (err) ->
-      if err
-        throw new Error('kbfue')
+  mailString2 += "<br /> Today: <br /> Ordered #{Account.ordered} <br /> Recharged: #{Account.credited}  "
+  mailString2 += "<br /> Cumulative: <br /> Ordered #{Account.totalOrdered} <br /> Recharged: #{Account.totalCredited}  "
 
-      csvStream = fastCsv.createWriteStream({headers: true})
+  final = message(mailString,mailString2)
 
-      writeStream = fs.createWriteStream('account.csv')
-
-      writeStream.on 'finish', () ->
-        console.log 'Done'
-
-      csvStream.pipe(writeStream)
-      csvStream.write({
-        'Ordered Today': Account.ordered
-        'Recharged Today': Account.credited
-        'Total Ordered': Account.totalOrdered
-        'Total Recharged': Account.totalCredited
-      })
-
-      csvStream.end()
+  mailer 'ashakdwipeea@gmail.com', final, (err, response) ->
+    console.log 'response', response
 
 
 async.parallel [order, credit], (err, results) ->
@@ -198,7 +181,7 @@ async.parallel [order, credit], (err, results) ->
 
 
 
-  final = message(ordersString,creditsString)
+
 
   process.exit(0)
 
