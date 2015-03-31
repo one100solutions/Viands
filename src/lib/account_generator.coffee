@@ -95,7 +95,7 @@ async.parallel [order, credit], (err, results) ->
 
   uniquePhoneCredited = _.uniq(_.pluck(credited,'phone'), true)
 
-  uniquePhone = _.union(uniquePhoneCredited, uniquePhoneCredited)
+  uniquePhone = _.union(uniquePhoneCredited, uniquePhoneOrdered)
 
   finalAccounts = []
 
