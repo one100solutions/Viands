@@ -30,6 +30,9 @@ ordersString = '<br /> Order History-<br /> Phone &nbsp;&nbsp;&nbsp;&nbsp; Amoun
 
 creditsString = '<br /> Credit History-<br /> Phone &nbsp;&nbsp;&nbsp;&nbsp; Amount <br />'
 
+OrderSumHistory = 0
+CreditSumHistory = 0
+
 order = (callback)->
 	Orders.find {}, (err, orders) ->
 		if err 
@@ -37,6 +40,8 @@ order = (callback)->
 
 		for order in orders
 			if omitPhone.indexOf(order.phone) < 0
+
+        OrderSumHistory += order.phone
 
         curDate = moment()
 
@@ -66,9 +71,11 @@ credit = (callback)->
 
       dbDate = moment(credit.time, "dddd, MMMM Do YYYY, h:mm:ss a")
 
-      if curDate.diff(dbDate,'days') is 0
+      if omitPhone.indexOf(credit.phone) < 0
 
-        if omitPhone.indexOf(credit.phone) < 0
+        CreditSumHistory += credit.amount
+
+        if curDate.diff(dbDate,'days') is 0
           credited.push {
             phone: credit.phone
             amount: credit.amount
@@ -90,6 +97,9 @@ async.parallel [order, credit], (err, results) ->
   credited = _.sortBy(credited, 'phone')
 
   i = 0
+
+  totalOrderSum = 0
+  totalCreditSum = 0
 
   uniquePhoneOrdered = _.uniq(_.pluck(ordered,'phone'), true)
 
@@ -119,6 +129,9 @@ async.parallel [order, credit], (err, results) ->
     _totalOrdered = _.reduce(_.pluck(uniqueObjectOrder,'total'), reduceHelper, 0)
     _totalCredited = _.reduce(_.pluck(uniqueObjectCredit,'amount'), reduceHelper, 0)
 
+    totalOrderSum += _totalOrdered
+    totalCreditSum += _totalCredited
+
     newObj.totalOrdered = _totalOrdered
     newObj.totalCredited = _totalCredited
 
@@ -126,7 +139,15 @@ async.parallel [order, credit], (err, results) ->
 
     newObj = null
 
+  finalAccounts.ordered = totalOrderSum
+  finalAccounts.credited = totalCreditSum
+
+  finalAccounts.totalOrdered = OrderSumHistory
+  finalAccounts.totalCredited = CreditSumHistory
+
   console.log finalAccounts;
+
+
 
   final = message(ordersString,creditsString)
 
