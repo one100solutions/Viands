@@ -17,8 +17,10 @@ mailer = require './mailer'
 
 async = require 'async'
 
-ordered = []
+_ = require 'underscore'
+
 credited = []
+ordered = []
 
 #Loyel Akash Sanchay Rahul Sid Sujith
 omitPhone = [8970707712, 8277564501, 9986787295, 7411487928, 9482532445, 7259281007]
@@ -34,7 +36,7 @@ order = (callback)->
 
 		for order in orders
 			if omitPhone.indexOf(order.phone) < 0
-				credited.push {
+				ordered.push {
 					phone: order.phone
 					total: order.total_amount
 					time: order.time
@@ -47,12 +49,12 @@ order = (callback)->
 credit = (callback)->
 	Credits.find {}, (err, credits) ->
 		if err 
-				throw new Error("Error occured", err)
+				throw new Error("Error occurred", err)
 
 		for credit in credits
 
 			if omitPhone.indexOf(credit.phone) < 0
-				ordered.push {
+				credited.push {
 					phone: credit.phone
 					amount: credit.amount
 					time: credit.time
@@ -65,11 +67,57 @@ credit = (callback)->
 
 
 async.parallel [order, credit], (err, results) ->
-	#console.log 'results', results
 
-	final = message(ordersString,creditsString)
+  #console.log 'results', results
 
-	mailer 'sidsb94@gmail.com', final, (err, response) ->
-		console.log 'response', response
+  ordered = _.sortBy(ordered,'phone')
 
-		process.exit(0)
+  credited = _.sortBy(credited, 'phone')
+
+  i = 0
+
+  uniquePhoneOrdered = _.uniq(_.pluck(ordered,'phone'), true)
+
+  uniquePhoneCredited = _.uniq(_.pluck(credited,'phone'), true)
+
+  uniquePhone = _.union(uniquePhoneCredited, uniquePhoneCredited)
+
+  finalAccounts = []
+
+  for _phone in uniquePhone
+
+    uniqueObjectOrder = _.where(ordered,{
+      'phone': _phone
+    })
+
+    uniqueObjectCredit = _.where(credited,{
+      'phone': _phone
+    })
+
+    newObj = {
+      phone: _phone
+    }
+
+    reduceHelper = (memo, num) ->
+      memo + num
+
+    _totalOrdered = _.reduce(_.pluck(uniqueObjectOrder,'total'), reduceHelper, 0)
+    _totalCredited = _.reduce(_.pluck(uniqueObjectCredit,'amount'), reduceHelper, 0)
+
+    newObj.totalOrdered = _totalOrdered
+    newObj.totalCredited = _totalCredited
+
+    finalAccounts.push(newObj)
+
+    newObj = null
+
+  console.log finalAccounts;
+
+  final = message(ordersString,creditsString)
+
+###
+  mailer 'sidsb94@gmail.com', final, (err, response) ->
+  console.log 'response', response
+###
+
+  process.exit(0)
