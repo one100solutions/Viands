@@ -41,7 +41,7 @@ order = (callback)->
 		for order in orders
 			if omitPhone.indexOf(order.phone) < 0
 
-        OrderSumHistory += order.phone
+        OrderSumHistory += order.total_amount
 
         curDate = moment()
 
