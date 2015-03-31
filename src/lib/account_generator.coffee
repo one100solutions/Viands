@@ -2,6 +2,12 @@
 mongoose = require 'mongoose'
 
 moment = require 'moment'
+
+json2csv = require 'json2csv'
+fastCsv = require 'fast-csv'
+
+fs = require 'fs'
+
 console.log 'A'
 
 require '../app'
@@ -88,6 +94,43 @@ credit = (callback)->
 
 
 
+
+mail = (Account) ->
+  ###totalOrderToday = Account.ordered
+  totalCreditToday = Account.credited
+  totalOrder = Account.totalOrdered
+  totalCredit = Account.totalCredited###
+
+  json2csv {
+    data: Account.records
+  }
+  fields: ['Phone', 'Ordered Today', 'Recharged Today']
+  (err, csv) ->
+    if err
+      throw new Error('Loda le')
+
+    fs.writeFile 'account.csv', csv, (err) ->
+      if err
+        throw new Error('kbfue')
+
+      csvStream = fastCsv.createWriteStream({headers: true})
+
+      writeStream = fs.createWriteStream('account.csv')
+
+      writeStream.on 'finish', () ->
+        console.log 'Done'
+
+      csvStream.pipe(writeStream)
+      csvStream.write({
+        'Ordered Today': Account.ordered
+        'Recharged Today': Account.credited
+        'Total Ordered': Account.totalOrdered
+        'Total Recharged': Account.totalCredited
+      })
+
+      csvStream.end()
+
+
 async.parallel [order, credit], (err, results) ->
 
   #console.log 'results', results
@@ -107,7 +150,11 @@ async.parallel [order, credit], (err, results) ->
 
   uniquePhone = _.union(uniquePhoneCredited, uniquePhoneOrdered)
 
-  finalAccounts = []
+  finalAccounts = {}
+
+  finalAccounts.records = []
+
+
 
   for _phone in uniquePhone
 
@@ -135,7 +182,7 @@ async.parallel [order, credit], (err, results) ->
     newObj.totalOrdered = _totalOrdered
     newObj.totalCredited = _totalCredited
 
-    finalAccounts.push(newObj)
+    finalAccounts.records.push(newObj)
 
     newObj = null
 
@@ -144,6 +191,8 @@ async.parallel [order, credit], (err, results) ->
 
   finalAccounts.totalOrdered = OrderSumHistory
   finalAccounts.totalCredited = CreditSumHistory
+
+  mail(finalAccounts)
 
   console.log finalAccounts;
 
