@@ -1,6 +1,7 @@
 
 mongoose = require 'mongoose'
 
+moment = require 'moment'
 console.log 'A'
 
 require '../app'
@@ -36,15 +37,22 @@ order = (callback)->
 
 		for order in orders
 			if omitPhone.indexOf(order.phone) < 0
-				ordered.push {
-					phone: order.phone
-					total: order.total_amount
-					time: order.time
-				}
 
-				ordersString += "#{order.phone} &nbsp;&nbsp;&nbsp;&nbsp; #{order.total_amount} &nbsp;&nbsp;&nbsp;&nbsp; #{order.time}<br />"
+        curDate = moment()
 
-		callback null,ordered
+        dbDate = moment(order.time)
+
+        if moment(curDate.isSame(dbDate,'date'))
+
+          ordered.push {
+            phone: order.phone
+            total: order.total_amount
+            time: order.time
+          }
+
+  callback(null, ordered)
+
+        #ordersString += "#{order.phone} &nbsp;&nbsp;&nbsp;&nbsp; #{order.total_amount} &nbsp;&nbsp;&nbsp;&nbsp; #{order.time}<br />"
 
 credit = (callback)->
 	Credits.find {}, (err, credits) ->
@@ -53,14 +61,21 @@ credit = (callback)->
 
 		for credit in credits
 
-			if omitPhone.indexOf(credit.phone) < 0
-				credited.push {
-					phone: credit.phone
-					amount: credit.amount
-					time: credit.time
-				}
 
-				creditsString += "#{credit.phone} &nbsp;&nbsp;&nbsp;&nbsp; #{credit.amount} &nbsp;&nbsp;&nbsp;&nbsp; #{credit.time} <br />"
+      curDate = moment()
+
+      dbDate = moment(order.time)
+
+      if moment(curDate.isSame(dbDate,'date'))
+
+        if omitPhone.indexOf(credit.phone) < 0
+          credited.push {
+            phone: credit.phone
+            amount: credit.amount
+            time: credit.time
+          }
+
+        creditsString += "#{credit.phone} &nbsp;&nbsp;&nbsp;&nbsp; #{credit.amount} &nbsp;&nbsp;&nbsp;&nbsp; #{credit.time} <br />"
 
 		callback null,credited
 
@@ -115,9 +130,9 @@ async.parallel [order, credit], (err, results) ->
 
   final = message(ordersString,creditsString)
 
+  process.exit(0)
+
 ###
   mailer 'sidsb94@gmail.com', final, (err, response) ->
   console.log 'response', response
 ###
-
-  process.exit(0)
