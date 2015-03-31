@@ -102,6 +102,7 @@ mail = (Account) ->
   totalCredit = Account.totalCredited###
   console.log(Account.records);
   mailString = mailString2 = ""
+  mailString += "Phone &nbsp;&nbsp;&nbsp;&nbsp; Ordered &nbsp;&nbsp;&nbsp;&nbsp; Recharged <br />"
   for order in Account.records
     mailString += "#{order.phone} &nbsp;&nbsp;&nbsp;&nbsp; #{order.totalOrdered} &nbsp;&nbsp;&nbsp;&nbsp; #{order.totalCredited} <br />"
 
@@ -111,7 +112,11 @@ mail = (Account) ->
   final = message(mailString,mailString2)
 
   mailer 'ashakdwipeea@gmail.com', final, (err, response) ->
+    if(err)
+      console.log(err)
+
     console.log 'response', response
+    process.exit(0)
 
 
 async.parallel [order, credit], (err, results) ->
@@ -176,14 +181,8 @@ async.parallel [order, credit], (err, results) ->
   finalAccounts.totalCredited = CreditSumHistory
 
   mail(finalAccounts)
-
   console.log finalAccounts;
 
-
-
-
-
-  process.exit(0)
 
 ###
   mailer 'sidsb94@gmail.com', final, (err, response) ->
