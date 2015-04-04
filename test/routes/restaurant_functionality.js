@@ -79,14 +79,14 @@
       var order;
       order = {};
       it('should display the orders', function(done) {
-        var count, go, orders_api, orders_db;
+        var count, goNow, orders_api, orders_db;
         count = 0;
         orders_db = [];
         orders_api = [];
-        go = function(done) {
+        goNow = function(Done) {
           if (count === 2) {
             expect(orders_db.length).to.be.equal(orders_api.length);
-            return done();
+            return Done();
           }
         };
         request.post('http://localhost:3000/get_order', {
@@ -104,7 +104,7 @@
             order = orders_api[0];
           }
           count++;
-          return go(done);
+          return goNow(done);
         });
         return Orders.find({
           complete: false
@@ -112,7 +112,7 @@
           expect(err).not.to.be.equal(true);
           orders_db = orders;
           count++;
-          return go(done);
+          return goNow(done);
         });
       });
       it('should mark an order as complete', function(done) {

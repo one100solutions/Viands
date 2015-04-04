@@ -81,10 +81,10 @@ describe 'Restaurant functionality', ->
       orders_db = []
       orders_api = []
 
-      go = (done) ->
+      goNow = (Done) ->
         if count is 2
           expect(orders_db.length).to.be.equal(orders_api.length)
-          done()
+          Done()
 
 
       request.post 'http://localhost:3000/get_order',
@@ -99,7 +99,7 @@ describe 'Restaurant functionality', ->
           if orders_api.length > 0 then order = orders_api[0]
 
           count++
-          go(done)
+          goNow(done)
 
       Orders.find {
         complete: false
@@ -108,7 +108,7 @@ describe 'Restaurant functionality', ->
         expect(err).not.to.be.equal(true)
         orders_db = orders
         count++
-        go(done)
+        goNow(done)
 
     it 'should mark an order as complete', (done) ->
       console.log 'Mak #',order

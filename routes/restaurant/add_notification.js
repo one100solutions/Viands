@@ -13,7 +13,7 @@
 
   User = mongoose.model('User');
 
-  gcm = require('../lib/gcm');
+  gcm = require('../../lib/gcm');
 
   notifyAll = function(title, message) {
     return User.find({}, function(err, users) {

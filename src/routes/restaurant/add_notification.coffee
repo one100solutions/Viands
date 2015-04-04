@@ -6,7 +6,7 @@ Notification = mongoose.model 'Notification'
 Restaurant = mongoose.model 'Restaurant'
 User = mongoose.model 'User'
 
-gcm = require '../lib/gcm'
+gcm = require '../../lib/gcm'
 
 notifyAll = (title, message) ->
 	User.find {}, (err, users) ->

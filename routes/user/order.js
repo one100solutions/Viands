@@ -13,7 +13,7 @@
 
   _ = require('underscore');
 
-  gcm = require('../lib/gcm');
+  gcm = require('../../lib/gcm');
 
   viands = new EventEmitter();
 
@@ -23,7 +23,7 @@
 
   Restaurant = mongoose.model('Restaurant');
 
-  otp = require('../lib/id2otp');
+  otp = require('../../lib/id2otp');
 
   router.post('/', function(req, res) {
     var cur_user, done, emitter_substitute, gcm_id, items_available, items_ordered, restaurant, restaurant_found, user_found, validateAndOrder;

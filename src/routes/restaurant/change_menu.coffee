@@ -1,7 +1,7 @@
 express = require 'express'
 router = express.Router()
 
-gcm = require '../lib/gcm'
+gcm = require '../../lib/gcm'
 
 mongoose = require 'mongoose'
 Restaurant = mongoose.model 'Restaurant'
@@ -45,7 +45,7 @@ router.post '/', (req, res) ->
 								regIds.push(usr.gcm_id) for usr in user
 
 
-								#gcm(3,'Menu Changed', 'Hey food court menu has Changed.',regIds)
+								gcm(3,'Menu Changed', 'Hey food court menu has Changed.',regIds)
 
 						res.json {
 							err: false

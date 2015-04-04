@@ -6,7 +6,7 @@ mongoose = require 'mongoose'
 
 Restaurant = mongoose.model 'Restaurant'
 
-tokenize = require '../lib/tokenize'
+tokenize = require '../../lib/tokenize'
 
 router.post '/', (req,res) ->
 

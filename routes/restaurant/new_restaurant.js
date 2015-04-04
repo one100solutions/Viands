@@ -9,7 +9,7 @@
 
   Restaurant = mongoose.model('Restaurant');
 
-  tokenize = require('../lib/tokenize');
+  tokenize = require('../../lib/tokenize');
 
   router.post('/', function(req, res) {
     console.log('In route handler');

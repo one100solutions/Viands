@@ -11,7 +11,7 @@
 
   Restaurant = mongoose.model('Restaurant');
 
-  gcm = require('../lib/gcm');
+  gcm = require('../../lib/gcm');
 
   router.post('/', function(req, res) {
     console.log("Request body", req.body);

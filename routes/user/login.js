@@ -7,7 +7,7 @@
 
   mongoose = require('mongoose');
 
-  tokenize = require('../lib/tokenize');
+  tokenize = require('../../lib/tokenize');
 
   User = mongoose.model('User');
 

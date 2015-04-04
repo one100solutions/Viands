@@ -7,7 +7,7 @@ EventEmitter = require('events').EventEmitter
 moment = require 'moment'
 _ = require 'underscore'
 
-gcm = require '../lib/gcm'
+gcm = require '../../lib/gcm'
 
 viands = new EventEmitter()
 
@@ -15,7 +15,7 @@ Order = mongoose.model 'Order'
 User = mongoose.model 'User'
 Restaurant = mongoose.model 'Restaurant'
 
-otp = require '../lib/id2otp'
+otp = require '../../lib/id2otp'
 
 router.post '/', (req, res) ->
 

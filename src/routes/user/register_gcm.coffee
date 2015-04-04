@@ -7,7 +7,7 @@ mongoose = require 'mongoose'
 User = mongoose.model 'User'
 Restaurant = mongoose.model 'Restaurant'
 
-gcm = require '../lib/gcm'
+gcm = require '../../lib/gcm'
 
 #Request: token,gcm_id, 
 ##	mode=0 for restaurant and 1 for user

@@ -13,9 +13,9 @@
 
   Order = mongoose.model('Order');
 
-  messenger = require('../lib/springedge');
+  messenger = require('../../lib/springedge');
 
-  gcm = require('../lib/gcm');
+  gcm = require('../../lib/gcm');
 
   notifyUser = function(user_id, order) {
     return User.findOne({

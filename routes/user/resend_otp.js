@@ -1,5 +1,5 @@
 (function() {
-  var Order, User, express, mongoose, router;
+  var User, express, messenger, mongoose, router, tokenize;
 
   express = require('express');
 
@@ -9,48 +9,43 @@
 
   User = mongoose.model('User');
 
-  Order = mongoose.model('Order');
+  messenger = require('../../lib/messenger_msg91');
+
+  tokenize = require('../../lib/tokenize');
 
   router.post('/', function(req, res) {
-    var orderInfo;
-    orderInfo = [];
-    if (req.body.token) {
+    if (req.body.phone && req.body.password) {
       return User.findOne({
-        token: req.body.token
+        phone: req.body.phone,
+        password: tokenize(req.body.password)
       }, function(err, user) {
+        console.log('Hmm', err, user);
         if (err) {
           return res.json({
             err: true,
             message: err
           });
         } else if (user) {
-          return Order.find({
-            user_id: user.id
-          }, function(err, orders) {
+          messenger(user.phone, 'your otp is: ' + user.otp, function(err, msg) {
             if (err) {
-              return res.json({
-                err: true,
-                message: err
-              });
-            } else {
-              return res.json({
-                err: false,
-                message: 'Orders retrieved',
-                orders: orders
-              });
+              return console.log(err);
             }
+          });
+          return res.json({
+            err: false,
+            message: 'Message Queued'
           });
         } else if (!user) {
           return res.json({
             err: true,
-            message: 'User not found'
+            message: 'No such user!'
           });
         }
       });
     } else {
       return res.json({
         err: true,
-        message: 'Missing Parameters'
+        message: 'Invalid parameters'
       });
     }
   });

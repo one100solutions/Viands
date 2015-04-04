@@ -5,9 +5,9 @@ mongoose = require 'mongoose'
 
 User = mongoose.model 'User'
 
-messenger = require '../lib/messenger_msg91'
+messenger = require '../../lib/messenger_msg91'
 
-tokenize = require '../lib/tokenize'
+tokenize = require '../../lib/tokenize'
 
 router.post '/', (req, res) ->
 

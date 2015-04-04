@@ -6,9 +6,9 @@ Restaurant = mongoose.model 'Restaurant'
 User = mongoose.model 'User'
 Order = mongoose.model 'Order'
 
-messenger = require '../lib/springedge'
+messenger = require '../../lib/springedge'
 
-gcm = require '../lib/gcm'
+gcm = require '../../lib/gcm'
 
 
 notifyUser = (user_id, order) ->
@@ -25,10 +25,7 @@ notifyUser = (user_id, order) ->
 
 		else if user
 
-			gcm(2, 'Order confirmation!!', "Your order id #{order.id} is ready", user.gcm_id)
-
-			messenger user.phone, "Hi !Your order no #{order.id} is ready", (err, body) ->
-				if err then console.log err
+			gcm(2, 'Order confirmation!!', "Your order id #{order.id} is delivered", user.gcm_id)
 
 findOrderAndComplete = (rest_id, res, order_id) ->
 
@@ -47,7 +44,7 @@ findOrderAndComplete = (rest_id, res, order_id) ->
 
 		else if order
 
-			order.complete = true
+			order.delivered = true
 
 			order.save (err) ->
 				if err
@@ -61,7 +58,7 @@ findOrderAndComplete = (rest_id, res, order_id) ->
 
 					res.json {
 						err: false
-						message: "Order updated"
+						message: "Order delivered"
 					}
 
 		else 

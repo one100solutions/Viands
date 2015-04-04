@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
 var mongoose = require('mongoose');
 
 try {
@@ -26,26 +25,27 @@ var users = require('./routes/users');
 
 var restaurants = require('./routes/restaurants');
 
-var signUp = require('./routes/signup');
-var verify = require('./routes/verify');
-var login = require('./routes/login');
-var order = require('./routes/order');
-var resend_otp = require('./routes/resend_otp');
-var get_user_orders = require('./routes/get_order_history')
-var get_credits = require('./routes/get_credits');
-var register_gcm = require('./routes/register_gcm');
-var notifications= require('./routes/notifications');
+var signUp = require('./routes/user/signup');
+var verify = require('./routes/user/verify');
+var login = require('./routes/user/login');
+var order = require('./routes/user/order');
+var resend_otp = require('./routes/user/resend_otp');
+var get_user_orders = require('./routes/user/get_order_history')
+var get_credits = require('./routes/user/get_credits');
+var register_gcm = require('./routes/user/register_gcm');
+var notifications= require('./routes/user/notifications');
+var get_account_history = require('./routes/user/account_history');
 
-var new_restaurant = require('./routes/new_restaurant');
-var login_restaurant = require('./routes/login_restaurant');
-var add_credits = require('./routes/add_credits');
-var get_orders = require('./routes/get_order');
-var order_complete = require('./routes/order_complete');
-var add_notification = require('./routes/add_notification');
-var change_menu = require('./routes/change_menu');
-var order_delivered = require('./routes/order_delivered');
+var new_restaurant = require('./routes/restaurant/new_restaurant');
+var login_restaurant = require('./routes/restaurant/login_restaurant');
+var add_credits = require('./routes/restaurant/add_credits');
+var get_orders = require('./routes/restaurant/get_order');
+var order_complete = require('./routes/restaurant/order_complete');
+var add_notification = require('./routes/restaurant/add_notification');
+var change_menu = require('./routes/restaurant/change_menu');
+var order_delivered = require('./routes/restaurant/order_delivered');
 
-var clear = require('./routes/clear_users');
+var clear = require('./routes/restaurant/clear_users');
 
 var app = express();
 
@@ -74,6 +74,8 @@ app.use('/resend_otp', resend_otp);
 app.use('/user_orders', get_user_orders);
 app.use('/get_credits', get_credits);
 app.use('/notifications', notifications);
+
+app.use('/account_history', get_account_history);
 
 app.use('/register_gcm', register_gcm);
 

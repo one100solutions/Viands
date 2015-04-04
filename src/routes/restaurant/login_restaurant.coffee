@@ -2,7 +2,7 @@ express = require 'express'
 
 router = express.Router()
 
-tokenize = require '../lib/tokenize'
+tokenize = require '../../lib/tokenize'
 
 mongoose = require 'mongoose'
 

@@ -4,7 +4,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
-var id2otp = require('../lib/id2otp');
+var id2otp = require('../../lib/id2otp');
 
 var debug = require('debug')('verify');
 
