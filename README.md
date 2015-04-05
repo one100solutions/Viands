@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/one100solutions/Viands.svg?branch=master)](https://travis-ci.org/one100solutions/Viands)
 # Viands
 Viands Retaurant api
 
