@@ -6,5 +6,4 @@ services:
 before_script:
   - npm install -g grunt-cli
   - npm install bower -g
-  - bower install
   - npm install
