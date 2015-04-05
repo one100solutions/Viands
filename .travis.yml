@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "0.12"
+services:
+  - mongodb
+before_script:
+  - npm install -g grunt-cli
+  - npm install bower -g
+  - bower install
+  - npm install
