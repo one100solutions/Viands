@@ -106,7 +106,8 @@ var UserAccount =  {
             var that = this;
             this.getUserId(token, function (response) {
                 if (response.err === false) {
-                  that._getOrders(that.phone, function (response) {
+                  console.log("Phone", this.phone);
+                  that._getOrders(this.phone, function (response) {
                       console.log('Rig', response);
                        callback(response);
                    })

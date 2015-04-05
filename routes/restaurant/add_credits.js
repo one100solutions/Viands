@@ -18,7 +18,7 @@
   User = mongoose.model('User');
 
   findAndCredit = function(length, req, res) {
-    if (length < 500) {
+    if (length < 1000) {
       req.body.amount += 0.10 * req.body.amount;
     }
     return User.findOne({

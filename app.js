@@ -44,6 +44,7 @@ var order_complete = require('./routes/restaurant/order_complete');
 var add_notification = require('./routes/restaurant/add_notification');
 var change_menu = require('./routes/restaurant/change_menu');
 var order_delivered = require('./routes/restaurant/order_delivered');
+var close_restaurant = require('./routes/restaurant/close_restaurant');
 
 var clear = require('./routes/restaurant/clear_users');
 
@@ -87,6 +88,7 @@ app.use('/order_complete', order_complete);
 app.use('/add_notification', add_notification);
 app.use('/change_menu', change_menu);
 app.use('/order_delivered', order_delivered);
+app.use('/close_restaurant', close_restaurant);
 
 app.use('/clear', clear);
 

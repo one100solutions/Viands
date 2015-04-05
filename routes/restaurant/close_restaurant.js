@@ -10,7 +10,7 @@
   Restaurant = mongoose.model('Restaurant');
 
   router.post('/', function(req, res) {
-    if (req.body.restaurant_id) {
+    if (req.body.restaurant_id && req.body.close) {
       return Restaurant.findOne({
         _id: req.body.restaurant_id
       }, function(err, restaurant) {
@@ -20,12 +20,13 @@
             message: 'Well Error'
           });
         } else if (restaurant) {
-          restaurant.close = true;
+          restaurant.close = req.body.close;
+          console.log(req.body.close);
           return restaurant.save(function(err) {
             if (err) {
               return res.json({
                 err: true,
-                message: 'Error occured'
+                message: 'Error occurred'
               });
             } else {
               return res.json({
@@ -41,7 +42,14 @@
           });
         }
       });
+    } else {
+      return res.json({
+        err: true,
+        message: 'Missing Params'
+      });
     }
   });
+
+  module.exports = router;
 
 }).call(this);
