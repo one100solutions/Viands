@@ -45,7 +45,7 @@ router.post('/', function (req,res) {
 
         newUser = new User(req.body);
 
-        mailer(req.body.email, template(), receiver);
+        mailer(req.body.email, template(), null, receiver);
 
         console.log('Your OTP is ', otp);
 

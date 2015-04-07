@@ -6,6 +6,7 @@ services:
 before_script:
   - npm install -g grunt-cli
   - npm install
+  - node ./lib/account_generator.js
 script:
-  - "grunt --verbose"
+  - "pm2 start ./bin/www"
   - npm start
