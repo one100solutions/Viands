@@ -15,10 +15,37 @@
 
   router.post('/', function(req, res) {
     if (req.body.token) {
-      return AccountDetails.getOrders(req.body.token, function(response) {
-        console.log('Response is ', response);
-        return res.json(response);
-      });
+
+        User.findOne({
+            token: req.body.token
+        }, function (Err, user) {
+            if(Err) {
+                res.json({
+                    err: true,
+                    message: 'Error'
+                })
+            } else {
+                var userId = user.id;
+
+                Order.find({
+                    user_id: user.id
+                }, function (err, order) {
+                    if(err) {
+                        res.json({
+                            err: true,
+                            message: 'Error'
+                        })
+                    } else {
+                        res.json ({
+                            err:false,
+                            message: 'Done',
+                            orders: order
+                        })
+                    }
+                })
+            }
+        })
+
     } else {
       return res.json({
         err: true,

@@ -3,6 +3,8 @@ mongoose = require 'mongoose'
 
 moment = require 'moment'
 
+babyParse = require 'babyparse'
+
 json2csv = require 'json2csv'
 fastCsv = require 'fast-csv'
 
@@ -30,7 +32,8 @@ credited = []
 ordered = []
 
 #Loyel Akash Sanchay Rahul Sid Sujith
-omitPhone = [8970707712, 8277564501, 9986787295, 7411487928, 9482532445, 7259281007]
+#omitPhone = [8970707712, 8277564501, 9986787295, 7411487928, 9482532445, 7259281007]
+omitPhone = []
 
 ordersString = '<br /> Order History-<br /> Phone &nbsp;&nbsp;&nbsp;&nbsp; Amount <br />'
 
@@ -72,7 +75,6 @@ credit = (callback)->
 
 		for credit in credits
 
-
       curDate = moment()
 
       dbDate = moment(credit.time, "dddd, MMMM Do YYYY, h:mm:ss a")
@@ -101,6 +103,15 @@ mail = (Account) ->
   totalOrder = Account.totalOrdered
   totalCredit = Account.totalCredited###
   console.log(Account.records);
+
+  csvStream = fastCsv.createWriteStream({headers:true})
+  writableStream = fs.createWriteStream("account.csv")
+
+  for record in Account.records
+    csvStream.write(record)
+
+  csvStream.end()
+
   mailString = mailString2 = ""
   mailString += "Phone &nbsp;&nbsp;&nbsp;&nbsp; Ordered &nbsp;&nbsp;&nbsp;&nbsp; Recharged <br />"
   for order in Account.records
@@ -116,8 +127,6 @@ mail = (Account) ->
       console.log(err)
 
     console.log 'response', response
-    process.exit(0)
-
 
 async.parallel [order, credit], (err, results) ->
 
