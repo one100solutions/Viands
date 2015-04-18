@@ -49,7 +49,7 @@ UserAccount.prototype.getUser = function (Phone, callback) {
 UserAccount.prototype._getOrders =  function (phone, callback) {
     Order.find({
         phone: phone
-    }, function (err, orders) {
+    }).lean().exec(function (err, orders) {
         if (err) {
             console.log('Error', err);
         }
@@ -57,7 +57,17 @@ UserAccount.prototype._getOrders =  function (phone, callback) {
         else if (orders) {
             response.err = false;
             response.message = 'Orders found';
-            response.orders = orders;
+            //response.orders = orders;
+
+            var Order = _.toArray(orders);
+            console.log(typeof Order)
+            for(var i = 0; i < Order.length; i++) {
+                Order[i].flag = true;
+            }
+
+            response.orders = Order;
+            console.log('Fucker',response.orders[0])
+
         }
 
         console.log('Res', response,'Id', this.userId)
@@ -70,7 +80,7 @@ UserAccount.prototype._getOrders =  function (phone, callback) {
 UserAccount.prototype._getCredits =  function (phone, callback) {
     Credit.find({
         phone: phone
-    }, function (err, credits) {
+    }).lean().exec(function (err, credits) {
         if(err)
         {
             console.log('Error', err);
@@ -81,6 +91,10 @@ UserAccount.prototype._getCredits =  function (phone, callback) {
             response.err = false;
             response.message = 'Orders found';
             response.credits = credits;
+
+            for(var i = 0; i < response.credits.length; i++) {
+                response.credits[i].flag = false;
+            }
         }
 
         callback(response);
@@ -105,6 +119,7 @@ UserAccount.prototype.getUserId = function (token, callback) {
         {
             response.err = false;
             response.message = 'User found';
+            response.phone = user.phone;
 
             ref.userId = user.id;
             ref.phone = user.phone;
@@ -133,8 +148,8 @@ UserAccount.prototype.getOrders = function (token, callback) {
         var that = this;
         this.getUserId(token, function (response) {
             if (response.err === false) {
-              console.log("Phone", this.phone);
-              that._getOrders(this.phone, function (response) {
+              console.log("Phone", response.phone);
+              that._getOrders(response.phone, function (response) {
                   console.log('Rig', response);
                    callback(response);
                })
@@ -164,7 +179,7 @@ UserAccount.prototype.getCredits = function (token , callback) {
         this.getUserId(token, function (response) {
             if(response.err === false)
             {
-                ref._getCredits(ref.phone, function (response) {
+                ref._getCredits(response.phone, function (response) {
                     callback(response);
                 })
             }
@@ -224,7 +239,13 @@ UserAccount.prototype.getOrderAndCredits = function (token, finalCallback) {
             finalArray = sortMomentDates(finalArray);
             response.final = finalArray;
             //response.results = results;
-            finalCallback(results);
+            console.log('Final Callback')
+
+            //Deleting credits and orders
+            delete response.credits;
+            delete response.orders;
+
+            finalCallback(response);
         }
     });
 }

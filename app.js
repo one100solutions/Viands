@@ -45,6 +45,7 @@ var add_notification = require('./routes/restaurant/add_notification');
 var change_menu = require('./routes/restaurant/change_menu');
 var order_delivered = require('./routes/restaurant/order_delivered');
 var close_restaurant = require('./routes/restaurant/close_restaurant');
+var account_info = require('./routes/restaurant/account');
 
 var clear = require('./routes/restaurant/clear_users');
 
@@ -61,6 +62,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(function (req, res, next) {
+    if(req.path === '/order'){
+        if(req.body.version >= 2) {
+            next();
+        } else {
+            res.json({
+                err: true,
+                message: 'Update the app.'
+            })
+        }
+    } else {
+        next();
+    }
+})
 
 app.use('/', routes);
 app.use('/users', users);
@@ -89,6 +106,8 @@ app.use('/add_notification', add_notification);
 app.use('/change_menu', change_menu);
 app.use('/order_delivered', order_delivered);
 app.use('/close_restaurant', close_restaurant);
+
+app.use('/account_info', account_info);
 
 app.use('/clear', clear);
 

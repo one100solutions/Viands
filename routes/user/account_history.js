@@ -15,7 +15,7 @@ function getAccount (req, res) {
     if(req.body.token)
     {
         AccountDetails.getOrderAndCredits(req.body.token, function (response) {
-            console.log(response);
+            console.log('Res',response);
             res.json(response);
         });
     }
