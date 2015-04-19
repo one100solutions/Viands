@@ -63,8 +63,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use(function (req, res, next) {
+//Will be added in the next update to block orders coming from previous versions
+/*app.use(function (req, res, next) {
     if(req.path === '/order'){
         if(req.body.version >= 2) {
             next();
@@ -77,7 +77,7 @@ app.use(function (req, res, next) {
     } else {
         next();
     }
-})
+})*/
 
 app.use('/', routes);
 app.use('/users', users);
