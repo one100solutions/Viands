@@ -13,6 +13,9 @@
 
   router.post('/', function(req, res) {
     if (req.body.restaurant_id && req.body.close) {
+
+
+
       return Restaurant.findOne({
         _id: req.body.restaurant_id
       }, function(err, restaurant) {
@@ -22,17 +25,21 @@
             message: 'Well Error'
           });
         } else if (restaurant) {
+
+            if(req.body.close === true) {
+                MailAccount.mailInfo(restaurant.token);
+            }
+
+
           restaurant.close = req.body.close;
           console.log(req.body.close);
-          return restaurant.save(function(err, rest) {
+          return restaurant.save(function(err) {
             if (err) {
               return res.json({
                 err: true,
                 message: 'Error occurred'
               });
             } else {
-
-              MailAccount.mailInfo(rest.token);
 
               return res.json({
                 err: false,
