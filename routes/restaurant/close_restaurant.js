@@ -9,6 +9,8 @@
 
   Restaurant = mongoose.model('Restaurant');
 
+  var MailAccount = require('../../lib/mailAccount');
+
   router.post('/', function(req, res) {
     if (req.body.restaurant_id && req.body.close) {
       return Restaurant.findOne({
@@ -22,13 +24,16 @@
         } else if (restaurant) {
           restaurant.close = req.body.close;
           console.log(req.body.close);
-          return restaurant.save(function(err) {
+          return restaurant.save(function(err, rest) {
             if (err) {
               return res.json({
                 err: true,
                 message: 'Error occurred'
               });
             } else {
+
+              MailAccount.mailInfo(rest.token);
+
               return res.json({
                 err: false,
                 message: 'Done!'
