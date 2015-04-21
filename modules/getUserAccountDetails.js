@@ -250,4 +250,4 @@ UserAccount.prototype.getOrderAndCredits = function (token, finalCallback) {
     });
 }
 
-module.exports = new UserAccount();
+module.exports = UserAccount;

@@ -14,7 +14,8 @@ module.exports = router;
 function getAccount (req, res) {
     if(req.body.token)
     {
-        AccountDetails.getOrderAndCredits(req.body.token, function (response) {
+        var AccInfo = new AccountDetails();
+        AccInfo.getOrderAndCredits(req.body.token, function (response) {
             console.log('Res',response);
             res.json(response);
         });
