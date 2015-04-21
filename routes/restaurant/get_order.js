@@ -32,6 +32,7 @@
                 message: err
               });
             } else if (orders) {
+              console.log('Orders receive', orders)
               return res.json({
                 err: false,
                 message: 'Orders found',
