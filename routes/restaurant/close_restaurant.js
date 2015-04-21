@@ -26,13 +26,14 @@
           });
         } else if (restaurant) {
 
-            if(req.body.close === true) {
-                MailAccount.mailInfo(restaurant.token);
+            if(req.body.close === "true") {
+		console.log("Calling mailer");
+                MailAccount.mailInfo(restaurant.admin.token);
             }
 
 
           restaurant.close = req.body.close;
-          console.log(req.body.close);
+          console.log(typeof req.body.close);
           return restaurant.save(function(err) {
             if (err) {
               return res.json({
