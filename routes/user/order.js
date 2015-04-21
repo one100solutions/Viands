@@ -33,7 +33,7 @@
     done = 0;
     console.log('Done starting', done);
     cur_user = {};
-    gcm_id = '';
+    gcm_id = [];
     req.body = JSON.parse(req.body.data);
     console.log('Hi', req.body);
     if (req.body.token) {

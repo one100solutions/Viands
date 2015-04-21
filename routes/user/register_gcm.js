@@ -56,7 +56,7 @@
             message: 'Error ocurred'
           });
         } else if (restaurant) {
-          restaurant.gcm_id = req.body.gcm_id;
+          restaurant.gcm_id.push(req.body.gcm_id);
           return restaurant.save(function(err) {
             if (err) {
               return res.json({
