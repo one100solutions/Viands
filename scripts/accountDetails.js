@@ -7,20 +7,20 @@ var MailAccount = require('../lib/mailAccount');
 var dateForAccount = {};
 
 //For April
-for (var i = 29; i < 31; i++) {
+// for (var i = 29; i < 31; i++) {
 		dateForAccount.year = 2015;
-		dateForAccount.month = 4;
-		dateForAccount.day = i;
+		dateForAccount.month = process.argv[2];
+		dateForAccount.day = process.argv[3];
 		
-		MailAccount.mailInfo(ogaraFoodCourtToken, dateForAccount);
-}
 
+		console.log("Month",process.argv[2]," Day ", process.argv[3]);
+		MailAccount.mailInfo(ogaraFoodCourtToken, dateForAccount);
+//}
+/*
 for (var i = 1; i < 20; i++) {
 		dateForAccount.year = 2015;
 		dateForAccount.month = 5;
 		dateForAccount.day = i;
 		
 		MailAccount.mailInfo(ogaraFoodCourtToken, dateForAccount);
-}
-
-process.exit(0);
+}*/
