@@ -14,8 +14,6 @@
   router.post('/', function(req, res) {
     if (req.body.restaurant_id && req.body.close) {
 
-
-
       return Restaurant.findOne({
         _id: req.body.restaurant_id
       }, function(err, restaurant) {
@@ -27,8 +25,8 @@
         } else if (restaurant) {
 
             if(req.body.close === "true") {
-		console.log("Calling mailer");
-                MailAccount.mailInfo(restaurant.admin.token);
+		        console.log("Calling mailer");
+                MailAccount.mailInfo(restaurant.admin.token, null);
             }
 
 

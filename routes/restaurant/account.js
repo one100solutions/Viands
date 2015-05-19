@@ -18,7 +18,7 @@ router.post('/', function (req, res, next) {
                 next(err);
             }
             else if (rest) {
-                Account(function (err, accountInfo) {
+                Account(null, function (err, accountInfo) {
                     console.log('Got sth', accountInfo);
                     res.json({
                         err: false,
