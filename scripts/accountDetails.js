@@ -22,3 +22,5 @@ for (var i = 1; i < 20; i++) {
 		
 		MailAccount.mailInfo(ogaraFoodCourtToken, dateForAccount);
 }
+
+process.exit(0);
