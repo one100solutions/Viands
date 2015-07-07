@@ -81,6 +81,25 @@ app.use(express.static(path.join(__dirname, 'public')));
     }
 })*/
 
+/**
+*
+* V2 Api
+*
+**/
+
+app.use('/v2/restaurants', require('./routes/v2/restaurant'));
+
+
+
+/**
+*
+* v1 Api
+*
+**/
+
+
+
+
 app.use('/', routes);
 app.use('/users', users);
 
