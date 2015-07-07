@@ -88,7 +88,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 **/
 
 app.use('/v2/restaurants', require('./routes/v2/restaurant'));
-
+app.use('/v2/menu', require('./routes/v2/restaurantMenu'));
 
 
 /**
