@@ -91,6 +91,8 @@ app.use('/v2/restaurants', require('./routes/v2/restaurant'));
 app.use('/v2/menu', require('./routes/v2/restaurantMenu'));
 
 
+
+
 /**
 *
 * v1 Api
@@ -131,6 +133,16 @@ app.use('/close_restaurant', close_restaurant);
 app.use('/account_info', account_info);
 
 app.use('/clear', clear);
+
+/**
+*
+* Admin managemnet
+*
+**/
+
+app.use('/admin', require('./routes/admin/addRestaurant'));
+
+app.use('/admin_login', require('./routes/admin/login.js'));
 
 app.use('/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt', function (req, res) {
     res.sendFile(__dirname + '/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt');

@@ -1,0 +1,62 @@
+<h1 class="h1"> Create a restaurant </h1>
+
+ <span class="label label-default">
+ 	{{CreateRest.text}}
+ </span>
+
+<form class="form-horizontal" ng-submit="CreateRest.submit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" ng-model="CreateRest.rest.name" id="name" placeholder="Name of restaurant">
+  </div>
+
+    <div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" class="form-control" ng-model="CreateRest.rest.location" id="location" placeholder="Location of restaurant">
+  </div>
+
+      <div class="form-group">
+    <label for="latitude">Latitude</label>
+    <input type="text" class="form-control" ng-model="CreateRest.rest.lat" id="latitude" placeholder="Latitude of restaurant">
+  </div>
+
+      <div class="form-group">
+    <label for="longitude">Longitude</label>
+    <input type="text" class="form-control" ng-model="CreateRest.rest.lng" id="longitude" placeholder="Longitude of restaurant">
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="password" class="form-control" id="phone" ng-model="CreateRest.rest.phone" placeholder="Phone of contact">
+  </div>
+
+      <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" ng-model="CreateRest.rest.username" id="username" placeholder="Username of restaurant">
+  </div>
+
+  	    <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" ng-model="CreateRest.rest.password" id="password" placeholder="Password of restaurant">
+  </div>
+
+   	    <div class="form-group">
+    <label for="confirm-password">Confirm Password</label>
+    <input type="password" class="form-control" ng-model="CreateRest.rest.confirm_password" id="confirm-password" placeholder="Password of restaurant">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputFile">Upload csv Menu</label>
+    <input type="file" accept=".csv" id="exampleInputFile">
+    <p class="help-block">Ensure the correct field as per doc</p>
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleInputFile">Upload the zipped image</label>
+    <input type="file" accept=".zip" id="exampleInputFile">
+    <p class="help-block">Ensure correct format</p>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

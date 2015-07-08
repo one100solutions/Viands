@@ -35,7 +35,7 @@ Viands Retaurant api
    * err:  
    * message:
    * user:
-
+>Deprecated
 > ##GET _/restaurants_  
 >>  
 
