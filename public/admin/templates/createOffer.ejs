@@ -1,3 +1,39 @@
-<h1>Create Offer</h1>
+<h1>Create Banner</h1>
 
 <span>{{CreateOffer.text}}</span>
+
+<form class="form-horizontal" method="post" enctype="multipart/form-data" ng-submit="CreateOffer.submit()">
+	<div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" ng-model="CreateOffer.offer.name" id="name" placeholder="Name of offer">
+  </div>
+
+  <div class="form-group">
+    <label for="name">Url</label>
+    <input type="text" class="form-control" ng-model="CreateOffer.offer.url" id="name" placeholder="url for the offer">
+  </div>
+
+    <div class="form-group">
+    <label for="name">Description</label>
+    <input type="text" class="form-control" ng-model="CreateOffer.offer.desc" id="name" placeholder="description for the offer">
+  </div>
+
+    <div class="form-group">
+    <label for="name">Points</label>
+    <input type="number" class="form-control" ng-model="CreateOffer.offer.points" id="name" placeholder="point to claim the offer">
+  </div>
+
+    <div class="form-group">
+    <label for="name">Terms And Condition</label>
+    <input type="text" class="form-control" ng-model="CreateOffer.offer.terms" id="name" placeholder="terms and cond for the offer">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputFile">Upload the offer image</label>
+    <input type="file" ngf-select ng-model="files" id="exampleInputFile">
+    <p class="help-block">Ensure correct format</p>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+
+</form>

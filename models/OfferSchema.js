@@ -7,7 +7,8 @@ var OfferSchema = new mongoose.Schema({
 	logo: String,
 	desc: String,
 	points: Number,
-	terms: String
+	terms: String,
+	url: String
 });
 
 mongoose.model('Offer', OfferSchema);
