@@ -8,7 +8,8 @@ var OfferSchema = new mongoose.Schema({
 	desc: String,
 	points: Number,
 	terms: String,
-	url: String
+	url: String,
+	couponCode: String
 });
 
 mongoose.model('Offer', OfferSchema);

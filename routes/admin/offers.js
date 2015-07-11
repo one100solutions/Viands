@@ -46,6 +46,7 @@ router.post('/createOffer', function  (req, res, next) {
 			b.points = req.body.points;
 			b.terms = req.body.terms;
 			b.url = req.body.url;
+			b.couponCode = req.body.couponCode;
 
 			b.save(function  (err, b) {
 
