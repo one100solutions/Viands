@@ -8,7 +8,7 @@ angular.module('viands-admin')
 		console.log("R", Create.rest)
 		
 		if (Create.rest && Create.rest.location && Create.rest.name &&
-			Create.rest.latitude && Create.rest.longitude && Create.rest.phone 
+			Create.rest.lat && Create.rest.lng && Create.rest.phone 
 			&& Create.rest.username && Create.rest.password && Create.rest.confirm_password) {
 
 				console.log("d",Create.rest);
