@@ -71,11 +71,21 @@ router.post('/', function  (req, res) {
 		}
 
 		if (k == 2) {
-			makeRestaurant(menu, req.body.data);
-			res.json({
-				err: false,
-				msg: 'Added successfully'
-			})
+			makeRestaurant(menu, req.body.data, function  (err) {
+				// body...
+				if (err) {
+					res.json({
+						err: true,
+						msg: err
+					})
+				}else {
+					res.json({
+						err: false,
+						msg: 'Added successfully'
+					})
+				}
+			});
+			
 		}
 	}
 
@@ -142,7 +152,10 @@ function makeRestaurant (menu, body, cb) {
 		if(err) {
 			cb(err);
 		} else {
+			console.log(body);
 			var r = {}
+
+			body = JSON.parse(body);
 
 			r.name = body.name;
 			r.sno = rests.length;
@@ -155,6 +168,7 @@ function makeRestaurant (menu, body, cb) {
 			r.phone = body.number;
 			r.close = true;
 			r.menu = menu;
+			r.description = body.description || "";
 
 			r.admin = {
 				username: body.usename,
@@ -172,6 +186,10 @@ function makeRestaurant (menu, body, cb) {
 
 			var rest = new Restaurant(r);
 			rest.save();
+
+			delete r.menu;
+			console.log('a',r)
+			cb("successfully")
 		}
 	})
 
