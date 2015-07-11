@@ -54,7 +54,7 @@ router.post('/createBanner', function  (req, res) {
 		var s3 = new AWS.S3();
 		s3.putObject({
 			Bucket: 'viands',
-			Key: req.body.name,
+			Key: 'banners/' + file.name,
 			Body: stream
 		}, function  (err) {
 			if (err) {
@@ -62,30 +62,32 @@ router.post('/createBanner', function  (req, res) {
 					err: true,
 					msg: err
 				})
-			};
+			}
 
-			console.log('Done')
-			var b = new Banner();
-		b.name = req.body.name;
-		b.url = req.body.url;
-		b.pic = req.body.name;
+			else {
+				var b = new Banner();
+			
+				b.name = req.body.name;
+				b.url = req.body.url;
+				b.pic = file.name;
 
-		b.save(function  (err, b) {
+				b.save(function  (err, b) {
 
-			if (err) {
-				res.json({
-					err: true,
-					msg: err
-				})
-			}else {
+					if (err) {
+						res.json({
+							err: true,
+							msg: err
+						})
+					}else {
 
-			res.json({
-				err: false,
-				msg: 'Done',
-				banner: b
-			})
-		}
-		});
+					res.json({
+						err: false,
+						msg: 'Done',
+						banner: b
+					})
+				}
+				});
+			}
 		})
 	});
 

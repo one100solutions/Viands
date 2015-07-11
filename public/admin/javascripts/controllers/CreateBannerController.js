@@ -19,9 +19,11 @@ angular.module('viands-admin')
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     Banner.text = 'progress: ' + progressPercentage + '% ';
                 }).success(function (data, status, headers, config) {
-                    Banner.text = 'file ' + config.file.name + 'uploaded. Response: ' ,data;
+                	console.log(data);
+                    Banner.text = 'file ' + config.file.name + 'uploaded. Response: ' + data.msg;
                 }).error(function (data, status, headers, config) {
                     Banner.text = 'error status: ' + status;
+                    console.log(data)
                 })
 		}
 	}
