@@ -145,6 +145,15 @@
               console.log('Order id bioh', order.id);
               console.log('cURRENT USER IS ', cur_user);
               cur_user.credits -= req.body.total_cost;
+
+              /**
+              *
+              * Add points 
+              *
+              **/
+              
+              cur_user.points += Math.floor(req.body.total_cost / 5);
+
               cur_user.save(function(err, user) {
                 console.log('Error while saving user', err);
                 console.log('Done is ', done);
