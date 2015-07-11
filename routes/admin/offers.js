@@ -131,8 +131,8 @@ router.post('/createBanner', function  (req, res) {
 				var b = new Banner();
 			
 				b.name = req.body.name;
-				b.url = 'banners/' + req.body.url;
-				b.pic = file.name;
+				b.url =  req.body.url;
+				b.pic = 'banners/' + file.name;
 
 				b.save(function  (err, b) {
 
