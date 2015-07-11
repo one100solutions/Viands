@@ -83,6 +83,33 @@ Viands Retaurant api
    * message:  
    * orders: 
 
+
+> ##GET _/offers/banners
+>> * Request:
+
+>> * Response:  
+   * err:  
+   * message:  
+   * banners: name, url, pic
+
+
+> ##POST _/offers/rewards 
+>> * Request: 
+
+>> * Response:  
+   * err:  
+   * message:  
+   * rewards: logo, name, id
+
+> ##POST _/offers/reward  
+>> * Request:
+
+>> * Response:  
+   * err:  
+   * message:  
+   * reward: logo, name, desc, points, terms
+   
+
 ##RESTAURANT API
 
 > ##

@@ -20,8 +20,8 @@ require('./models/RestaurantSchema');
 require('./models/UserSchema');
 require('./models/CreditSchema');
 require('./models/NotificationSchema');
-
-
+require('./models/BannerSchema');
+require('./models/OfferSchema');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -63,8 +63,9 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -108,6 +109,7 @@ app.use('/v2/menu', require('./routes/v2/restaurantMenu'));
 
 
 app.use('/', routes);
+app.use('/offers', require('./routes/user/offers'));
 app.use('/users', users);
 
 app.use('/restaurants', restaurants);
@@ -148,6 +150,8 @@ app.use('/clear', clear);
 app.use('/admin', require('./routes/admin/addRestaurant'));
 
 app.use('/admin_login', require('./routes/admin/login.js'));
+app.use('/admin/offers', require('./routes/admin/offers.js'))
+
 
 app.use('/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt', function (req, res) {
     res.sendFile(__dirname + '/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt');

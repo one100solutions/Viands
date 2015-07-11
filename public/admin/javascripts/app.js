@@ -21,5 +21,24 @@ angular.module('viands-admin',['ui.router', 'ngFileUpload'])
         	templateUrl: '/admin/templates/create.ejs',
         	controller: 'CreateRestController as CreateRest'
         })
+
+        .state('dashboard.createOffer', {
+            url: '/dashboard/offer',
+            templateUrl: '/admin/templates/createOffer.ejs',
+            controller: 'CreateOfferController as CreateOffer'
+        } )
+
+        .state('dashboard.createBanner', {
+            url: '/dashboard/banner',
+            templateUrl: '/admin/templates/createBanner.ejs',
+            controller: 'CreateBannerController as CreateBanner'
+        })
     ;
 });
+
+
+/**
+
+git rm -r --cached .
+
+**/
