@@ -40,6 +40,7 @@ router.post('/', function (req,res) {
         req.body.otp = otp;
 
         req.body.credits = 0;
+        req.body.points = 0;
 
         req.body.password = tokenize(req.body.password)
 
