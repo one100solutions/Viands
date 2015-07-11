@@ -21,6 +21,8 @@ angular.module('viands-admin')
                 }).success(function (data, status, headers, config) {
                 	console.log(data);
                     Offer.text = 'file ' + config.file.name + 'uploaded. Response: ' + data.msg;
+                    Offer.text = "Offer";
+                    Offer.offer = {};
                 }).error(function (data, status, headers, config) {
                     Offer.text = 'error status: ' + status;
                     console.log(data)

@@ -21,6 +21,8 @@ angular.module('viands-admin')
                 }).success(function (data, status, headers, config) {
                 	console.log(data);
                     Banner.text = 'file ' + config.file.name + 'uploaded. Response: ' + data.msg;
+                    Banner.text = "Banner";
+                    Banner.banner = {};
                 }).error(function (data, status, headers, config) {
                     Banner.text = 'error status: ' + status;
                     console.log(data)
