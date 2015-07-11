@@ -131,6 +131,8 @@ function workCsv (csvFile, cb) {
 					return v;
 				}
 			});
+
+			data.available = true;
 			menu.push(data);
 		})
 		.on('end', function  () {
