@@ -4,7 +4,7 @@
  	{{CreateRest.text}}
  </span>
 
-<form class="form-horizontal" ng-submit="CreateRest.submit()">
+<form class="form-horizontal" method="post" enctype="multipart/form-data" ng-submit="CreateRest.submit()">
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" ng-model="CreateRest.rest.name" id="name" placeholder="Name of restaurant">
@@ -47,14 +47,14 @@
 
   <div class="form-group">
     <label for="exampleInputFile">Upload csv Menu</label>
-    <input type="file" accept=".csv" id="exampleInputFile">
+    <input type="file" ngf-select ng-model="fileCsv" accept=".csv" id="exampleInputFile">
     <p class="help-block">Ensure the correct field as per doc</p>
   </div>
 
 
   <div class="form-group">
     <label for="exampleInputFile">Upload the zipped image</label>
-    <input type="file" accept=".zip" id="exampleInputFile">
+    <input type="file" ngf-select ng-model="files" id="exampleInputFile">
     <p class="help-block">Ensure correct format</p>
   </div>
 

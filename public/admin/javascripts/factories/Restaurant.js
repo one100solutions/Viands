@@ -3,7 +3,7 @@ angular.module('viands-admin')
 	// body...
 	return {
 		create: function  (data) {
-			return $http.post('/create_restaurant', data)
+			return $http.post('/admin', data)
 		}
 	}
 })

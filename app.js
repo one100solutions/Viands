@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors')
 var mongoose = require('mongoose');
+var multer = require('multer');
 
 try {
     mongoose.connect('mongodb://localhost/viands');
@@ -19,6 +20,8 @@ require('./models/RestaurantSchema');
 require('./models/UserSchema');
 require('./models/CreditSchema');
 require('./models/NotificationSchema');
+
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -64,6 +67,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(multer({ dest: __dirname + '/uploads/'}))
 
 //Will be added in the next update to block orders coming from previous versions
 /*app.use(function (req, res, next) {

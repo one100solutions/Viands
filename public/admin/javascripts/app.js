@@ -1,4 +1,4 @@
-angular.module('viands-admin',['ui.router'])
+angular.module('viands-admin',['ui.router', 'ngFileUpload'])
 
 .config( function  ($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/home');
