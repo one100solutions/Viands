@@ -153,7 +153,7 @@ app.use('/admin_login', require('./routes/admin/login.js'));
 app.use('/admin/offers', require('./routes/admin/offers.js'))
 
 
-app.use('/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt', function (req, res) {
+app.use('/loaderio-af6262aadfd3deef140e53013a8d5fda.txt', function (req, res) {
     res.sendFile(__dirname + '/loaderio-af6262aadfd3deef140e53013a8d5fda.txt');
 })
 
