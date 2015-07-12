@@ -153,8 +153,8 @@ app.use('/admin_login', require('./routes/admin/login.js'));
 app.use('/admin/offers', require('./routes/admin/offers.js'))
 
 
-app.use('/loaderio-af6262aadfd3deef140e53013a8d5fda.txt', function (req, res) {
-    res.sendFile(__dirname + '/loaderio-af6262aadfd3deef140e53013a8d5fda.txt');
+app.use('/loaderio-dd4293340c21327d3e3e64a3cb850d21.txt', function (req, res) {
+    res.sendFile(__dirname + '/loaderio-dd4293340c21327d3e3e64a3cb850d21.txt');
 })
 
 // catch 404 and forward to error handler
