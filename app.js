@@ -154,7 +154,7 @@ app.use('/admin/offers', require('./routes/admin/offers.js'))
 
 
 app.use('/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt', function (req, res) {
-    res.sendFile(__dirname + '/loaderio-79538724dd457cf0bda31c435e0cdfbe.txt');
+    res.sendFile(__dirname + '/loaderio-af6262aadfd3deef140e53013a8d5fda.txt');
 })
 
 // catch 404 and forward to error handler

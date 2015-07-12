@@ -2,9 +2,12 @@ var express = require('express');
 var fs = require('fs');
 var csv = require('fast-csv');
 var _ = require('underscore');
+var unzip = require('unzip');
+
 var mongoose = require('mongoose');
 
 var Restaurant = mongoose.model('Restaurant');
+
 
 var router = express.Router();
 
@@ -15,6 +18,8 @@ router.get('/', function  (req, res) {
 router.post('/', function  (req, res) {
 	console.log('Here',	req.files);
 	console.log('Body', req.body);
+
+	var d = JSON.parse(req.body.data);
 
 	var zipFile = {};
 	var csvFile = {};
@@ -52,7 +57,7 @@ router.post('/', function  (req, res) {
 			consolidate(err);
 		})
 
-		workZip(zipFile, function  (err) {
+		workZip(zipFile, d.name , function  (err) {
 			consolidate(err);
 		})
 	}
@@ -144,8 +149,31 @@ function workCsv (csvFile, cb) {
 
 }
 
-function workZip (zipFile, cb) {
-	cb(null);
+function workZip (zipFile, name, cb) {
+
+	console.log('Xipfile', zipFile)
+
+	var stream = fs.createReadStream(zipFile.path);
+
+	console.log('Name', name)
+
+	var extPath = __dirname + '/../../images/' + name;
+
+	var extract = unzip.Extract({
+		path: extPath
+	});
+
+	extract.on('close', function  () {
+		console.log('DOne ');
+		cb(null);
+	});
+
+	extract.on('error', function  (err) {
+		console.log('Eror', err)
+		cb(true);
+	});
+
+	stream.pipe(extract);
 }
 
 function makeRestaurant (menu, body, cb) {

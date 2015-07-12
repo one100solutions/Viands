@@ -31,6 +31,7 @@
     "twilio": "^1.11.1",
     "underscore": "^1.8.2",
     "unirest": "^0.4.0",
+    "unzip": "^0.1.11",
     "xlsx-to-json": "^0.2.3"
   },
   "devDependencies": {
