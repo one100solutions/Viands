@@ -23,13 +23,13 @@ angular.module('viands-admin',['ui.router', 'ngFileUpload'])
         })
 
         .state('dashboard.createOffer', {
-            url: '/dashboard/offer',
+            url: '/offer',
             templateUrl: '/admin/templates/createOffer.ejs',
             controller: 'CreateOfferController as CreateOffer'
         } )
 
         .state('dashboard.createBanner', {
-            url: '/dashboard/banner',
+            url: '/banner',
             templateUrl: '/admin/templates/createBanner.ejs',
             controller: 'CreateBannerController as CreateBanner'
         })

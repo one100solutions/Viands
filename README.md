@@ -93,21 +93,21 @@ Viands Retaurant api
    * banners: name, url, pic
 
 
-> ##POST _/offers/rewards 
+> ##GET _/offers/rewards
 >> * Request: 
 
 >> * Response:  
    * err:  
    * message:  
-   * rewards: logo, name, id
+   * rewards:
 
-> ##POST _/offers/reward  
+> ##POST _/forgot
 >> * Request:
+   * email:
 
->> * Response:  
-   * err:  
-   * message:  
-   * reward: logo, name, desc, points, terms
+>> * Response:
+   * err:
+   * msg:
    
 
 ##RESTAURANT API

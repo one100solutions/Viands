@@ -1,4 +1,3 @@
-(function() {
   var User, express, mongoose, router, tokenize;
 
   express = require('express');
@@ -65,4 +64,3 @@
 
   module.exports = router;
 
-}).call(this);

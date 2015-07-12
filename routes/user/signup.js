@@ -28,7 +28,7 @@ router.post('/', function (req,res) {
       res.json({
         err: true,
         message: 'Uh Oh! Error occured!!'
-      })
+      });
     } else if(!user){
       if (req.body.phone && req.body.email) {
 

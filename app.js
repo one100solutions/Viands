@@ -123,6 +123,12 @@ app.use('/user_orders', get_user_orders);
 app.use('/get_credits', get_credits);
 app.use('/notifications', notifications);
 
+/**
+ * new additions
+ */
+app.use('/forgot', require('./routes/user/forgot_password'));
+app.use('/reset', require('./routes/user/reset'));
+
 app.use('/account_history', get_account_history);
 
 app.use('/register_gcm', register_gcm);
