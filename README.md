@@ -109,6 +109,18 @@ Viands Retaurant api
    * err:
    * msg:
    
+> ##POST _/edit_profile
+>> * Request:
+   * email:
+   * name:
+   * password:
+   * token:
+
+>> * Response:
+   * err:
+   * msg:
+   * user:
+   
 
 ##RESTAURANT API
 
