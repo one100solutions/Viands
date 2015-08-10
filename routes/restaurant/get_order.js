@@ -45,7 +45,11 @@
 
               //filter the orders
               orders = orders.filter(function  (order) {
-                if (order.type === 'later') {
+
+                if(order.cancel === true) {
+                  return false;
+                }
+                else if (order.type === 'later') {
                   var order_time = new moment(order.time_deliver,'HH:mm').add(5, 'hours').add(30, 'minutes').subtract(10,'minutes');
                   console.log("Order",order_time.format())
                   if (order_time.isBefore(now) || order_time.isSame(now)) {

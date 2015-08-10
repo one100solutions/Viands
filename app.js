@@ -130,6 +130,17 @@ app.use('/forgot', require('./routes/user/forgot_password'));
 app.use('/reset', require('./routes/user/reset'));
 app.use('/edit_profile', require('./routes/user/edit_profile'));
 
+
+/**
+*
+* restaurant api additions
+*
+**/
+
+app.use('/cancel_order', require('./routes/restaurant/cancel_order'));
+
+
+
 app.use('/account_history', get_account_history);
 
 app.use('/register_gcm', register_gcm);

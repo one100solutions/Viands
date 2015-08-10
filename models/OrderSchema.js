@@ -21,7 +21,8 @@ var OrderSchema = new mongoose.Schema ({
     }
   ],
   type: String,
-  complete: Boolean
+  complete: Boolean,
+  cancel: Boolean
 });
 
 mongoose.model('Order', OrderSchema);
