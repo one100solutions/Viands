@@ -129,7 +129,7 @@ app.use('/notifications', notifications);
 app.use('/forgot', require('./routes/user/forgot_password'));
 app.use('/reset', require('./routes/user/reset'));
 app.use('/edit_profile', require('./routes/user/edit_profile'));
-
+app.use('/cancel_order_user', require('./routes/user/cancel_order_user'));
 
 /**
 *

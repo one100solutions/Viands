@@ -14,7 +14,7 @@ var templatesDir = __dirname +  '/../../templates/' + 'forgot-password';
 *todo   add handler for reset password
 **/
 
-var url = "http://localhost/reset?id=";
+var url = "http://viands.in/reset?id=";
 
 function mailLink (email, text, cb) {
     mailer(email, text, null, function (err, info) {
