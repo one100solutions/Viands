@@ -7,6 +7,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
+var tokenize = require('../../lib/tokenize');
+
 router.post('/', function (req, res) {
     if (req.body.token) {
         User.findOne({
@@ -20,9 +22,10 @@ router.post('/', function (req, res) {
             }
 
             else if (user) {
+                console.log('Gng to change password')
                 user.email = req.body.email;
                 user.name = req.body.name;
-                user.password = req.body.password;
+                user.password = tokenize(req.body.password);
 
                 user.save(function (err, user) {
                     if(err) {
