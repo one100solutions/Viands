@@ -53,7 +53,7 @@ router.post('/', function  (req, res, next) {
 
 						var order_time = new moment(order.time_deliver,'HH:mm').subtract(10,'minutes');
 	                  	console.log("Order",order_time.format())
-	                  	if (order_time.isBefore(now)) {
+	                  	if (order_time.isAfter(now)) {
 	                  		//can be cancelled
 	                  		//cancel the order
          				   	order.cancel = true;
