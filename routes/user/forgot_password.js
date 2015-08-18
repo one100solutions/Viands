@@ -34,6 +34,7 @@ router.post('/', function  (req, res) {
         var resetPasswordTemplate = new EmailTemplate(templatesDir);
 
         User.findOne({
+            phone: req.body.phone,
             email: req.body.email
         }, function (err, user) {
             if(err) {
@@ -46,7 +47,7 @@ router.post('/', function  (req, res) {
             else if(!user) {
                 res.json({
                     err: true,
-                    msg: err
+                    msg: "No such user"
                 });
             }
 
