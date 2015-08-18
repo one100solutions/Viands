@@ -153,7 +153,7 @@
               * Add points 
               *
               **/
-              
+              cur_user.points = cur_user.points || 0;
               cur_user.points += Math.floor(req.body.total_cost / 5);
 
               cur_user.save(function(err, user) {
