@@ -19,7 +19,7 @@ router.post('/', function  (req, res, next) {
 			if(err || !user) {
 				res.json({
 					err: true,
-					message: 'No Such user'
+					message: 'No Such user.'
 				})
 			} else if(user) {
 
@@ -31,7 +31,7 @@ router.post('/', function  (req, res, next) {
 				if (o_ids.indexOf(req.body.order_id) === -1) {
 					res.json({
 						err: true,
-						message: 'You did not order this'
+						message: 'You did not order this.'
 					})
 					return;
 				};
@@ -45,7 +45,7 @@ router.post('/', function  (req, res, next) {
 					if(err || !order) {
 						res.json({
 							err: true,
-							message: 'No such order'
+							message: 'No such order.'
 						})
 					} else if(order && order.type === 'later' && order.complete === false) {
 						//check if it is already on tablet
@@ -64,32 +64,32 @@ router.post('/', function  (req, res, next) {
                     		user.save();
 
                				 gcm(8, 'Order '+ req.body.order_id +' Cancelled',
-                    			 'Your order has been Cancelled and credits refunded', user.gcm_id);
+                    			 'Your order has been Cancelled and credits refunded.', user.gcm_id);
                				 order.save();
 
                				 res.json({
                				 	err: false,
-               				 	message: 'Order cancelled'
+               				 	message: 'Order cancelled.'
                				 })
 
 	                  	} else {
 	                  		//no cancelleation
 	                    	res.json({
 	                    		err: true,
-	                    		message: 'The time for cancellation is over'
+	                    		message: 'The time for cancellation is over.'
 	                    	})
 	                  	}
 					} else {
 						res.json({
 							err: true,
-							message: 'Such orders cannot be cancelled'
+							message: 'Such orders cannot be cancelled.'
 						})
 					}
 				})
 			} else {
 				res.json({
 					err: true,
-					message: 'You did not order this'
+					message: 'You did not order this.'
 				})
 			}
 		})
@@ -97,7 +97,7 @@ router.post('/', function  (req, res, next) {
 	} else {
 		res.json({
 			err: true,
-			message: 'Missing Params'
+			message: 'Missing Params.'
 		})
 	}
 });
