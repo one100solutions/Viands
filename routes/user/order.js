@@ -54,6 +54,22 @@
               message: 'Restaurant closed'
             });
             return;
+          } else if (req.body.time_deliver) {
+            //check if order can be done
+            var now = new moment().add(5, 'hours').add(30, 'minutes').add(15, 'minutes');
+
+            var order_time = new moment(order.time_deliver,'HH:mm');
+
+            if(order_time.isBefore(now)) {
+              res.json({
+                err: true,
+                message: "We think this order should go in 'Order now' else order for after 20 minutes."
+              });
+              return;
+            }
+
+
+
           }
           gcm_id = rest.gcm_id;
           restaurant = rest;
