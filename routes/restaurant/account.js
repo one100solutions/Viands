@@ -4,6 +4,7 @@
 var express = require('express');
 var router = express.Router();
 
+var moment = require('moment');
 var mongoose = require('mongoose');
 var Restaurant = mongoose.model('Restaurant');
 
@@ -18,7 +19,11 @@ router.post('/', function (req, res, next) {
                 next(err);
             }
             else if (rest) {
-                Account(null, function (err, accountInfo) {
+                Account({
+		  year:req.body.year,
+		  month: req.body.month,
+		  day: req.body.day	
+		}, function (err, accountInfo) {
                     console.log('Got sth', accountInfo);
                     res.json({
                         err: false,

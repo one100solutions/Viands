@@ -25,7 +25,10 @@ router.post('/', function (req, res) {
                 console.log('Gng to change password')
                 user.email = req.body.email;
                 user.name = req.body.name;
-                user.password = tokenize(req.body.password);
+		if (req.body.password) {
+			user.password = tokenize(req.body.password);
+		} 
+                
 
                 user.save(function (err, user) {
                     if(err) {

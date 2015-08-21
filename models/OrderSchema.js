@@ -17,7 +17,10 @@ var OrderSchema = new mongoose.Schema ({
     {
       id: String,
       quantity: Number,
-      complete: Boolean
+      complete: Boolean,
+      name: String,
+      category: String,
+      sno: Number	
     }
   ],
   type: String,
