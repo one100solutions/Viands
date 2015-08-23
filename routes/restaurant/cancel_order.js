@@ -49,7 +49,7 @@
                     user.credits += amt;
                     user.save();
 
-                    gcm(8, 'Order '+ req.body.order_id +' Cancelled',
+                    gcm(4, 'Order '+ req.body.order_id +' Cancelled',
                      'Your order has been Cancelled and credits refunded', user.gcm_id);
 
                     res.json({

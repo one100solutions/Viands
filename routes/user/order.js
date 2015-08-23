@@ -54,12 +54,12 @@
               message: 'Restaurant closed'
             });
             return;
-          } else if (req.body.time_deliver) {
+          } else if (req.body.order.time_deliver) {
             //check if order can be done
             var now = new moment().add(5, 'hours').add(30, 'minutes').add(15, 'minutes');
 
-            var order_time = new moment(order.time_deliver,'HH:mm');
-
+            var order_time = new moment(req.body.order.time_deliver,'HH:mm');
+	    console.log('wuhfweu',now.format(),'w',order_time);		
             if(order_time.isBefore(now)) {
               res.json({
                 err: true,
