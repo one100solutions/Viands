@@ -135,6 +135,7 @@
           console.log('Ordering');
           console.log('request body2', req.body.order.items);
           console.log('Id is .wjkvdgy', otp(123, true, 8));
+          //added cancel check for dependencies
           newOrder = new Order({
             id: otp(123, true, 8),
             time: new moment().add(5, 'hours').add(30, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a"),
@@ -147,7 +148,8 @@
             phone: cur_user.phone,
             total_amount: req.body.total_cost,
             complete: false,
-            delivered: false
+            delivered: false,
+            cancel: false
           });
           return newOrder.save(function(error, order) {
             console.log('Error in saving', error);

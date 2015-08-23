@@ -1,5 +1,5 @@
 (function() {
-  var Restaurant, express, mongoose, router;
+  var Restaurant, express, mongoose, router, Order;
 
   express = require('express');
 
@@ -8,6 +8,9 @@
   mongoose = require('mongoose');
 
   Restaurant = mongoose.model('Restaurant');
+  Order = mongoose.model('Order');
+
+  var request = require('request');
 
   var MailAccount = require('../../lib/mailAccount');
 
@@ -29,6 +32,44 @@
                 MailAccount.mailInfo(restaurant.admin.token, null);
             }
 
+            //cancel all the preorders
+            
+            Order.find({
+              type: 'later',
+              delivered: false,
+              complete: false,
+              cancel: false
+            },function  (err, orders) {
+              if (err) {
+                console.log('Mahanta',err)
+                return
+              } else if(orders && orders.length > 0) {
+                orders.forEach(function  (order) {
+                  order.cancel = true;
+
+                  var amt = order.total_amount;
+
+                  User.findOne({
+                    id: order.user_id
+                  }, function  (err, user) {
+                    if(err) { console.log(err) }
+                    else if(user) {
+                      //refund the credits
+                      user.credits += amt;
+                      user.save();
+
+                      gcm(4, 'Order '+ req.body.order_id +' Cancelled',
+                       'Your order has been Cancelled and credits refunded', user.gcm_id);
+                    }
+                  })
+
+                  order.save(); 
+                });
+
+              } else {
+                console.log("No orders");
+              }
+            })
 
           restaurant.close = req.body.close;
           console.log(typeof req.body.close);
