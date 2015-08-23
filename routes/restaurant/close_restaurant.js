@@ -46,7 +46,17 @@ var gcm = require('../../lib/gcm');
                 console.log('Mahanta',err)
                 return
               } else if(orders && orders.length > 0) {
-                orders.forEach(function  (order) {
+                var funcToCall = orders.map(function  (order) {
+                  return function (next) {
+                          cancelOrder(order, next);
+                        }
+                });
+
+                async.series(funcToCall, function (err, results) {
+                  console.log(err, results);
+                })
+
+                function cancelOrder(order, cb) {
                   order.cancel = true;
 
                   var amt = order.total_amount;
@@ -65,8 +75,11 @@ var gcm = require('../../lib/gcm');
                     }
                   })
 
-                  order.save(); 
-                });
+                  order.save(function  (err) {
+                    cb(err, "Kuch bhi")
+                  }); 
+                
+                }
 
               } else {
                 console.log("No orders");
