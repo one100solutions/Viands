@@ -13,7 +13,7 @@
   var request = require('request');
 var gcm = require('../../lib/gcm');
 var async = require('async');
-
+var moment = require('moment');
 
   var MailAccount = require('../../lib/mailAccount');
 
@@ -31,8 +31,13 @@ var async = require('async');
         } else if (restaurant) {
 
             if(req.body.close === "true") {
+			var now= new moment().add(5, 'hours').add(30, 'minutes');
 		        console.log("Calling mailer");
-               MailAccount.mailInfo(restaurant.admin.token, null);
+               MailAccount.mailInfo(restaurant.admin.token, {
+                year: now.year(),
+                month: now.month() + 1,
+                day: now.date()
+               });
             }
 
             //cancel all the preorders
