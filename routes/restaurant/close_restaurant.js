@@ -11,6 +11,8 @@
   Order = mongoose.model('Order');
 
   var request = require('request');
+var gcm = require('../../lib/gcm');
+
 
   var MailAccount = require('../../lib/mailAccount');
 
@@ -29,7 +31,7 @@
 
             if(req.body.close === "true") {
 		        console.log("Calling mailer");
-                MailAccount.mailInfo(restaurant.admin.token, null);
+              //  MailAccount.mailInfo(restaurant.admin.token, null);
             }
 
             //cancel all the preorders
