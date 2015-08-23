@@ -32,7 +32,7 @@ var async = require('async');
 
             if(req.body.close === "true") {
 		        console.log("Calling mailer");
-              //  MailAccount.mailInfo(restaurant.admin.token, null);
+               MailAccount.mailInfo(restaurant.admin.token, null);
             }
 
             //cancel all the preorders
