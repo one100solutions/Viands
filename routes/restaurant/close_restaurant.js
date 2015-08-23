@@ -12,6 +12,7 @@
 
   var request = require('request');
 var gcm = require('../../lib/gcm');
+var async = require('async');
 
 
   var MailAccount = require('../../lib/mailAccount');
@@ -68,16 +69,16 @@ var gcm = require('../../lib/gcm');
                     else if(user) {
                       //refund the credits
                       user.credits += amt;
-                      user.save();
+                      user.save(function  (err) {
+                    cb(err, "Kuch bhi")
+                  });
 
                       gcm(4, 'Order '+ req.body.order_id +' Cancelled',
                        'Your order has been Cancelled and credits refunded', user.gcm_id);
                     }
                   })
 
-                  order.save(function  (err) {
-                    cb(err, "Kuch bhi")
-                  }); 
+                  order.save(); 
                 
                 }
 
