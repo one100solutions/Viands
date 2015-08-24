@@ -56,7 +56,7 @@
             return;
           } else if (req.body.order.time_deliver) {
             //check if order can be done
-            var now = new moment().add(5, 'hours').add(30, 'minutes').add(15, 'minutes');
+            var now = new moment().add(5, 'hours').add(43, 'minutes').add(15, 'minutes');
 
             var order_time = new moment(req.body.order.time_deliver,'HH:mm');
 	    console.log('wuhfweu',now.format(),'w',order_time);		
@@ -136,9 +136,10 @@
           console.log('request body2', req.body.order.items);
           console.log('Id is .wjkvdgy', otp(123, true, 8));
           //added cancel check for dependencies
+          console.log("Time",  new moment().add(5, 'hours').add(43, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a"))
           newOrder = new Order({
             id: otp(123, true, 8),
-            time: new moment().add(5, 'hours').add(30, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a"),
+            time: new moment().add(5, 'hours').add(43, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a"),
             type: req.body.order.type,
             user_id: cur_user.id,
             time_deliver: req.body.order.time_deliver,

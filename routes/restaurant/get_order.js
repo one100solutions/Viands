@@ -37,7 +37,7 @@
               console.log('Orders receive', orders)
 
               //filter records take only what is applicable 
-              var now = new moment().add(5, 'hours').add(30, 'minutes');
+              var now = new moment().add(5, 'hours').add(43, 'minutes');
               console.log("Now",now.format());
 
               //order can come before 10 minutes

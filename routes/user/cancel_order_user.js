@@ -49,7 +49,7 @@ router.post('/', function  (req, res, next) {
 						})
 					} else if(order && order.type === 'later' && order.complete === false) {
 						//check if it is already on tablet
-						var now = new moment().add(5, 'hours').add(30, 'minutes');
+						var now = new moment().add(5, 'hours').add(43, 'minutes');
 
 						var order_time = new moment(order.time_deliver,'HH:mm').subtract(10,'minutes');
 	                  	console.log("Order",order_time.format())

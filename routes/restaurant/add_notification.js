@@ -48,7 +48,7 @@
           notification = new Notification({
             title: req.body.title,
             message: req.body.message,
-	    time: moment().add(5, 'hours').add(30, 'minutes').format("MMM Do YY")				
+	    time: moment().add(5, 'hours').add(43, 'minutes').format("MMM Do YY")				
           });
           return notification.save(function(err) {
             if (err) {
