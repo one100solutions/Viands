@@ -42,7 +42,7 @@
             credit = new Credit({
               amount: req.body.amount,
               phone: req.body.tar_phone,
-              time: new moment().add(5, 'hours').add(30, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a")
+              time: new moment().add(5, 'hours').add(43, 'minutes').format("dddd, MMMM Do YYYY, h:mm:ss a")
             });
             credit.save(function(err) {
               if (err) {
