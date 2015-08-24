@@ -1,0 +1,62 @@
+########### Starting streaming logs for [all] process
+PM2: 2015-04-20 16:09:06: App name:www id:0 online
+PM2: 2015-04-20 16:11:01: Stopping app:www id:0
+PM2: 2015-04-20 16:11:01: App name:www id:0 exited with code SIGTERM
+PM2: 2015-04-20 16:11:01: Process with pid 1381 killed
+PM2: 2015-04-20 16:11:01: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-20 16:11:01: App name:www id:0 online
+PM2: 2015-04-21 07:06:54: Stopping app:www id:0
+PM2: 2015-04-21 07:06:54: App name:www id:0 exited with code SIGTERM
+PM2: 2015-04-21 07:06:54: Process with pid 1456 killed
+PM2: 2015-04-21 07:06:54: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-21 07:06:54: App name:www id:0 online
+PM2: 2015-04-21 07:06:59: App name:www id:0 exited with code 1
+PM2: 2015-04-21 07:06:59: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-21 07:06:59: App name:www id:0 online
+PM2: 2015-04-21 07:07:59: App name:www id:0 exited with code 1
+PM2: 2015-04-21 07:07:59: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-21 07:07:59: App name:www id:0 online
+PM2: 2015-04-21 07:08:57: App name:www id:0 exited with code 1
+PM2: 2015-04-21 07:08:57: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-21 07:08:57: App name:www id:0 online
+www-0 (out):   failure: 0,
+www-0 (out):   canonical_ids: 0,
+www-0 (out):   results: [ { message_id: '0:1429600585249964%9d151a59f9fd7ecd' } ] }
+www-0 (out): Result: { multicast_id: 6034648887799318000,
+www-0 (out):   success: 1,
+www-0 (out):   failure: 0,
+www-0 (out):   canonical_ids: 0,
+www-0 (out):   results: [ { message_id: '0:1429600585255541%e36f6fdbf9fd7ecd' } ] }
+www-0 (out): [0mPOST /get_order [32m200 [0m41.465 ms - 467[0m
+www-0 (out): [0mPOST /user_orders [32m200 [0m17.977 ms - 459[0m
+www-0 (out): [0mPOST /get_credits [32m200 [0m16.663 ms - 45[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m62.396 ms - 467[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m58.073 ms - 467[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m47.064 ms - 467[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m76.355 ms - 467[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m46.009 ms - 467[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m32.139 ms - 467[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m36.995 ms - 467[0m
+www-0 (out): [0mGET /restaurants [32m200 [0m34.062 ms - 14544[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m41.205 ms - 467[0m
+www-0 (err): /home/ubuntu/Viands/lib/account_generator.js:243
+www-0 (err):         finalAccounts.ordered = totalOrderSum;
+www-0 (err):                               ^
+www-0 (err): TypeError: Cannot set property 'ordered' of null
+www-0 (err):     at calculator (/home/ubuntu/Viands/lib/account_generator.js:243:31)
+www-0 (err):     at resolve (/home/ubuntu/Viands/lib/account_generator.js:179:13)
+www-0 (err):     at /home/ubuntu/Viands/lib/account_generator.js:171:13
+www-0 (err):     at /home/ubuntu/Viands/lib/account_generator.js:112:20
+www-0 (err):     at /home/ubuntu/Viands/node_modules/mongoose/node_modules/kareem/index.js:101:16
+www-0 (err):     at process._tickCallback (node.js:355:11)
+www-0 (err): /home/ubuntu/Viands/lib/account_generator.js:243
+www-0 (err):         finalAccounts.ordered = totalOrderSum;
+www-0 (err):                               ^
+www-0 (err): TypeError: Cannot set property 'ordered' of null
+www-0 (err):     at calculator (/home/ubuntu/Viands/lib/account_generator.js:243:31)
+www-0 (err):     at resolve (/home/ubuntu/Viands/lib/account_generator.js:179:13)
+www-0 (err):     at /home/ubuntu/Viands/lib/account_generator.js:171:13
+www-0 (err):     at /home/ubuntu/Viands/lib/account_generator.js:112:20
+www-0 (err):     at /home/ubuntu/Viands/node_modules/mongoose/node_modules/kareem/index.js:101:16
+www-0 (err):     at process._tickCallback (node.js:355:11)
+www-0 (out): [0mPOST /get_order [32m200 [0m49.353 ms - 467[0m

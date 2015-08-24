@@ -1,0 +1,62 @@
+########### Starting streaming logs for [all] process
+PM2: 2015-04-20 16:09:06: App name:www id:0 online
+PM2: 2015-04-20 16:11:01: Stopping app:www id:0
+PM2: 2015-04-20 16:11:01: App name:www id:0 exited with code SIGTERM
+PM2: 2015-04-20 16:11:01: Process with pid 1381 killed
+PM2: 2015-04-20 16:11:01: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-20 16:11:01: App name:www id:0 online
+PM2: 2015-04-21 07:06:54: Stopping app:www id:0
+PM2: 2015-04-21 07:06:54: App name:www id:0 exited with code SIGTERM
+PM2: 2015-04-21 07:06:54: Process with pid 1456 killed
+PM2: 2015-04-21 07:06:54: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-21 07:06:54: App name:www id:0 online
+PM2: 2015-04-21 07:06:59: App name:www id:0 exited with code 1
+PM2: 2015-04-21 07:06:59: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-21 07:06:59: App name:www id:0 online
+PM2: 2015-04-21 07:07:59: App name:www id:0 exited with code 1
+PM2: 2015-04-21 07:07:59: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-21 07:07:59: App name:www id:0 online
+PM2: 2015-04-21 07:08:57: App name:www id:0 exited with code 1
+PM2: 2015-04-21 07:08:57: Starting execution sequence in -fork mode- for app name:www id:0
+PM2: 2015-04-21 07:08:57: App name:www id:0 online
+www-0 (out):   total_cost: 15,
+www-0 (out):   rest_id: '54ff2983532d33037af831dc' }
+www-0 (out): Token order 5ff0960f05004068db8c051d6efe2b97b51a866b2e7bb830cdc3f81e76d8c21804a5eec8e7be5506dc9c97b0c06220aa1cc1bbba22779a84bbecb76de270403beeda891132b036eb0cd719080fa6c01ae7c94a8060a53bcdef9fe5e969614ece9f0b21bdfe836139c62000d1f74278487a83898c91f789f68a0845e454ff22818d373b337e52f40e48b06858591667449bb9ffc7d022db5043cf0d58ecb98a7316252615da8aefa620d4cdf7cc2028dc375276ad9f9e35d500269efd531b218a791ec01e373badd93e53a6e92f95390ce294b528b30210863ee9d3ca2567537e710d5052c138eaedde1271be91015394cb87c238cb75157854cc1a2aa825f73a42ec740d63811dfa59ca9446ae08b17658f0538ac2604e86e31b4796adf207a18603d7ef8ac4bc467164dbe546efbce31121074c660f73bced7138282a267e0a2af923c1deaf5d0c8ae4ae6b33ef2855db0a9161e3b82a6953a24b4197a2b3553cc7a2a65ddc4192995c4898893d4c0a8e2fc9fb51fa4ccc36dfdae17e81a5ade3c08eb94bdf386426671aa20863f71aa06ebd06f7167be74112b5f83dc0c0d58220738f35f6994b4dc895ef12256a4fc110afaf647c84d80285e6e26e573cd6c6b7db621fdfef38013da228a0735c6da50165033035862bcc7e62f1b8113e07a658cd1aeb67a5fffd9d9f16441547d2109c91812df2ff8040a3ad12a7171744
+www-0 (out): Done after user 1
+www-0 (out): Done os  1
+www-0 (out): [0mPOST /order [32m200 [0m43.754 ms - 42[0m
+www-0 (out): [0mPOST /get_order [32m200 [0m51.197 ms - 50[0m
+www-0 (out): Done starting 0
+www-0 (out): Hi { order: 
+www-0 (out):    { type: 'later',
+www-0 (out):      items: [ [Object] ],
+www-0 (out):      time_deliver: '17:0',
+www-0 (out):      version: 2 },
+www-0 (out):   token: '5ff0960f05004068db8c051d6efe2b97b51a866b2e7bb830cdc3f81e76d8c21804a5eec8e7be5506dc9c97b0c06220aa1cc1bbba22779a84bbecb76de270403beeda891132b036eb0cd719080fa6c01ae7c94a8060a53bcdef9fe5e969614ece9f0b21bdfe836139c62000d1f74278487a83898c91f789f68a0845e454ff22818d373b337e52f40e48b06858591667449bb9ffc7d022db5043cf0d58ecb98a7316252615da8aefa620d4cdf7cc2028dc375276ad9f9e35d500269efd531b218a791ec01e373badd93e53a6e92f95390ce294b528b30210863ee9d3ca2567537e710d5052c138eaedde1271be91015394cb87c238cb75157854cc1a2aa825f73a42ec740d63811dfa59ca9446ae08b17658f0538ac2604e86e31b4796adf207a18603d7ef8ac4bc467164dbe546efbce31121074c660f73bced7138282a267e0a2af923c1deaf5d0c8ae4ae6b33ef2855db0a9161e3b82a6953a24b4197a2b3553cc7a2a65ddc4192995c4898893d4c0a8e2fc9fb51fa4ccc36dfdae17e81a5ade3c08eb94bdf386426671aa20863f71aa06ebd06f7167be74112b5f83dc0c0d58220738f35f6994b4dc895ef12256a4fc110afaf647c84d80285e6e26e573cd6c6b7db621fdfef38013da228a0735c6da50165033035862bcc7e62f1b8113e07a658cd1aeb67a5fffd9d9f16441547d2109c91812df2ff8040a3ad12a7171744',
+www-0 (out):   total_cost: 15,
+www-0 (out):   rest_id: '54ff2983532d33037af831dc' }
+www-0 (out): Token order 5ff0960f05004068db8c051d6efe2b97b51a866b2e7bb830cdc3f81e76d8c21804a5eec8e7be5506dc9c97b0c06220aa1cc1bbba22779a84bbecb76de270403beeda891132b036eb0cd719080fa6c01ae7c94a8060a53bcdef9fe5e969614ece9f0b21bdfe836139c62000d1f74278487a83898c91f789f68a0845e454ff22818d373b337e52f40e48b06858591667449bb9ffc7d022db5043cf0d58ecb98a7316252615da8aefa620d4cdf7cc2028dc375276ad9f9e35d500269efd531b218a791ec01e373badd93e53a6e92f95390ce294b528b30210863ee9d3ca2567537e710d5052c138eaedde1271be91015394cb87c238cb75157854cc1a2aa825f73a42ec740d63811dfa59ca9446ae08b17658f0538ac2604e86e31b4796adf207a18603d7ef8ac4bc467164dbe546efbce31121074c660f73bced7138282a267e0a2af923c1deaf5d0c8ae4ae6b33ef2855db0a9161e3b82a6953a24b4197a2b3553cc7a2a65ddc4192995c4898893d4c0a8e2fc9fb51fa4ccc36dfdae17e81a5ade3c08eb94bdf386426671aa20863f71aa06ebd06f7167be74112b5f83dc0c0d58220738f35f6994b4dc895ef12256a4fc110afaf647c84d80285e6e26e573cd6c6b7db621fdfef38013da228a0735c6da50165033035862bcc7e62f1b8113e07a658cd1aeb67a5fffd9d9f16441547d2109c91812df2ff8040a3ad12a7171744
+www-0 (out): [0mPOST /order [32m200 [0m37.344 ms - 42[0m
+www-0 (out): Done after user 1
+www-0 (out): Done os  1
+www-0 (err): /home/ubuntu/Viands/lib/account_generator.js:243
+www-0 (err):         finalAccounts.ordered = totalOrderSum;
+www-0 (err):                               ^
+www-0 (err): TypeError: Cannot set property 'ordered' of null
+www-0 (err):     at calculator (/home/ubuntu/Viands/lib/account_generator.js:243:31)
+www-0 (err):     at resolve (/home/ubuntu/Viands/lib/account_generator.js:179:13)
+www-0 (err):     at /home/ubuntu/Viands/lib/account_generator.js:171:13
+www-0 (err):     at /home/ubuntu/Viands/lib/account_generator.js:112:20
+www-0 (err):     at /home/ubuntu/Viands/node_modules/mongoose/node_modules/kareem/index.js:101:16
+www-0 (err):     at process._tickCallback (node.js:355:11)
+www-0 (err): /home/ubuntu/Viands/lib/account_generator.js:243
+www-0 (err):         finalAccounts.ordered = totalOrderSum;
+www-0 (err):                               ^
+www-0 (err): TypeError: Cannot set property 'ordered' of null
+www-0 (err):     at calculator (/home/ubuntu/Viands/lib/account_generator.js:243:31)
+www-0 (err):     at resolve (/home/ubuntu/Viands/lib/account_generator.js:179:13)
+www-0 (err):     at /home/ubuntu/Viands/lib/account_generator.js:171:13
+www-0 (err):     at /home/ubuntu/Viands/lib/account_generator.js:112:20
+www-0 (err):     at /home/ubuntu/Viands/node_modules/mongoose/node_modules/kareem/index.js:101:16
+www-0 (err):     at process._tickCallback (node.js:355:11)
+www-0 (out): [0mPOST /get_order [32m200 [0m43.549 ms - 50[0m

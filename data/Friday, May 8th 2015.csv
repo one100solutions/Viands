@@ -1,0 +1,10 @@
+"id","name","phone","totalOrdered","totalCredited","credits"
+"5526beb090b3b9d41d410c58","Prashant",7760678561,10,0,95
+"5516346c17763b8b1e615a53","Samta Ravishankar",9986968728,65,0,15
+
+
+,,Field , Value
+ ,,Ordered Today,75
+ ,, Recharged Today,0
+ ,,Total Ordered,22670
+ ,, Total Recharged,28215

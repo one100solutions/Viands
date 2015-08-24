@@ -1,0 +1,13 @@
+"id","name","phone","totalOrdered","totalCredited","credits"
+"552205c534b800fb6c86d14d","Govind Shenoy",9035710867,39,0,48
+"5528e43190b3b9d41d410d6b","Prasad",9483338952,28,0,0
+"5514ef55ce8b2a9308ebb1f8","vikas m j",8553447620,45,0,83
+"55178a4b17763b8b1e615b97","Vidhi Gupta",8971195010,45,0,0
+"550fca26a526443101a0c8ca","LOHIT SAGAR",8971370087,20,0,0
+
+
+,,Field , Value
+ ,,Ordered Today,177
+ ,, Recharged Today,0
+ ,,Total Ordered,22670
+ ,, Total Recharged,28215
