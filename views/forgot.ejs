@@ -51,7 +51,7 @@
 
         if (pass === confirmPass) {
             superagent
-                    .post('/reset')
+                    .post('http://viands.in:3000/reset')
                     .send({
                         id: id,
                         password: pass
