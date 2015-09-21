@@ -32,10 +32,10 @@ var dateForAccount = {};
 
 				counter++;
 				Account({
-					year: _date.year(),
-					month: _date.month() + 1,
-					day: _date.date()
-				}, (err, accountInfo) => {
+					year: _date.get('year'),
+					month: _date.get('month') + 1,
+					day: _date.get('date')
+				},function (err, accountInfo)  {
 					console.log("Account Info", accountInfo);
 					ordered.push(accountInfo.totalOrdered);
 					credited.push(accountInfo.totalCredited);
@@ -48,8 +48,8 @@ var dateForAccount = {};
 
 			function done () {
 				if (doneCounter == counter) {
-					totalOrdered = ordered.reduce((a, b) => { return a + b;}, 0);
-					totalCredited = credited.reduce((a, b) => { return a + b }, 0 );
+					totalOrdered = ordered.reduce(function (a, b) { return a + b;}, 0);
+					totalCredited = credited.reduce(function (a, b) { return a + b }, 0 );
 
 					console.log("Today is ", _date.format());
 					console.log("Recharged ", totalCredited, " Ordered ", totalOrdered);
